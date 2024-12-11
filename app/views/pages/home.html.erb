@@ -57,13 +57,40 @@
             <i class='bx bx-movie-play'></i>
             <span>Action</span>
           </button>
+
+          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Comédie">
+            <i class='bx bx-movie-play'></i>
+            <span>Comédie</span>
+          </button>
+
+          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Drame">
+            <i class='bx bx-movie-play'></i>
+            <span>Drame</span>
+          </button>
+
+          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Fantastique">
+            <i class='bx bx-movie-play'></i>
+            <span>Fantastique</span>
+          </button>
+
           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Horreur">
             <i class='bx bx-movie-play'></i>
             <span>Horreur</span>
           </button>
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="X">
+
+           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Science-fiction">
             <i class='bx bx-movie-play'></i>
-            <span>X</span>
+            <span>Science-fiction</span>
+          </button>
+
+           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Romance">
+            <i class='bx bx-movie-play'></i>
+            <span>Romance</span>
+          </button>
+
+           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Thriller">
+            <i class='bx bx-movie-play'></i>
+            <span>Thriller</span>
           </button>
         </div>
       </div>
@@ -74,7 +101,7 @@
           <h3>Plateformes</h3>
           <span class="counter" data-filter-target="platformCounter">0</span>
         </div>
-        <div class="platform-grid">
+        <div class="platform-slide">
           <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Disney">
             <i class='bx bx-tv'></i>
             <span>Disney</span>
@@ -82,6 +109,11 @@
           <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Netflix">
             <i class='bx bx-tv'></i>
             <span>Netflix</span>
+          </button>
+
+          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Canal+">
+            <i class='bx bx-tv'></i>
+            <span>Canal+</span>
           </button>
         </div>
       </div>

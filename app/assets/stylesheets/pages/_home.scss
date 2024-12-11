@@ -1,53 +1,71 @@
-// Specific CSS for your home-page
+// Ce fichier contient les styles spécifiques pour la page d'accueil
+// Il est organisé en sections logiques, des styles généraux aux composants spécifiques
 
+// =========================================
+// Styles de base et mise en page principale
+// =========================================
+
+// Crée un conteneur plein écran avec un dégradé de couleur attrayant
 .background-home {
   min-height: 100vh;
-  background: linear-gradient(135deg,
-      #4C50FF 0%,
-      #9747FF 100%);
+  background: linear-gradient(135deg, #4C50FF 0%, #9747FF 100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+// Conteneur principal qui centre et organise verticalement le contenu
 .content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 600px;
-  padding: 0 20px;
+  max-width: 600px; // Limite la largeur pour une meilleure lisibilité
+  padding: 0 20px; // Ajoute des marges sur les petits écrans
 }
 
+// =========================================
+// Styles typographiques
+// =========================================
+
+// Style du titre principal avec une grande taille et une couleur claire
 .text-light {
   color: white;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
+// Style pour le texte secondaire avec une opacité réduite
 .p-color {
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
 }
 
+// =========================================
+// Composant de recherche
+// =========================================
+
+// Conteneur de la barre de recherche
 .search-container {
   width: 100%;
   margin-bottom: 2rem;
 }
 
+// Wrapper qui contient l'input et l'icône de recherche
 .search-wrapper {
   position: relative;
   width: 100%;
   background: white;
   border-radius: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); // Ajoute de la profondeur
 }
 
+// Champ de saisie de recherche
 .search-input {
   width: 100%;
   height: 50px;
-  padding: 0 60px 0 25px;
+  padding: 0 60px 0 25px; // Espace pour l'icône à droite
   border: none;
   border-radius: 30px;
   font-size: 16px;
@@ -55,10 +73,11 @@
   background: transparent;
 
   &:focus {
-    outline: none;
+    outline: none; // Supprime le contour natif du navigateur
   }
 }
 
+// Positionnement de l'icône de recherche
 .search-icon {
   position: absolute;
   top: 50%;
@@ -67,12 +86,16 @@
   color: #9ca3af;
 }
 
+// Ajustement de l'icône boxicons
 .bx-search {
   display: flex;
 }
 
-// Switch button
+// =========================================
+// Commutateur Films/Séries
+// =========================================
 
+// Conteneur du switch et des labels
 .switch-wrapper {
   display: flex;
   align-items: center;
@@ -80,6 +103,7 @@
   margin: 2rem 0;
 }
 
+// Style des textes "FILMS" et "SÉRIES"
 .label-text {
   color: white;
   font-size: 16px;
@@ -87,26 +111,28 @@
   text-transform: uppercase;
 }
 
-// Toggle Switch
-
+// Composant du switch personnalisé
 .toggle-switch {
   position: relative;
   width: 60px;
   height: 30px;
   margin: 0;
 
+  // Cache l'input natif
   .toggle-input {
     display: none;
 
+    // Style quand le switch est activé
     &:checked+.toggle-label {
       background-color: #9747FF;
 
       &::before {
-        transform: translateX(30px);
+        transform: translateX(30px); // Déplace le cercle
       }
     }
   }
 
+  // Label stylisé qui agit comme le switch visuel
   .toggle-label {
     position: absolute;
     inset: 0;
@@ -117,6 +143,7 @@
     cursor: pointer;
     transition: 0.3s;
 
+    // Cercle du switch
     &::before {
       content: '';
       position: absolute;
@@ -132,11 +159,65 @@
   }
 }
 
+// =========================================
+// Sections de filtres
+// =========================================
+
+// Conteneur de section de filtre
 .filter-section {
-  text-align: center;
-  margin-top: 2rem;
+  width: 100%;
+  margin-bottom: 24px;
+  color: white;
+
+  // En-tête de section avec compteur
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    // Badge compteur violet
+    .counter {
+      background-color: #4C50FF;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+  }
 }
 
+// =========================================
+// Défilement horizontal pour plateformes et genres
+// =========================================
+
+// Configuration commune pour les listes défilantes
+.platform-slide,
+.genre-grid {
+  display: flex; // Disposition horizontale
+  overflow-x: auto; // Permet le défilement
+  width: 100%;
+  padding: 10px 0;
+  scroll-behavior: smooth; // Animation de défilement
+  scrollbar-width: none; // Cache la barre de défilement Firefox
+  -ms-overflow-style: none; // Cache la barre de défilement IE
+  gap: 12px; // Espace entre les éléments
+
+  // Cache la barre de défilement Chrome/Safari
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// =========================================
+// Boutons de filtre
+// =========================================
+
+// Bouton principal des filtres
 .filter-button {
   display: inline-block;
   padding: 10px 30px;
@@ -153,7 +234,38 @@
   }
 }
 
-// Overlay pour la carte des filtres
+// Style commun pour les boutons de plateforme et de genre
+.platform-button,
+.genre-button {
+  flex: 0 0 auto; // Empêche le rétrécissement
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap; // Empêche le retour à la ligne du texte
+
+  &:hover {
+    background-color: rgba(76, 80, 255, 0.1);
+    border-color: #4C50FF;
+  }
+
+  &.active {
+    background-color: #4C50FF;
+    border-color: #4C50FF;
+  }
+}
+
+// =========================================
+// Carte modale des filtres
+// =========================================
+
+// Fond semi-transparent
 .overlay {
   position: fixed;
   inset: 0;
@@ -183,6 +295,7 @@
     align-items: center;
     margin-bottom: 24px;
 
+    // Côté gauche avec icône et titre
     .header-left {
       display: flex;
       align-items: center;
@@ -195,6 +308,7 @@
       }
     }
 
+    // Bouton de fermeture
     .close-button {
       background: transparent;
       border: none;
@@ -210,65 +324,7 @@
     }
   }
 
-  // Sections de la carte (Genres, Plateformes, Durée)
-  .filter-section {
-    margin-bottom: 24px;
-    color: white;
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-
-      h3 {
-        margin: 0;
-        font-size: 18px;
-      }
-
-      .counter {
-        background-color: #4C50FF;
-        padding: 2px 8px;
-        border-radius: 12px;
-        font-size: 14px;
-      }
-    }
-  }
-
-  // Grilles des boutons
-  .genre-grid,
-  .platform-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 12px;
-  }
-
-  // Boutons de genre et plateforme
-  .genre-button,
-  .platform-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s;
-
-    &:hover {
-      background-color: rgba(76, 80, 255, 0.1);
-      border-color: #4C50FF;
-    }
-
-    &.active {
-      background-color: #4C50FF;
-      border-color: #4C50FF;
-    }
-  }
-
-  // Slider de durée
+  // Slider de durée personnalisé
   .duration-slider {
     padding: 20px 0;
 
@@ -279,6 +335,7 @@
       border-radius: 2px;
       outline: none;
 
+      // Poignée du slider
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         width: 20px;
@@ -290,7 +347,7 @@
     }
   }
 
-  // Bouton de recherche de la carte
+  // Bouton de recherche dans la carte
   .search-filter-button {
     width: 100%;
     padding: 12px;
