@@ -152,3 +152,158 @@
     opacity: 0.9;
   }
 }
+
+// Overlay pour la carte des filtres
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+// Carte des filtres
+.filter-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #292a36;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  padding: 24px;
+  z-index: 1000;
+  display: none;
+
+  // En-tête de la carte
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+
+      h2 {
+        font-size: 24px;
+        margin: 0;
+      }
+    }
+
+    .close-button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  // Sections de la carte (Genres, Plateformes, Durée)
+  .filter-section {
+    margin-bottom: 24px;
+    color: white;
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+
+      h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .counter {
+        background-color: #4C50FF;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Grilles des boutons
+  .genre-grid,
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  // Boutons de genre et plateforme
+  .genre-button,
+  .platform-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: rgba(76, 80, 255, 0.1);
+      border-color: #4C50FF;
+    }
+
+    &.active {
+      background-color: #4C50FF;
+      border-color: #4C50FF;
+    }
+  }
+
+  // Slider de durée
+  .duration-slider {
+    padding: 20px 0;
+
+    .slider {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      outline: none;
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #4C50FF;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Bouton de recherche de la carte
+  .search-filter-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4C50FF;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
