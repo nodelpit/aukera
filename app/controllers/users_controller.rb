@@ -1,21 +1,21 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user! # S'assure que l'utilisateur est connecté
+  before_action :authenticate_user! 
 
   def show
-    @user = current_user # Charge l'utilisateur actuellement connecté
+    @user = current_user
   end
 
   def edit
-    @user = current_user # Charge l'utilisateur pour le formulaire d'édition
+    @user = current_user
   end
 
   def update
     @user = current_user
-    if @user.update(user_params) # Tente de mettre à jour les données du profil
-      redirect_to myprofile_path, notice: "Profil mis à jour avec succès." # Redirige en cas de succès
+    if @user.update(user_params)
+      redirect_to myprofile_path, notice: "Profil mis à jour avec succès."
     else
-      flash.now[:alert] = "Erreur lors de la mise à jour du profil." # Affiche un message d'erreur
-      render :edit # Recharge le formulaire d'édition
+      flash.now[:alert] = "Erreur lors de la mise à jour du profil."
+      render :edit
     end
   end
 
