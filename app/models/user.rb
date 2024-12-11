@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :service
+  belongs_to :service, optional: true
   has_many :playlists
   delegate :movies, to: :playlists
 
