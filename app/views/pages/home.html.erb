@@ -1,2 +1,34 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="background-home">
+  <div class="content-container">
+    <%# Titre et sous-titre %>
+    <h1 class="text-light">On regarde quoi ce soir ?</h1>
+    <p class="p-color">Lorem ipsum dolor sit amet.</p>
+
+    <%# Barre de recherche %>
+    <div class="search-container">
+      <div class="search-wrapper">
+        <input type="text" class="search-input" placeholder="type something to search">
+        <div class="search-icon">
+          <i class='bx bx-search fs-1' ></i>
+        </div>
+      </div>
+    </div>
+
+    <%# Switch avec labels Films/Séries %>
+    <div class="switch-wrapper">
+      <span class="label-text">FILMS</span>
+      <div class="toggle-switch">
+        <input class="toggle-input" id="toggle" type="checkbox">
+        <label class="toggle-label" for="toggle"></label>
+      </div>
+      <span class="label-text">SÉRIES</span>
+    </div>
+
+    <%# Section filtres %>
+    <div class="filter-section">
+      <p class="p-color">Besoin d'affiner ?</p>
+      <%= link_to 'FILTRES', '#', class: 'filter-button' %>
+    </div>
+  </div>
+</div>
+
