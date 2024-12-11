@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :service
-  has_many :playlists
+  belongs_to :service, optional: true
+  has_many :playlists, dependent: :destroy
   delegate :movies, to: :playlists
 
   validates :first_name, presence: true

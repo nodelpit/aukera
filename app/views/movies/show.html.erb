@@ -1,2 +1,14 @@
-<h1>Movies#show</h1>
-<p>Find me in app/views/movies/show.html.erb</p>
+<div class="modale-container">
+  <div class="modale-container-trailer" style="background-image: url(<%= @movie.image_url %>)">
+    <div class="modale-container-trailer gradient">
+      <div class="modale-quit-icon"><%= image_tag("Quit icon.png") %></div>
+      <div class="modale-play-icon"><%= image_tag("Play icon.png") %></div>
+    </div>
+  </div>
+  <div class="modale-container-content">
+    <p class="modale-text-light"><%= @movie.overview %></p>
+    <p class="modale-text-light"><span class="modale-text-dark">Distribution :</span> <%= @movie.cast %></p>
+    <p class="modale-text-light"><span class="modale-text-dark">Réalisation :</span> <%= @movie.real %></p>
+    <p class="modale-text-dark">Disponible sur : <%= @movie.real %></p>
+  </div>
+</div>
