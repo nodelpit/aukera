@@ -8,6 +8,9 @@ Movie.destroy_all
 ServiceShow.destroy_all
 
 genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fiction", "Romance", "Thriller"]
+services = ["Amazon Prime", "Netflix", "Disney+"].map do |service_name|
+  Service.create!(service: service_name)
+end
 
 movies = 20.times.map do
   Movie.create!(
@@ -26,34 +29,49 @@ movies = 20.times.map do
   )
 end
 
+movies.each do |movie|
+  services.sample(Faker::Number.between(from: 1, to: 2)).each do |service|
+    ServiceShow.create!(
+      movie: movie,
+      service: service,
+      link: Faker::Internet.url,
+      video_link: Faker::Internet.url
+    )
+  end
+end
+
 specific_users = [
   User.create!(
     email: "noahdelpit@protonmail.com",
     password: "aukera",
     first_name: "Noah",
     last_name: "Delpit",
-    age: 25
+    age: 25,
+    service: services.sample
   ),
   User.create!(
     email: "alban.bengounia@gmail.com",
     password: "aukera",
     first_name: "Alban",
     last_name: "Bengounia",
-    age: 25
+    age: 25,
+    service: services.sample
   ),
   User.create!(
     email: "metaypauline@gmail.com",
     password: "aukera",
     first_name: "Pauline",
     last_name: "Metay",
-    age: 25
+    age: 25,
+    service: services.sample
   ),
   User.create!(
     email: "raphaelcanches@gmail.com",
     password: "aukera",
     first_name: "Raphael",
     last_name: "Canches",
-    age: 25
+    age: 25,
+    service: services.sample
   )
 ]
 
