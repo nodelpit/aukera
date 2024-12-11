@@ -8,11 +8,11 @@ class Movie < ApplicationRecord
   validates :real, presence: true
   validates :overview, presence: true
   validates :rating, presence: true
-  validates :showType, presence: true
+  validates :show_type, presence: true
   validates :video_link, presence: true
   validates :image_url, presence: true
   validates :trailer_link, presence: true
-  validates :releaseYear, presence: true
+  validates :release_year, presence: true
   validates :runtime, presence: true
 
 end
