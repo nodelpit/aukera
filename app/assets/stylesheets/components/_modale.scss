@@ -1,0 +1,59 @@
+.modale-container {
+  background-color: #292A36;
+  border-radius: 10px;
+  height: 80vh;
+  width: 90vw;
+  margin: auto;
+}
+
+.modale-container-trailer {
+  height: 30vh;
+  width: 90vw;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.modale-container-content {
+  padding: 10%;
+  height: 30vh;
+  width: 90vw;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: relative;
+  top: 30vh;
+}
+
+.modale-quit-icon {
+  float: right;
+  width: 15px;
+  margin: 5%;
+}
+
+.modale-play-icon {
+  width: 35px;
+  margin: auto;
+  position: relative;
+  top: 45%;
+}
+
+.gradient {
+  background: linear-gradient(45deg,
+  rgba(0, 0, 0, 1) 0%,
+  rgba(64, 52, 99, 0.75) 32%,
+  rgba(64, 52, 99, 0) 49%,
+  rgba(70, 53, 104, 0) 60%,
+  rgba(75, 55, 110, 0.75) 83%,
+  rgba(0, 0, 0, 1) 100%);
+}
+
+.modale-text-light {
+  color: $whitepurple;
+}
+
+.modale-text-dark {
+  color: $greypurple;
+}
