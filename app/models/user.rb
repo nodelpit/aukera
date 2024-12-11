@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :service, optional: true
-  has_many :playlists
+  has_many :playlists, dependent: :destroy
   delegate :movies, to: :playlists
 
   validates :first_name, presence: true

@@ -1,10 +1,10 @@
 require 'faker'
 
+MoviePlaylist.destroy_all
+Playlist.destroy_all
 User.destroy_all
 Service.destroy_all
 Movie.destroy_all
-Playlist.destroy_all
-MoviePlaylist.destroy_all
 ServiceShow.destroy_all
 
 genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fiction", "Romance", "Thriller"]
@@ -26,18 +26,41 @@ movies = 20.times.map do
   )
 end
 
-4.times do
-  user = User.create!(
-    email: Faker::Internet.email,
+specific_users = [
+  User.create!(
+    email: "noahdelpit@protonmail.com",
     password: "aukera",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    age: Faker::Number.between(from: 18, to: 60),
+    first_name: "Noah",
+    last_name: "Delpit",
+    age: 25
+  ),
+  User.create!(
+    email: "alban.bengounia@gmail.com",
+    password: "aukera",
+    first_name: "Alban",
+    last_name: "Bengounia",
+    age: 25
+  ),
+  User.create!(
+    email: "metaypauline@gmail.com",
+    password: "aukera",
+    first_name: "Pauline",
+    last_name: "Metay",
+    age: 25
+  ),
+  User.create!(
+    email: "raphaelcanches@gmail.com",
+    password: "aukera",
+    first_name: "Raphael",
+    last_name: "Canches",
+    age: 25
   )
+]
 
+specific_users.each do |user|
   2.times do
     playlist = Playlist.create!(
-      name: genres.sample,   
+      name: genres.sample,
       description: Faker::Lorem.sentence,
       user: user
     )
