@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_11_105343) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_11_160427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,10 +36,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_105343) do
     t.integer "rating"
     t.string "show_type"
     t.string "video_link"
-    t.string "image_url"
     t.string "trailer_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "vertical_image_url"
+    t.string "horizontal_image_url"
   end
 
   create_table "playlists", force: :cascade do |t|
