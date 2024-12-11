@@ -9,14 +9,15 @@
     <p class="modale-text-light"><%= @movie.overview %></p>
     <p class="modale-text-light"><span class="modale-text-dark">Distribution :</span> <%= @movie.cast %></p>
     <p class="modale-text-light"><span class="modale-text-dark">Réalisation :</span> <%= @movie.real %></p>
-
-      <div class="scroll">
-        <% @services.each do |service| %>
-          <div class="service-card" style="background-image: url(<%= @movie.horizontal_image_url %>), alt:<%= service.service %>">
-            <div class="d-flex justify-content-between"></div>
-          </div>
-        <% end %>
-      </div>
-
+    <div class="scroll">
+      <% @services.each do |service| %>
+        <div class="service-card" style="background-image: url(<%= @movie.horizontal_image_url %>)"> <%# TODO à remplacer par service/image %>
+          <div class="d-flex justify-content-between"></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="button-light">Regarder le film</div>
   </div>
 </div>
+
+<div class="modale-save-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
