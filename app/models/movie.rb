@@ -4,6 +4,7 @@ class Movie < ApplicationRecord
   has_many :movie_playlists
   has_many :playlists, through: :movie_playlists
 
+  # validates :id_tmdb, presence: true
   validates :title, presence: true
   validates :real, presence: true
   validates :overview, presence: true
