@@ -101,7 +101,6 @@ namespace :streaming_data do
         puts "Nombre de films déjà stockés : #{Movie.count}"
 
         data['shows'].each do |show_data|
-          puts "Traitement du show: #{show_data['title']}"
 
           if show_data['showType'] == 'movie'
             movie = save_movie(show_data)
@@ -114,7 +113,6 @@ namespace :streaming_data do
 
           if show_data['streamingOptions']
             show_data['streamingOptions'].each do |streaming_option|
-              puts "Traitement des options de streaming pour le film: #{show_data['title']}"
               save_service_data(movie, streaming_option)
             end
           else
@@ -126,8 +124,11 @@ namespace :streaming_data do
             puts "Limite de 100 films atteinte, arrêt de la récupération."
             break
           end
-          # =======================================================>
         end
+
+        break if film_count >= 100
+
+        # =======================================================>
 
         has_more = data['hasMore']
         cursor = data['nextCursor']
