@@ -1,16 +1,18 @@
 require 'faker'
 
 MoviePlaylist.destroy_all
+ServiceShow.destroy_all
 Playlist.destroy_all
 User.destroy_all
+ServiceShow.destroy_all
 Service.destroy_all
 Movie.destroy_all
-ServiceShow.destroy_all
 
 genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fiction", "Romance", "Thriller"]
-services = ["Amazon Prime", "Netflix", "Disney+"].map do |service_name|
+services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |service_name|
   Service.create!(service: service_name)
 end
+
 
 movies = 20.times.map do
   Movie.create!(
@@ -20,17 +22,18 @@ movies = 20.times.map do
     genres: Faker::Lorem.words(number: 3).join(', '),
     release_year: Faker::Number.between(from: 1900, to: 2024),
     runtime: Faker::Number.between(from: 60, to: 180),
-    overview: Faker::Lorem.sentence(word_count: 15),
+    overview: Faker::Lorem.sentence(word_count: 50),
     rating: Faker::Number.decimal(l_digits: 1, r_digits: 1),
     show_type: %w[Movie Series].sample,
     video_link: Faker::Internet.url,
-    image_url: Faker::Internet.url,
+    vertical_image_url: "https://jevaisciner.fr/wp/wp-content/uploads/jvc_posters/Le%20Parrain%20Part%201%20Poster-scaled.jpg",
+    horizontal_image_url: "https://vl-media.fr/wp-content/uploads/2022/01/le-parrain-1140x625.jpg",
     trailer_link: Faker::Internet.url
   )
 end
 
 movies.each do |movie|
-  services.sample(Faker::Number.between(from: 1, to: 2)).each do |service|
+  services.sample(Faker::Number.between(from: 1, to: 5)).each do |service|
     ServiceShow.create!(
       movie: movie,
       service: service,

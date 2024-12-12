@@ -1,14 +1,40 @@
 <div class="modale-container">
-  <div class="modale-container-trailer" style="background-image: url(<%= @movie.image_url %>)">
+  <div class="modale-container-above">
+    <%# TODO  griser le bouton tant qu'aucune plateforme n'est sélectionnée ? pas très user friendly
+              le lien du bouton doit être celui du service_show sélectionné %>
+    <div class="modale-save-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
+    <div class="button-light"><span class="button-text">Regarder</span></div>
+  </div>
+
+  <div class="modale-container-trailer" style="background-image: url(<%= @movie.horizontal_image_url %>)">
     <div class="modale-container-trailer gradient">
-      <div class="modale-quit-icon"><%= image_tag("Quit icon.png") %></div>
+      <div class="modale-quit-icon"><%= link_to image_tag("Quit icon.png"), movies_path %></div>
       <div class="modale-play-icon"><%= image_tag("Play icon.png") %></div>
     </div>
   </div>
+
   <div class="modale-container-content">
+    <div class="scroll">
+      <% @services.each do |service| %>
+        <div class="service-card" style="background-image: url('<%= image_path('Netflix test icon.png') %>')"> <%# TODO à remplacer par service/image %>
+          <div class="d-flex justify-content-between"></div>
+        </div>
+      <% end %>
+    </div>
     <p class="modale-text-light"><%= @movie.overview %></p>
     <p class="modale-text-light"><span class="modale-text-dark">Distribution :</span> <%= @movie.cast %></p>
     <p class="modale-text-light"><span class="modale-text-dark">Réalisation :</span> <%= @movie.real %></p>
-    <p class="modale-text-dark">Disponible sur : <%= @movie.real %></p>
+    <% if @movie.rating >= 7.5 %>
+      <p class="modale-text-light"><span class="modale-text-dark">★★★★ </span><%= @movie.rating %>/10</p>
+    <% elsif @movie.rating >= 5 %>
+      <p class="modale-text-light"><span class="modale-text-dark">★★★ </span><%= @movie.rating %>/10</p>
+    <% elsif @movie.rating >= 2.5 %>
+      <p class="modale-text-light"><span class="modale-text-dark">★★ </span><%= @movie.rating %>/10</p>
+    <% else %>
+      <p class="modale-text-light"><span class="modale-text-dark">★ </span><%= @movie.rating %>/10</p>
+    <% end %>
   </div>
+
+  <div class="modale-container-bottom"> </div>
+
 </div>
