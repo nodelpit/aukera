@@ -4,7 +4,7 @@ MoviePlaylist.destroy_all
 ServiceShow.destroy_all
 Playlist.destroy_all
 User.destroy_all
-ServiceShow.destroy_all 
+ServiceShow.destroy_all
 Service.destroy_all
 Movie.destroy_all
 
@@ -12,6 +12,7 @@ genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fict
 services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |service_name|
   Service.create!(service: service_name)
 end
+
 
 movies = 20.times.map do
   Movie.create!(
@@ -21,7 +22,7 @@ movies = 20.times.map do
     genres: Faker::Lorem.words(number: 3).join(', '),
     release_year: Faker::Number.between(from: 1900, to: 2024),
     runtime: Faker::Number.between(from: 60, to: 180),
-    overview: Faker::Lorem.sentence(word_count: 15),
+    overview: Faker::Lorem.sentence(word_count: 50),
     rating: Faker::Number.decimal(l_digits: 1, r_digits: 1),
     show_type: %w[Movie Series].sample,
     video_link: Faker::Internet.url,
