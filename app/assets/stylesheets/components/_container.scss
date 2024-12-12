@@ -1,0 +1,26 @@
+$full-height: 75vh;
+$full_width: 80vw;
+
+.container {
+  background: $darkpurplegradient;
+  height: 100vh;
+}
+
+.container-content {
+  height: $full-height;
+  position: relative;
+  top: 50%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  width: $full_width;
+}
+
+.container-content p {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.container-content div {
+  // padding-left: 10%;
+  padding-right: 10%;
+}
