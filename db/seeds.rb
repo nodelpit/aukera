@@ -10,9 +10,8 @@ Movie.destroy_all
 
 genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fiction", "Romance", "Thriller"]
 services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |service_name|
-  Service.create!(service: service_name)
+  Service.create!(service: service_name, service_logo_link: "https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940")
 end
-
 
 movies = 20.times.map do
   Movie.create!(
@@ -36,8 +35,7 @@ movies.each do |movie|
     ServiceShow.create!(
       movie: movie,
       service: service,
-      link: Faker::Internet.url,
-      video_link: Faker::Internet.url
+      link: Faker::Internet.url
     )
   end
 end
