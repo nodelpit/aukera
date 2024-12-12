@@ -4,5 +4,7 @@ class ServiceShow < ApplicationRecord
 
   validates :link, presence: true
   validates :video_link, presence: true
+  # validates :access_type, presence: true
   validates :movie_id, uniqueness: { scope: :service_id }
+  # validates :service_id, presence: true
 end

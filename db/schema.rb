@@ -35,8 +35,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_160427) do
     t.string "overview"
     t.integer "rating"
     t.string "show_type"
-    t.string "video_link"
-    t.string "trailer_link"
+    t.string "video_link" # a delete TODO
+    t.string "trailer_link" # a garder
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "vertical_image_url"
@@ -56,15 +56,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_160427) do
     t.bigint "service_id", null: false
     t.bigint "movie_id", null: false
     t.string "link"
-    t.string "video_link"
+    t.string "video_link" # a delete TODO
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_service_shows_on_movie_id"
     t.index ["service_id"], name: "index_service_shows_on_service_id"
+    # access_type a ajouter TODO
   end
 
   create_table "services", force: :cascade do |t|
     t.string "service"
+    # ajouter le logo TODO
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
