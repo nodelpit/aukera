@@ -10,10 +10,22 @@
     <%# Barre de recherche %>
     <div class="search-container">
       <div class="search-wrapper">
-        <input type="text" class="search-input" placeholder="type something to search">
-        <div class="search-icon">
-          <i class='bx bx-search fs-1'></i>
-        </div>
+        <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
+          <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "type something to search" },
+              wrapper_html: { class: 'search-input-wrapper' },
+              wrapper: :default %>
+
+              <%# Champs cachés pour stocker les filtres sélectionnés %>
+          <%= hidden_field_tag 'genres', nil, data: { filter_target: "genresInput" } %>
+          <%= hidden_field_tag 'services', nil, data: { filter_target: "servicesInput" } %>
+          <%= hidden_field_tag 'duration', nil, data: { filter_target: "durationInput" } %>
+
+          <div class="search-icon">
+            <%= button_tag type: 'submit', class: 'button-no-style' do %>
+              <i class='bx bx-search fs-1'></i>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
 
@@ -21,7 +33,7 @@
     <div class="switch-wrapper">
       <span class="label-text">FILMS</span>
       <div class="toggle-switch">
-        <input class="toggle-input" id="toggle" type="checkbox">
+        <input class="toggle-input" id="toggle" type="checkbox", name="toggle", value="1">
         <label class="toggle-label" for="toggle"></label>
       </div>
       <span class="label-text">SÉRIES</span>
@@ -127,7 +139,7 @@
       </div>
 
       <%# Bouton de recherche %>
-      <button class="search-filter-button">RECHERCHER</button>
+      <button class="search-filter-button" data-action="click->filter#submitFilters">RECHERCHER</button>
     </div>
   </div>
 </div>
