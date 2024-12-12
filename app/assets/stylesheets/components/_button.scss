@@ -1,0 +1,15 @@
+.button-light {
+  background-color: white;
+  width: 150px;
+  border-radius: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+  box-shadow: $shadow;
+}
+
+.button-text {
+  background: $purplegradient;
+    -webkit-background-clip: text; // Limiter le gradient à la zone du texte
+    -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
+}
