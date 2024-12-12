@@ -14,6 +14,9 @@ class MoviesController < ApplicationController
     end
 
     @movies = @movies.where("runtime <= ?", params[:duration]) if params[:duration].present?
+
+    @movies = @movies.sample(5)
+    @playlists = Playlist.all
   end
 
   def show

@@ -12,8 +12,7 @@ class Movie < ApplicationRecord
   validates :show_type, presence: true
   validates :horizontal_image_url, presence: true
   validates :vertical_image_url, presence: true
-  validates :trailer_link, presence: true
+  # validates :trailer_link, presence: true
   validates :release_year, presence: true
   validates :runtime, presence: true
-
 end

@@ -1,1 +1,73 @@
-<h1>Mon profil</h1>
+<div class="background-user">
+
+  <!-- Section Profil -->
+  <section class="profile-section">
+    <div class="profile-block">
+
+      <!-- Modif -->
+      <div class="edit-icon-container">
+        <%= link_to edit_myprofile_path, class: "edit-icon" do %>
+          <i class="bx bx-pencil"></i>
+        <% end %>
+      </div>
+
+      <!-- PFP -->
+      <div class="profile-pic-container">
+        <div>
+          <%= image_tag "default-avatar.png", alt: "Avatar utilisateur", class: "avatar avatar-large" %>
+        </div>
+      </div>
+
+      <!-- Nom utilisateur -->
+      <div class="username-container">
+        <p class="username">@<%= current_user.first_name.downcase %><%= current_user.last_name.downcase %></p>
+      </div>
+
+      <!-- Genres -->
+      <div class="genres-container">
+        <ul class="genres-list">
+          <% current_user.playlists.first&.movies&.each do |movie| %>
+            <li class="genre-button">
+              <%= movie.genres.split(',').first %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!--Plateformes -->
+      <div class="filter-section">
+        <div class="platform-slide">
+          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Disney">
+            <i class='bx bx-tv'></i>
+            <span>Disney</span>
+          </button>
+          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Netflix">
+            <i class='bx bx-tv'></i>
+            <span>Netflix</span>
+          </button>
+          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Canal+">
+            <i class='bx bx-tv'></i>
+            <span>Canal+</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Playlists -->
+  <section class="playlists-section">
+    <div class="playlists-block">
+      <h3 class="playlists-title">Mes playlists</h3>
+      <div class="playlists-grid">
+        <% current_user.playlists.each do |playlist| %>
+          <div class="playlist-card">
+            <%= image_tag "default-playlist.png", alt: "Image de playlist", class: "playlist-image" %>
+            <p class="playlist-name"><%= playlist.name %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+</div>
