@@ -10,7 +10,6 @@ class Movie < ApplicationRecord
   validates :overview, presence: true
   validates :rating, presence: true
   validates :show_type, presence: true
-  validates :video_link, presence: true
   validates :horizontal_image_url, presence: true
   validates :vertical_image_url, presence: true
   validates :trailer_link, presence: true
