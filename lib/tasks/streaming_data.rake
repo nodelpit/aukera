@@ -13,6 +13,10 @@ namespace :streaming_data do
       exit
     end
 
+    def sanitize_value(value, default = '')
+      value.present? ? value : default
+    end
+
     def fetch_data(platform, cursor = nil)
       response = HTTParty.get(BASE_URL, {
         headers: {
@@ -30,46 +34,63 @@ namespace :streaming_data do
       if response.success?
         JSON.parse(response.body)
       else
-        puts "erreur récupération données : #{response.code} - #{response.message}"
+        puts "Erreur récupération données : #{response.code} - #{response.message}"
         nil
       end
     end
 
-    def save_movie(show_data)
-      movie = Movie.find_or_initialize_by(streaming_api_id: show_data['id'])
-      movie.update(
+    def update_show_attributes(show, show_data)
+      show.update!(
         streaming_api_id: show_data['id'],
         tmdb_id: show_data['tmdbId'],
-        title: show_data['title'],
-        real: show_data['directors'].join(', '),
-        cast: show_data['cast'].join(', '),
-        genres: show_data['genres'].map { |g| g['name'] }.join(', '),
-        release_year: show_data['releaseYear'],
-        runtime: show_data['runtime'],
-        overview: show_data['overview'],
-        rating: show_data['rating'],
-        show_type: show_data['showType'],
-        vertical_image_url: show_data['imageSet']['verticalPoster']['w600'],
-        horizontal_image_url: show_data['imageSet']['horizontalPoster']['w720']
+        title: sanitize_value(show_data['title'], 'Titre inconnu'),
+        real: sanitize_value(show_data['directors']&.join(', ') || show_data['creators']&.join(', '), 'Inconnu'),
+        cast: sanitize_value(show_data['cast']&.join(', '), 'Non spécifié'),
+        genres: sanitize_value(show_data['genres']&.map { |g| g['name'] }&.join(', '), 'Non spécifié'),
+        release_year: sanitize_value(show_data['releaseYear'] || show_data['firstAirYear'], 'Inconnu'),
+        runtime: sanitize_value(show_data['runtime'], 0),
+        overview: sanitize_value(show_data['overview'], 'Aucune description disponible'),
+        rating: sanitize_value(show_data['rating'], 0),
+        show_type: sanitize_value(show_data['showType'], 'Inconnu'),
+        vertical_image_url: sanitize_value(show_data.dig('imageSet', 'verticalPoster', 'w600'), 'https://via.placeholder.com/426x597?text=Image+manquante'),
+        horizontal_image_url: sanitize_value(show_data.dig('imageSet', 'horizontalPoster', 'w720'), 'https://via.placeholder.com/720x405?text=Image+manquante')
       )
-      movie
+    end
+
+    def save_movie(show_data)
+      movie = Movie.find_or_initialize_by(streaming_api_id: show_data['id'])
+      update_show_attributes(movie, show_data)
+      movie.save!
+      return movie
+    end
+
+    def save_series(show_data)
+      series = Movie.find_or_initialize_by(streaming_api_id: show_data['id'])
+      update_show_attributes(series, show_data)
+      series.save!
+      return series
     end
 
     def save_service_data(movie, streaming_option)
-      service_data = streaming_option['service']
-      service = Service.find_or_create_by(service: service_data['id']) do |s|
-        s.service_logo_link = service_data['imageSet']['lightThemeImage']
-        # recupere le logo de la plateforme de streaming
-      end
+      streaming_option[1].each do |option|
+        service_data = option['service']
 
-      ServiceShow.find_or_initialize_by(service: service, movie: movie).update(
-        link: streaming_option['link'],
-        access_type: streaming_option['type'] # attention différentes souscriptions
-      )
+        service = Service.find_or_create_by(service: service_data['id']) do |s|
+          s.service_logo_link = service_data.dig('imageSet', 'lightThemeImage')
+        end
+
+        ServiceShow.find_or_initialize_by(service: service, movie: movie).update(
+          link: option['link'],
+          access_type: option['type'] # attention différentes souscriptions
+        )
+      end
     end
 
+    # LIMITE pour environnement de TEST ===================>
+    film_count = 0
+    # =====================================================>
     platforms.each do |platform|
-      puts "récupération des données du catalogue #{platform}..."
+      puts "Récupération des données du catalogue #{platform}..."
       cursor = nil
       has_more = true
 
@@ -77,20 +98,43 @@ namespace :streaming_data do
         data = fetch_data(platform, cursor)
         break unless data
 
-        data['shows'].each do |show_data|
-          movie = save_movie(show_data)
-          streaming_options = show_data['streamingOptions'][COUNTRY] || []
+        puts "Nombre de films déjà stockés : #{Movie.count}"
 
-          streaming_options.each do |option|
-            save_service_data(movie, option)
+        data['shows'].each do |show_data|
+
+          if show_data['showType'] == 'movie'
+            movie = save_movie(show_data)
+          elsif show_data['showType'] == 'series'
+            movie = save_series(show_data)
+          else
+            puts "Type inconnu pour l'élément : #{show_data['title']}"
+            next
+          end
+
+          if show_data['streamingOptions']
+            show_data['streamingOptions'].each do |streaming_option|
+              save_service_data(movie, streaming_option)
+            end
+          else
+            puts "Aucune option de streaming trouvée pour #{show_data['title']}"
+          end
+          # LIMITE pour environnement de TEST ===================>
+          film_count += 1
+          if film_count >= 100
+            puts "Limite de 100 films atteinte, arrêt de la récupération."
+            break
           end
         end
+
+        break if film_count >= 100
+
+        # =======================================================>
 
         has_more = data['hasMore']
         cursor = data['nextCursor']
         puts "Récupération de #{data['shows'].count} shows. Has more: #{has_more}"
 
-        sleep 1 # ralentir
+        # sleep 0.5 # ralentir
       end
     end
 
