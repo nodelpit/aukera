@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  // Nous gardons uniquement les targets que nous utilisons réellement
-  static targets = ["card", "overlay", "genreCounter", "platformCounter"]
+  static targets = ["card", "overlay", "genreCounter", "platformCounter", "durationSlider", "durationDisplay", "genreInput", "platformInput", "durationInput"]
 
   connect() {
     this.selectedGenres = new Set()
@@ -22,15 +21,19 @@ export default class extends Controller {
   }
 
   toggleGenre(event) {
-    const button = event.currentTarget
-    button.classList.toggle('active')
-    const genreName = button.dataset.genre
+    const button = event.currentTarget;
+    const genreName = button.dataset.genre;
+
+    button.classList.toggle('active');
+
     if (button.classList.contains('active')) {
-      this.selectedGenres.add(genreName)
+      this.selectedGenres.add(genreName);
     } else {
-      this.selectedGenres.delete(genreName)
+      this.selectedGenres.delete(genreName);
     }
-    this.updateGenreCounter()
+
+    this.genreInputTarget.value = Array.from(this.selectedGenres).join(',');
+    this.updateGenreCounter();
   }
 
   updateGenreCounter() {
@@ -38,15 +41,19 @@ export default class extends Controller {
   }
 
   togglePlatform(event) {
-    const button = event.currentTarget
-    button.classList.toggle('active')
-    const platformName = button.dataset.platform
+    const button = event.currentTarget;
+    const platformName = button.dataset.platform;
+
+    button.classList.toggle('active');
+
     if (button.classList.contains('active')) {
-      this.selectedPlatforms.add(platformName)
+      this.selectedPlatforms.add(platformName);
     } else {
-      this.selectedPlatforms.delete(platformName)
+      this.selectedPlatforms.delete(platformName);
     }
-    this.updatePlatformCounter()
+
+    this.platformInputTarget.value = Array.from(this.selectedPlatforms).join(',');
+    this.updatePlatformCounter();
   }
 
   updatePlatformCounter() {
@@ -54,43 +61,23 @@ export default class extends Controller {
   }
 
   submitFilters() {
-    // Nous récupérons le formulaire directement avec querySelector
-    const searchForm = document.querySelector('form')
+    this.durationInputTarget.value = this.durationSliderTarget.value;
 
-    // Si nous ne trouvons pas de formulaire, nous créons une nouvelle URL
-    const baseUrl = searchForm ? searchForm.action : window.location.href
-    const url = new URL(baseUrl)
-
-    // Ajout des genres sélectionnés si présents
-    if (this.selectedGenres.size > 0) {
-      url.searchParams.set('genres', Array.from(this.selectedGenres).join(','))
+    if (this.hasSubmitButtonTarget) {
+      this.submitButtonTarget.click();
+    } else if (this.searchForm) {
+      this.searchForm.submit();
     }
 
-    // Ajout des plateformes sélectionnées si présentes
-    if (this.selectedPlatforms.size > 0) {
-      url.searchParams.set('services', Array.from(this.selectedPlatforms).join(','))
-    }
+    this.close();
+  }
 
-    // Ajout de la durée du slider si présent
-    const durationSlider = document.querySelector('.slider')
-    if (durationSlider) {
-      url.searchParams.set('duration', durationSlider.value)
-    }
+  updateDurationDisplay() {
+    const durationInMinutes = parseInt(this.durationSliderTarget.value)
+    this.durationDisplayTarget.querySelector('span').textContent = durationInMinutes
+  }
 
-    // Ajout des paramètres de recherche existants s'il y en a
-    if (searchForm) {
-      const formData = new FormData(searchForm)
-      for (let [key, value] of formData.entries()) {
-        if (value) {
-          url.searchParams.set(key, value)
-        }
-      }
-    }
-
-    // Redirection vers la nouvelle URL avec tous les filtres
-    window.location.href = url.toString()
-
-    // Fermeture de la carte des filtres
-    this.close()
+  get searchForm() {
+    return this.element.querySelector('form');
   }
 }

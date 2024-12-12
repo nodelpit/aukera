@@ -9,25 +9,24 @@
 
     <%# Barre de recherche %>
     <div class="search-container">
-      <div class="search-wrapper">
-        <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
-          <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "type something to search" },
-              wrapper_html: { class: 'search-input-wrapper' },
-              wrapper: :default %>
+  <div class="search-wrapper">
+    <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
+      <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "type something to search" },
+                  wrapper_html: { class: 'search-input-wrapper' },
+                  wrapper: :default %>
 
-              <%# Champs cachés pour stocker les filtres sélectionnés %>
-          <%= hidden_field_tag 'genres', nil, data: { filter_target: "genresInput" } %>
-          <%= hidden_field_tag 'services', nil, data: { filter_target: "servicesInput" } %>
-          <%= hidden_field_tag 'duration', nil, data: { filter_target: "durationInput" } %>
+      <%= hidden_field_tag 'genres', nil, data: { filter_target: "genreInput" } %>
+      <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
+      <%= hidden_field_tag 'duration', nil, data: { filter_target: "durationInput" } %>
 
-          <div class="search-icon">
-            <%= button_tag type: 'submit', class: 'button-no-style' do %>
-              <i class='bx bx-search fs-1'></i>
-            <% end %>
-          </div>
+      <div class="search-icon">
+        <%= button_tag type: 'submit', class: 'button-no-style' do %>
+          <i class='bx bx-search fs-1'></i>
         <% end %>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
 
     <%# Switch button Films/Séries %>
     <div class="switch-wrapper">
@@ -134,7 +133,10 @@
       <div class="filter-section">
         <h3>Durée</h3>
         <div class="duration-slider">
-          <input type="range" min="0" max="100" value="50" class="slider">
+          <div class="duration-display" data-filter-target="durationDisplay">
+            Durée maximale : <span>300</span> minutes
+          </div>
+          <input type="range", min="0", max="300", value="150" class="slider" data-action="input->filter#updateDurationDisplay", data-filter-target="durationSlider">
         </div>
       </div>
 
