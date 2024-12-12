@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-content">
-    <div class="button-light m-auto"><span class="button-text">Relancer</span></div>
+    <div class="button-light mx-auto"><span class="button-text">Relancer</span></div>
     <div class="scroll">
       <% @movies.each do |movie| %>
         <%= link_to(movie_path(movie), class: "text-decoration-none") do %>
@@ -16,10 +16,10 @@
     <div class="scroll">
       <% @playlists.each do |playlist| %>
         <div class="playlist-card" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
-            <span class="playlist-card card-gradient">
+            <div class="playlist-card card-gradient">
               <p class="light-text"><%= playlist.name %></p>
             </div>
-          </span>
+          </div>
       <% end %>
     </div>
   </div>
