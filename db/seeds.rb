@@ -25,7 +25,6 @@ movies = 20.times.map do
     overview: Faker::Lorem.sentence(word_count: 50),
     rating: Faker::Number.decimal(l_digits: 1, r_digits: 1),
     show_type: %w[Movie Series].sample,
-    video_link: Faker::Internet.url,
     vertical_image_url: "https://jevaisciner.fr/wp/wp-content/uploads/jvc_posters/Le%20Parrain%20Part%201%20Poster-scaled.jpg",
     horizontal_image_url: "https://vl-media.fr/wp-content/uploads/2022/01/le-parrain-1140x625.jpg",
     trailer_link: Faker::Internet.url
