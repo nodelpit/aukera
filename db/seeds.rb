@@ -4,7 +4,7 @@ MoviePlaylist.destroy_all
 ServiceShow.destroy_all
 Playlist.destroy_all
 User.destroy_all
-ServiceShow.destroy_all 
+ServiceShow.destroy_all
 Service.destroy_all
 Movie.destroy_all
 
@@ -18,7 +18,7 @@ movies = 20.times.map do
     title: Faker::Movie.title,
     real: Faker::Name.name,
     cast: Faker::Name.name_with_middle,
-    genres: Faker::Lorem.words(number: 3).join(', '),
+    genres: genres.sample,
     release_year: Faker::Number.between(from: 1900, to: 2024),
     runtime: Faker::Number.between(from: 60, to: 180),
     overview: Faker::Lorem.sentence(word_count: 15),

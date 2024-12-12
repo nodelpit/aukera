@@ -14,11 +14,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  #profile user
-  get "myprofile", to: "users#show", as: :myprofile
-  get "myprofile/edit", to: "users#edit", as: :edit_myprofile
-  patch "myprofile", to: "users#update"
-
   resources :movies, only: [:index, :show]
 
   resources :playlists do

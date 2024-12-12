@@ -1,0 +1,317 @@
+.background-user {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4C50FF 0%, #9747FF 100%);
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+/* Section Profil */
+.profile-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.profile-block {
+  position: relative;
+  background-color: #292a36;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+
+  @media (min-width: 768px) {
+    max-width: 800px;
+    padding: 40px;
+  }
+}
+
+/* Conteneur de l'image de profil */
+.profile-pic-container {
+  position: relative;
+  top: -80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic-circle {
+  background-color: #4C50FF;
+  border-radius: 50%;
+  padding: 5px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-image {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 5px solid white;
+}
+
+/* Conteneur du nom d'utilisateur */
+.username-container {
+  margin-top: -60px;
+  margin-bottom: 15px;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 10px;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+/* Conteneur pour l'icône d'édition */
+.edit-icon-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.edit-icon {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4C50FF;
+  font-size: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5a61ff;
+  }
+}
+
+/* Conteneur des genres */
+.genres-container {
+  margin-bottom: 20px;
+
+  .genres-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+
+    .genre-button {
+      padding: 10px;
+      border: 1px solid #4C50FF;
+      border-radius: 25px;
+      background-color: #292a36;
+      color: white;
+      text-align: center;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: #4C50FF;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+/* Conteneur des plateformes */
+.filter-section {
+  margin-top: 20px;
+
+  .platform-slide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    .platform-button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba(76, 80, 255, 0.1);
+        border-color: #4C50FF;
+      }
+
+      &.active {
+        background-color: #4C50FF;
+        border-color: #4C50FF;
+      }
+
+      i {
+        font-size: 16px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/* Section Playlists */
+.playlists-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.playlists-block {
+  background-color: #292a36;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 600px;
+
+  @media (min-width: 768px) {
+    max-width: 800px;
+    padding: 40px;
+  }
+}
+
+.playlists-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.playlists-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.playlist-card {
+  background-color: #1f2229;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 150px;
+}
+
+.playlist-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.playlist-name {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+/* SECTION CSS POUR LA PAGE USEER EDIT */
+
+/* Section Profil */
+.profile-pic-container .clickable-avatar {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic-container .clickable-avatar:hover {
+  transform: scale(1.05);
+}
+
+.hidden-input {
+  display: none;
+}
+
+.username-edit {
+  background: none;
+  border: 1px solid #4C50FF;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+.username-edit:focus {
+  outline: none;
+  border-color: #5a61ff;
+}
+
+/* Boutons de suppression */
+.remove-icon {
+  margin-left: 10px;
+  font-size: 14px;
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.remove-icon:hover {
+  color: darkred;
+}
+
+/* Actions section */
+.actions-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.action-button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.validate-button {
+  background-color: #4C50FF;
+}
+
+.validate-button:hover {
+  background-color: #5a61ff;
+}
+
+.cancel-button {
+  background-color: #292a36;
+}
+
+.cancel-button:hover {
+  background-color: #1f2229;
+}
