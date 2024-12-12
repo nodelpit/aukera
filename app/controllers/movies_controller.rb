@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
     # on veut 5 movies
     # [...]
     @movies = search_results.sample(5)
+    @playlists = Playlist.all
   end
 
   def show

@@ -1,18 +1,25 @@
+$full-height: 75vh;
+$trailer-height: $full-height / 3;
+$content-height: $trailer-height * 2;
+$full_width: 90vw;
+
 .modale-container {
   position: relative;
   z-index: 1;
   background-color: #292A36;
   border-radius: 10px;
-  height: 90vh;
-  width: 90vw;
-  margin: auto;
+  height: $full-height;
+  width: $full_width;
+  top: 50%;
+	left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modale-container-trailer {
   position: absolute;
   z-index: 2;
-  height: 30vh;
-  width: 90vw;
+  height: $trailer-height;
+  width: $full_width;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-position: center;
@@ -21,22 +28,33 @@
 }
 
 .modale-container-content {
+  padding-top: 30px;
+  padding-bottom: 50px;
   z-index: 3;
-  padding: 10%;
-  height: 60vh;
-  width: 90vw;
+  height: $content-height;
+  width: $full_width;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   position: relative;
-  top: 30vh;
+  top: $trailer-height;
   overflow: scroll;
+}
+
+.modale-container-content p {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.modale-container-content div {
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .modale-container-above {
   padding: 10%;
-  width: 90vw;
+  width: $full_width;
   position: absolute;
-  top: 30vh;
+  top: $trailer-height;
 	left: 50%;
   transform: translate(-50%, -50%);
   z-index: 6;
@@ -45,13 +63,24 @@
   justify-content: space-between;
 }
 
-.modale-container-bottom {
-  position: fixed;
+.modale-container-content-bottom {
+  position: absolute;
   z-index: 4;
   bottom: 0px;
-  background: $anthracitegradient;
-  height: 20vh;
-  width: 90vw;
+  background: $anthracitegradienttotop;
+  height: 5vh;
+  width: $full_width;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.modale-container-content-top {
+  position: absolute;
+  z-index: 4;
+  top: $trailer-height;
+  background: $anthracitegradienttobottom;
+  height: 5vh;
+  width: $full_width;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -76,12 +105,4 @@
 .modale-save-icon {
   width: 35px;
   box-shadow: $shadow;
-}
-
-.modale-text-light {
-  color: $whitepurple;
-}
-
-.modale-text-dark {
-  color: $greypurple;
 }

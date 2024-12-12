@@ -1,16 +1,11 @@
-.navbar-lewagon {
+.footbar {
   background: $anthracite;
   padding-left: 4%;
   padding-right: 4%;
   height: 80px;
-  position: fixed;
-  top: 0px;
-  z-index: 10;
   width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
   box-shadow: $shadow;
-}
-
-.navbar-lewagon .navbar-brand img {
-  margin: auto;
-  width: 130px;
 }

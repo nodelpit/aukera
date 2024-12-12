@@ -18,3 +18,27 @@
   overflow: hidden;
   margin-inline-end: 10px;
 }
+
+.movie-card {
+  width: 200px;
+  height: 280px;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  overflow: hidden;
+  margin-inline-end: 10px;
+}
+
+.playlist-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  overflow: hidden;
+  margin-inline-end: 10px;
+}

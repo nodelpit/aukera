@@ -1,4 +1,26 @@
-<h1>Movies#index</h1>
-<% @movies.each do |movie| %>
-<li><%= link_to movie.title, movie_path(movie) %></li>
-<% end %>
+<div class="container">
+  <div class="container-content">
+    <div class="button-light m-auto"><span class="button-text">Relancer</span></div>
+    <div class="scroll">
+      <% @movies.each do |movie| %>
+        <%= link_to(movie_path(movie), class: "text-decoration-none") do %>
+          <div class="movie-card" style="background-image: url('<%= movie.vertical_image_url %>')">
+            <div class="movie-card card-gradient">
+              <p class="light-text"><%= movie.title %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <h3>Mes playlists</h3>
+    <div class="scroll">
+      <% @playlists.each do |playlist| %>
+        <div class="playlist-card" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+            <span class="playlist-card card-gradient">
+              <p class="light-text"><%= playlist.name %></p>
+            </div>
+          </span>
+      <% end %>
+    </div>
+  </div>
+</div>
