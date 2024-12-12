@@ -1,4 +1,6 @@
 .modale-container {
+  position: relative;
+  z-index: 1;
   background-color: #292A36;
   border-radius: 10px;
   height: 90vh;
@@ -7,24 +9,51 @@
 }
 
 .modale-container-trailer {
+  position: absolute;
+  z-index: 2;
   height: 30vh;
   width: 90vw;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  position: absolute;
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
 
 .modale-container-content {
+  z-index: 3;
   padding: 10%;
-  height: 30vh;
+  height: 60vh;
   width: 90vw;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   position: relative;
   top: 30vh;
+  overflow: scroll;
+}
+
+.modale-container-above {
+  padding: 10%;
+  width: 90vw;
+  position: absolute;
+  top: 30vh;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modale-container-bottom {
+  position: fixed;
+  z-index: 4;
+  bottom: 0px;
+  background: $anthracitegradient;
+  height: 20vh;
+  width: 90vw;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .modale-quit-icon {
@@ -36,17 +65,16 @@
 
 .modale-play-icon {
   width: 35px;
-  margin: auto;
   position: relative;
-  top: 45%;
+  z-index: 4;
+  top: 50%;
+	left: 50%;
+  transform: translate(-50%, -50%);
   box-shadow: $shadow;
 }
 
 .modale-save-icon {
   width: 35px;
-  position: relative;
-  top: 0px;
-  right: 0px;
   box-shadow: $shadow;
 }
 

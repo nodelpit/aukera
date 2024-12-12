@@ -13,6 +13,16 @@ $anthracite: #292A36;
 $whitepurple: #E5D8EE;
 $greypurple: #BC9ED2;
 $whitepurple: #E5D8EE;
+$purplegradient: linear-gradient(
+  to right,
+  #4655FD 0%,
+  #8C46FD 100%
+);
+$anthracitegradient: linear-gradient(
+  180deg,
+  #292a362b 0%,
+  #292A36 100%
+);
 
 $shadow: 5px 5px 10px rgba(0, 0, 0, 0.179);
 
