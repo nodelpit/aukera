@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="filter"
 export default class extends Controller {
-  static targets = ["card", "overlay", "genreCounter", "platformCounter"]
+  static targets = ["card", "overlay", "genreCounter", "platformCounter", "durationSlider", "durationDisplay", "genreInput", "platformInput", "durationInput"]
 
   connect() {
     this.selectedGenres = new Set()
@@ -22,18 +21,19 @@ export default class extends Controller {
   }
 
   toggleGenre(event) {
-    const button = event.currentTarget
-    button.classList.toggle('active')
+    const button = event.currentTarget;
+    const genreName = button.dataset.genre;
 
-    const genreName = button.dataset.genre
+    button.classList.toggle('active');
 
     if (button.classList.contains('active')) {
-      this.selectedGenres.add(genreName)
+      this.selectedGenres.add(genreName);
     } else {
-
-      this.selectedGenres.delete(genreName)
+      this.selectedGenres.delete(genreName);
     }
-    this.updateGenreCounter()
+
+    this.genreInputTarget.value = Array.from(this.selectedGenres).join(',');
+    this.updateGenreCounter();
   }
 
   updateGenreCounter() {
@@ -41,21 +41,43 @@ export default class extends Controller {
   }
 
   togglePlatform(event) {
-    const button = event.currentTarget
-    button.classList.toggle('active')
+    const button = event.currentTarget;
+    const platformName = button.dataset.platform;
 
-    const platformName = button.dataset.platform
+    button.classList.toggle('active');
 
     if (button.classList.contains('active')) {
-      this.selectedPlatforms.add(platformName)
+      this.selectedPlatforms.add(platformName);
     } else {
-      this.selectedPlatforms.delete(platformName)
+      this.selectedPlatforms.delete(platformName);
     }
 
-    this.updatePlatformCounter()
+    this.platformInputTarget.value = Array.from(this.selectedPlatforms).join(',');
+    this.updatePlatformCounter();
   }
 
   updatePlatformCounter() {
     this.platformCounterTarget.textContent = this.selectedPlatforms.size
+  }
+
+  submitFilters() {
+    this.durationInputTarget.value = this.durationSliderTarget.value;
+
+    if (this.hasSubmitButtonTarget) {
+      this.submitButtonTarget.click();
+    } else if (this.searchForm) {
+      this.searchForm.submit();
+    }
+
+    this.close();
+  }
+
+  updateDurationDisplay() {
+    const durationInMinutes = parseInt(this.durationSliderTarget.value)
+    this.durationDisplayTarget.querySelector('span').textContent = durationInMinutes
+  }
+
+  get searchForm() {
+    return this.element.querySelector('form');
   }
 }

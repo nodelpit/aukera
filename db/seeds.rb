@@ -14,11 +14,12 @@ services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |se
 end
 
 movies = 20.times.map do
+  selected_genres = genres.sample(rand(1..3)).join(', ')
   Movie.create!(
     title: Faker::Movie.title,
     real: Faker::Name.name,
     cast: Faker::Name.name_with_middle,
-    genres: genres.sample,
+    genres: selected_genres,
     release_year: Faker::Number.between(from: 1900, to: 2024),
     runtime: Faker::Number.between(from: 60, to: 180),
     overview: Faker::Lorem.sentence(word_count: 50),

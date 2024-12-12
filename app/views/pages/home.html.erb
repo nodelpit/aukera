@@ -9,19 +9,30 @@
 
     <%# Barre de recherche %>
     <div class="search-container">
-      <div class="search-wrapper">
-        <input type="text" class="search-input" placeholder="type something to search">
-        <div class="search-icon">
+  <div class="search-wrapper">
+    <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
+      <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "type something to search" },
+                  wrapper_html: { class: 'search-input-wrapper' },
+                  wrapper: :default %>
+
+      <%= hidden_field_tag 'genres', nil, data: { filter_target: "genreInput" } %>
+      <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
+      <%= hidden_field_tag 'duration', nil, data: { filter_target: "durationInput" } %>
+
+      <div class="search-icon">
+        <%= button_tag type: 'submit', class: 'button-no-style' do %>
           <i class='bx bx-search fs-1'></i>
-        </div>
+        <% end %>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
 
     <%# Switch button Films/Séries %>
     <div class="switch-wrapper">
       <span class="label-text">FILMS</span>
       <div class="toggle-switch">
-        <input class="toggle-input" id="toggle" type="checkbox">
+        <input class="toggle-input" id="toggle" type="checkbox", name="toggle", value="1">
         <label class="toggle-label" for="toggle"></label>
       </div>
       <span class="label-text">SÉRIES</span>
@@ -122,12 +133,15 @@
       <div class="filter-section">
         <h3>Durée</h3>
         <div class="duration-slider">
-          <input type="range" min="0" max="100" value="50" class="slider">
+          <div class="duration-display" data-filter-target="durationDisplay">
+            Durée maximale : <span>300</span> minutes
+          </div>
+          <input type="range", min="0", max="300", value="150" class="slider" data-action="input->filter#updateDurationDisplay", data-filter-target="durationSlider">
         </div>
       </div>
 
       <%# Bouton de recherche %>
-      <button class="search-filter-button">RECHERCHER</button>
+      <button class="search-filter-button" data-action="click->filter#submitFilters">RECHERCHER</button>
     </div>
   </div>
 </div>

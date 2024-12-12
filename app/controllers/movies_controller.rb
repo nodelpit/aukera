@@ -1,10 +1,21 @@
 class MoviesController < ApplicationController
   def index
-    # on veut que les movies correspondent aux filtres du formulaire
-    search_results = Movie.all # TODO à modifier
-    # on veut 5 movies
-    # [...]
-    @movies = search_results.sample(5)
+    @movies = Movie.all
+
+    if params[:search].present? && params[:search][:query].present?
+      @movies = @movies.where("title ILIKE ?", "%#{params[:search][:query]}%")
+    end
+
+    @movies = @movies.where("genres LIKE ?", "%#{params[:genres]}%") if params[:genres].present?
+
+    if params[:services].present?
+      services = params[:services].split(',')
+      @movies = @movies.joins(:services).where("services.service IN (?)", services)
+    end
+
+    @movies = @movies.where("runtime <= ?", params[:duration]) if params[:duration].present?
+
+    @movies = @movies.sample(5)
     @playlists = Playlist.all
   end
 

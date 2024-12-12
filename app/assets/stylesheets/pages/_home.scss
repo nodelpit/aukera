@@ -58,14 +58,29 @@
   width: 100%;
   background: white;
   border-radius: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); // Ajoute de la profondeur
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  // Styles pour le formulaire Simple Form
+  form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  // Suppression des marges par défaut du groupe de formulaire
+  .form-group {
+    margin: 0;
+    width: 100%;
+  }
 }
 
 // Champ de saisie de recherche
 .search-input {
   width: 100%;
   height: 50px;
-  padding: 0 60px 0 25px; // Espace pour l'icône à droite
+  padding: 0 60px 0 25px;
   border: none;
   border-radius: 30px;
   font-size: 16px;
@@ -73,7 +88,8 @@
   background: transparent;
 
   &:focus {
-    outline: none; // Supprime le contour natif du navigateur
+    outline: none;
+    box-shadow: none; // Supprime le box-shadow par défaut de Simple Form
   }
 }
 
@@ -84,12 +100,48 @@
   right: 20px;
   transform: translateY(-50%);
   color: #9ca3af;
+
+  // Style du bouton de soumission
+  .button-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
 }
 
 // Ajustement de l'icône boxicons
 .bx-search {
   display: flex;
 }
+
+// Styles spécifiques pour Simple Form
+.simple_form {
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-control {
+    border: none;
+    padding: 0;
+    height: auto;
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  // Suppression des marges de l'input wrapper
+  .search-input-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 
 // =========================================
 // Commutateur Films/Séries
