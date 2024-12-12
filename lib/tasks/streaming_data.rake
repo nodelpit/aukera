@@ -21,6 +21,7 @@ namespace :streaming_data do
         },
         query: {
           country: COUNTRY,
+          output_language: 'fr',
           catalogs: platform,
           cursor: cursor
         }
