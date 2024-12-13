@@ -10,3 +10,30 @@ h3 {
   color: $whitepurple;
   margin-top: 20px;
 }
+
+h6 {
+  color: $whitepurple;
+  margin-top: 10px;
+}
+
+.list-card h6 {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-left: 12%;
+  padding-right: 12%;
+  padding-bottom: 6%;
+  text-shadow: $shadow;
+  text-wrap: balance;
+}
+
+.movie-card-text {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-left: 12%;
+  padding-right: 12%;
+  padding-bottom: 6%;
+  text-shadow: $shadow;
+  text-wrap: balance;
+}
