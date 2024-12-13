@@ -79,7 +79,7 @@ specific_users = [
 specific_users.each do |user|
   2.times do
     playlist = Playlist.create!(
-      name: genres.sample,
+      name: "Mes films de #{genres.sample}",
       description: Faker::Lorem.sentence,
       user: user
     )
