@@ -80,19 +80,12 @@
           <span class="counter" data-filter-target="platformCounter">0</span>
         </div>
         <div class="platform-slide">
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Disney">
+          <% Service.all.each do |service| %>
+            <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="<%= service.service %>">
             <i class='bx bx-tv'></i>
-            <span>Disney</span>
-          </button>
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Netflix">
-            <i class='bx bx-tv'></i>
-            <span>Netflix</span>
-          </button>
-
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Canal+">
-            <i class='bx bx-tv'></i>
-            <span>Canal+</span>
-          </button>
+            <span><%= service.service %></span>
+            </button>
+          <% end %>
         </div>
       </div>
 
