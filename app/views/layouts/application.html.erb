@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Aukera" %></title>
+    <title><%= "Aukera | Choisissez votre film en quelques clics !" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -12,9 +12,11 @@
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="icon" type="image/png" href="<%= asset_path 'favicon/favicon-96x96.png' %>" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="<%= asset_path 'favicon/favicon.svg' %>" />
+    <link rel="shortcut icon" href="<%= asset_path 'favicon/favicon.ico' %>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path 'favicon/apple-touch-icon.png' %>" />
+    <meta name="apple-mobile-web-app-title" content="Aukera" />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
