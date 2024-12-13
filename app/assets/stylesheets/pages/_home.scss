@@ -8,7 +8,9 @@
 // Crée un conteneur plein écran avec un dégradé de couleur attrayant
 .background-home {
   min-height: 100vh;
-  background: linear-gradient(135deg, #4C50FF 0%, #9747FF 100%);
+  background:
+    url('assets/background-aukera.png') no-repeat center center / cover,  /* Image de fond */
+    linear-gradient(135deg, #4C50FF 0%, #9747FF 100%); /* Gradient de fond */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +33,7 @@
 
 // Style du titre principal avec une grande taille et une couleur claire
 .text-light {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -327,20 +329,26 @@
   display: none;
 }
 
-// Carte des filtres
-.filter-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #292a36;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 500px;
-  padding: 24px;
-  z-index: 1000;
-  display: none;
+  // Carte des filtres
+  .filter-card {
+    position: fixed;
+    bottom: -100%;  /* Cache la carte en bas de l'écran au départ */
+    left: 50%;
+    transform: translateX(-50%); /* Positionnement centré horizontalement */
+    background-color: #292a36;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    padding: 24px;
+    z-index: 1000;
+    opacity: 0; /* Commence transparent */
+    transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transition sur bottom et opacity */
+  }
 
+  .filter-card.show {
+    bottom: 0;   /* Remontée de la carte */
+    opacity: 1;   /* Devient visible */
+  }
   // En-tête de la carte
   .filter-header {
     display: flex;
@@ -416,4 +424,26 @@
       opacity: 0.9;
     }
   }
+
+
+.filter-card.show {
+  bottom: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.show {
+  display: block;
+  opacity: 1;
 }
