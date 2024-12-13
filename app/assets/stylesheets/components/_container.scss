@@ -47,6 +47,14 @@ $full_width: 80vw;
   width: $full_width;
 }
 
+.playlist-container {
+  padding: 10%;
+  width: $full_width;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 // .container-content div {
 //   padding-left: 10%;
 //   padding-right: 10%;
