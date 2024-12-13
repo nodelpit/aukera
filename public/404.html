@@ -1,67 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page 404 - Page non trouvée</title>
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #fff;
+    }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    /* CSS pour la Navbar */
+    .navbar-lewagon {
+      background: #292A36;
+      padding-left: 4%;
+      padding-right: 4%;
+      height: 80px;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      width: 100vw;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center; /* Centre verticalement */
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    .navbar-lewagon .navbar-brand {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; /* Aligne le logo à gauche */
+      height: 100%; /* Assure que le logo occupe toute la hauteur de la navbar */
+    }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    .navbar-lewagon .navbar-brand img {
+      width: 130px;
+    }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    /* CSS pour le bouton Retour à l'Accueil */
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4C50FF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    .button:hover {
+      background-color: #9747FF;
+    }
+
+    .button:active {
+      background-color: #6c38d2;
+    }
+
+    .background-home {
+      min-height: 100vh;
+      background:
+        url('https://res.cloudinary.com/dpvyuykw6/image/upload/v1734122320/background-aukera_djrouj.png') no-repeat center center / cover,
+        linear-gradient(135deg, #4C50FF 0%, #9747FF 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .rails-default-error-page {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    /* Flexbox pour centrer la boîte de dialogue */
+    .rails-default-error-page .dialog {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centre les éléments à l'intérieur */
+      justify-content: center; /* Centre le contenu verticalement */
+      width: 100%;
+      max-width: 600px; /* Limite la largeur maximale */
+      margin: 0 10px; /* Ajoute une marge de chaque côté pour l'espace */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .rails-default-error-page h1 {
+      font-size: 2.5em;
+      margin: 30px;
+      color: #B00100;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .rails-default-error-page p {
+      font-size: 1.2em;
+      padding: 2em;
+      color: #333;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Style pour l'image centrée entre le h1 et le p */
+    .rails-default-error-page .homer-image {
+      margin: 20px 0;
+      max-width: 100%;
+      width: 250px; /* Largeur initiale de l'image */
+      height: auto;
+    }
+
+    /* Media Query pour les petits écrans (ex: mobile) */
+    @media (max-width: 600px) {
+      .rails-default-error-page .dialog {
+        width: 90%; /* La boîte prend 90% de la largeur de l'écran */
+        margin: 0 5%; /* Ajoute une marge de chaque côté */
+      }
+
+      .rails-default-error-page .homer-image {
+        width: 50%; /* L'image prend 50% de la largeur de l'écran sur mobile */
+        max-width: 200px; /* Limite la taille maximale sur petit écran */
+      }
+    }
+
   </style>
 </head>
+<body>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <!-- Navbar avec logo aligné à gauche -->
+  <div class="navbar navbar-lewagon">
+    <div class="container-fluid">
+      <!-- Logo de la navbar avec lien vers la page d'accueil -->
+      <a href="/" class="navbar-brand">
+        <img src="https://res.cloudinary.com/dpvyuykw6/image/upload/v1734124599/aukera_logo_long_i8kx0j.png" alt="Logo Aukera">
+      </a>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
+  <!-- Page 404 avec fond et gradient -->
+  <div class="background-home">
+    <div class="rails-default-error-page">
+      <div class="dialog">
+        <h1>Oups ! Page non trouvée.</h1>
+
+        <!-- Image centrée entre le H1 et le P -->
+        <img src="https://www.pngarts.com/files/11/Cartoon-Homer-Simpson-PNG-Image-Background.png" alt="Homer Simpson" class="homer-image">
+
+        <p>Il semble que la page que vous cherchez n'existe pas ou a été déplacée. Veuillez vérifier l'URL ou revenir à la page d'accueil.</p>
+        <a href="/" class="button">Retour à l'Accueil</a>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
