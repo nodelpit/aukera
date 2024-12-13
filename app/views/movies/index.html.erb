@@ -1,6 +1,6 @@
 <div class="container">
   <div class="container-content">
-    <div class="button-light mx-auto"><span class="button-text">Relancer</span></div>
+    <div class="button-light mx-auto"><%= link_to "Relancer", movies_path(session[:movies_filters]), class: "button-text" %></div>
     <div class="scroll">
       <% @movies.each do |movie| %>
         <div class="movie-card">

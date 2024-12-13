@@ -83,7 +83,7 @@
           <% Service.all.each do |service| %>
             <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="<%= service.service %>">
             <i class='bx bx-tv'></i>
-            <span><%= service.service %></span>
+            <span><%= service.service.capitalize %></span>
             </button>
           <% end %>
         </div>
