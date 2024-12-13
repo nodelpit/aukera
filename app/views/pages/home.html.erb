@@ -11,7 +11,7 @@
     <div class="search-container">
   <div class="search-wrapper">
     <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
-      <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "type something to search" },
+      <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "Recherche" },
                   wrapper_html: { class: 'search-input-wrapper' },
                   wrapper: :default %>
 

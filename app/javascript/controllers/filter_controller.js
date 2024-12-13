@@ -10,14 +10,17 @@ export default class extends Controller {
   }
 
   open(event) {
-    event.preventDefault()
-    this.cardTarget.style.display = "block"
-    this.overlayTarget.style.display = "block"
+    event.preventDefault();
+
+    // Ajout des classes 'show' pour afficher la carte et l'overlay
+    this.cardTarget.classList.add("show");
+    this.overlayTarget.classList.add("show");
   }
 
   close() {
-    this.cardTarget.style.display = "none"
-    this.overlayTarget.style.display = "none"
+    // Retrait des classes 'show' pour fermer la carte et l'overlay
+    this.cardTarget.classList.remove("show");
+    this.overlayTarget.classList.remove("show");
   }
 
   toggleGenre(event) {
