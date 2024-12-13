@@ -23,17 +23,24 @@
         </div>
       <% end %>
     </div>
-    <h3>Mes playlists</h3>
+    <h3><%= link_to "Mes playlists", playlists_path, class: "light-text text-decoration-none" %></h3>
     <div class="scroll">
       <div class="scroll-fade-right"></div>
       <div class="scroll-container">
         <% @playlists.each do |playlist| %>
           <div class="list-card" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+            <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
               <div class="list-card card-gradient">
                 <h6 class="light-text small"><%= playlist.name %></h6>
               </div>
-            </div>
+            <% end %>
+          </div>
         <% end %>
+        <div class="list-card" style="background: transparent; box-shadow: none">
+          <%= link_to(playlists_path) do %>
+            <h6 class="light-text small">Voir toutes mes playlists</h6>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

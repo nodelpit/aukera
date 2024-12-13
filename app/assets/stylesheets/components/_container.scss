@@ -16,9 +16,35 @@ $full_width: 80vw;
   width: $full_width;
 }
 
+.playlists-container-content {
+  padding-bottom: 50px;
+  z-index: 3;
+  height: $full-height;
+  width: $full_width;
+  position: relative;
+  overflow: scroll;
+}
+
 .container-content p {
   padding-left: 10%;
   padding-right: 10%;
+}
+
+.container-content-bottom {
+  position: absolute;
+  z-index: 4;
+  bottom: 0px;
+  background: $anthracitegradienttotop;
+  height: 5vh;
+  width: $full_width;
+}
+
+.playlist-container-content-bottom {
+  position: absolute;
+  z-index: 4;
+  bottom: 0px;
+  height: 5vh;
+  width: $full_width;
 }
 
 // .container-content div {
