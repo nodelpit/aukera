@@ -1,4 +1,11 @@
 class Movie < ApplicationRecord
+  GENRES = [
+    "Action", "Actualités", "Animation", "Aventure", "Comédie", "Crime", "Documentaire",
+    "Drame", "Famille", "Fantaisie", "Guerre", "Histoire", "Horreur", "Musique",
+    "Mystère", "Romance", "Science-Fiction", "Thriller", "Télé-réalité", "Western",
+    "Émission de Talk Show"
+  ]
+
   has_many :service_shows
   has_many :services, through: :service_shows
   has_many :movie_playlists
@@ -15,4 +22,5 @@ class Movie < ApplicationRecord
   # validates :trailer_link, presence: true
   validates :release_year, presence: true
   validates :runtime, presence: true
+  validates :genre, inclusion: { in: GENRES }
 end
