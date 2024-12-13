@@ -8,13 +8,12 @@ ServiceShow.destroy_all
 Service.destroy_all
 Movie.destroy_all
 
-genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fiction", "Romance", "Thriller"]
 services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |service_name|
   Service.create!(service: service_name, service_logo_link: "https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940")
 end
 
 movies = 20.times.map do
-  selected_genres = genres.sample(rand(1..3)).join(', ')
+  selected_genres = Movie::GENRES.sample(rand(1..3)).join(', ')
   Movie.create!(
     title: Faker::Movie.title,
     real: Faker::Name.name,
@@ -79,7 +78,7 @@ specific_users = [
 specific_users.each do |user|
   2.times do
     playlist = Playlist.create!(
-      name: "Mes films de #{genres.sample}",
+      name: "Mes films de #{Movie::GENRES.sample}",
       description: Faker::Lorem.sentence,
       user: user
     )
