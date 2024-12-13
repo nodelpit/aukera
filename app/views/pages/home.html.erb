@@ -64,45 +64,12 @@
           <span class="counter" data-filter-target="genreCounter">0</span>
         </div>
         <div class="genre-grid">
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Action">
-            <i class='bx bx-movie-play'></i>
-            <span>Action</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Comédie">
-            <i class='bx bx-movie-play'></i>
-            <span>Comédie</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Drame">
-            <i class='bx bx-movie-play'></i>
-            <span>Drame</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Fantastique">
-            <i class='bx bx-movie-play'></i>
-            <span>Fantastique</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Horreur">
-            <i class='bx bx-movie-play'></i>
-            <span>Horreur</span>
-          </button>
-
-           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Science-fiction">
-            <i class='bx bx-movie-play'></i>
-            <span>Science-fiction</span>
-          </button>
-
-           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Romance">
-            <i class='bx bx-movie-play'></i>
-            <span>Romance</span>
-          </button>
-
-           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Thriller">
-            <i class='bx bx-movie-play'></i>
-            <span>Thriller</span>
-          </button>
+          <% Movie::GENRES.each do |genre| %>
+            <button class="genre-button" data-action="click->filter#toggleGenre" data-genre="<%= genre %>">
+              <i class='bx bx-movie-play'></i>
+              <span><%= genre %></span>
+            </button>
+          <% end %>
         </div>
       </div>
 
