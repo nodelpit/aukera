@@ -6,6 +6,12 @@
   color: $greypurple;
 }
 
+h1 {
+  color: $whitepurple;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
 h3 {
   color: $whitepurple;
   margin-top: 20px;
@@ -23,6 +29,16 @@ h6 {
   padding-left: 12%;
   padding-right: 12%;
   padding-bottom: 6%;
+  text-shadow: $shadow;
+  text-wrap: balance;
+}
+
+.list-card-hz h5 {
+  position: absolute;
+  padding-left: 10%;
+  padding-right: 35%;
+	top: 50%;
+  transform: translate(0%, -50%);
   text-shadow: $shadow;
   text-wrap: balance;
 }

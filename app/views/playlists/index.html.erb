@@ -1,2 +1,20 @@
-<h1>Playlists#index</h1>
-<p>Find me in app/views/playlists/index.html.erb</p>
+<div class="container">
+  <div class="container-content">
+  <div class="playlists-container-content">
+    <h1>Mes playlists</h1>
+      <div class="scroll-fade-right"></div>
+      <div class="scroll-container">
+        <% @playlists.each do |playlist| %>
+          <div class="list-card-hz" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+            <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+              <div class="list-card-hz card-gradient">
+                <h5 class="light-text"><%= playlist.name %></h5>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <div class="playlist-container-content-bottom"> </div>
+</div>
+</div>

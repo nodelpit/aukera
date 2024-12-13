@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def index
     @movies = Movie.all
 
@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     @movies = @movies.where("runtime <= ?", params[:duration]) if params[:duration].present?
 
     @movies = @movies.sample(5)
-    @playlists = Playlist.all
+    @playlists = Playlist.limit(5)
   end
 
   def show
