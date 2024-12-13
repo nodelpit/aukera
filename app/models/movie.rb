@@ -1,9 +1,27 @@
 class Movie < ApplicationRecord
   GENRES = [
-    "Action", "Actualités", "Animation", "Aventure", "Comédie", "Crime", "Documentaire",
-    "Drame", "Famille", "Fantaisie", "Guerre", "Histoire", "Horreur", "Musique",
-    "Mystère", "Romance", "Science-Fiction", "Thriller", "Télé-réalité", "Western",
-    "Émission de Talk Show"
+    'Action',
+    'Adventure',
+    'Animation',
+    'Comedy',
+    'Crime',
+    'Documentary',
+    'Drama',
+    'Family',
+    'Fantasy',
+    'History',
+    'Horror',
+    'Music',
+    'Mystery',
+    'News',
+    'Non spécifié',
+    'Reality',
+    'Romance',
+    'Science fiction',
+    'Talk show',
+    'Thriller',
+    'War',
+    'Western'
   ]
 
   has_many :service_shows
@@ -22,5 +40,20 @@ class Movie < ApplicationRecord
   # validates :trailer_link, presence: true
   validates :release_year, presence: true
   validates :runtime, presence: true
-  validates :genre, inclusion: { in: GENRES }
+  validate :validate_genres
+
+  # scope pour rechercher les films par genre @noah ?
+  #scope :by_genre, ->(genre) { where("genres LIKE ?", "%#{genre}%") }
+
+  private
+
+  # validation des genres : vérifier que chaque genre est valide
+  def validate_genres
+    genre_list = genres.split(',').map(&:strip).map(&:capitalize) # On transforme les genres en liste, en supprimant les espaces et en normalisant la casse
+    invalid_genres = genre_list.reject { |genre| GENRES.include?(genre) } # On filtre les genres non valides
+
+    return unless invalid_genres.any? # Si aucun genre invalide n'est trouvé, on quitte la méthode immédiatement
+
+    errors.add(:genres, "contient des genres non valides : #{invalid_genres.join(', ')}")
+  end
 end
