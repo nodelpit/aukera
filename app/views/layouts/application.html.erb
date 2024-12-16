@@ -24,7 +24,9 @@
   </head>
 
   <body>
+    <%= turbo_frame_tag 'movie_modal' %>
     <%= render "shared/navbar" %>
+    <%# , unless controller_name == "name" %>
     <%= render "shared/flashes" %>
 
     <%= yield %>

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= turbo_frame_tag 'movie_modal' do %>
   <div class="modale-container">
     <div class="modale-container-above">
       <%# TODO  griser le bouton tant qu'aucune plateforme n'est sélectionnée ? pas très user friendly
@@ -38,4 +39,5 @@
     </div>
     <div class="modale-container-content-bottom"> </div>
   </div>
+  <% end %>
 </div>
