@@ -1,317 +1,184 @@
-.background-user {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #4C50FF 0%, #9747FF 100%);
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding-top: 20px;
-}
+//////////// Styles Communs /////////////
 
-/* Section Profil */
-.profile-section {
+// Variables Globales
+$primary-color: #4C50FF; // Couleur principale utilisée pour les titres et les bordures
+$secondary-color: #5a61ff; // Couleur secondaire pour les hover et autres interactions
+$background-color: #292a36; // Couleur de fond principale des conteneurs
+$dark-background: #1f2229; // Couleur de fond plus sombre utilisée pour les cartes de playlist
+$text-color: white; // Couleur principale pour le texte
+$border-radius: 15px; // Rayon des bordures pour arrondir les conteneurs
+$box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
+
+// Fond commun pour la page
+.common-background {
+  min-height: 100vh; // Assure que le fond couvre toute la hauteur de la page
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 50px;
+  flex-direction: column; // Les éléments enfants sont empilés verticalement
+  align-items: center; // Centre horizontalement les enfants
+  padding-top: 75px; // Espace au-dessus du contenu
+  background: linear-gradient(135deg, $primary-color 0%, #9747FF 100%); // Dégradé en arrière-plan
 }
 
-.profile-block {
-  position: relative;
-  background-color: #292a36;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 600px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  padding: 20px;
+// Conteneur commun pour les blocs
+.common-container {
+  background-color: $background-color; // Couleur de fond sombre
+  border-radius: $border-radius; // Bordures arrondies
+  padding: 20px; // Espacement intérieur
+  width: 90%; // Largeur relative
+  max-width: 600px; // Largeur maximale du conteneur
+  box-shadow: $box-shadow; // Ombre autour du conteneur
+  color: $text-color; // Couleur du texte
 
   @media (min-width: 768px) {
-    max-width: 800px;
-    padding: 40px;
+    padding: 40px; // Plus de padding sur les écrans plus larges
+    max-width: 800px; // Augmente la largeur maximale
   }
 }
 
-/* Conteneur de l'image de profil */
-.profile-pic-container {
-  position: relative;
-  top: -80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-pic-circle {
-  background-color: #4C50FF;
-  border-radius: 50%;
-  padding: 5px;
-  display: inline-block;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.avatar-image {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border: 5px solid white;
-}
-
-/* Conteneur du nom d'utilisateur */
-.username-container {
-  margin-top: -60px;
-  margin-bottom: 15px;
-}
-
-.username {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-top: 10px;
-
-  @media (min-width: 768px) {
-    font-size: 24px;
-  }
-}
-
-/* Conteneur pour l'icône d'édition */
-.edit-icon-container {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
-}
-
-.edit-icon {
-  background-color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #4C50FF;
-  font-size: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+// Bouton commun
+.common-button {
+  border: 1px solid $primary-color; // Bordure avec la couleur principale
+  border-radius: 25px; // Bouton arrondi
+  background-color: transparent; // Fond transparent
+  color: $text-color; // Texte blanc
+  padding: 10px 15px; // Espacement interne
+  cursor: pointer; // Curseur pointer pour indiquer un bouton cliquable
+  transition: all 0.3s; // Animation fluide sur hover
 
   &:hover {
-    background-color: #5a61ff;
+    background-color: $primary-color; // Fond coloré au survol
+    color: $text-color; // Texte blanc
   }
 }
 
-/* Conteneur des genres */
-.genres-container {
+// Titre commun pour les sections profil et playlists
+.profile-section-title {
+  font-size: 18px; // Taille de police fixe
+  color: $primary-color; // Couleur principale pour le titre
+  margin-bottom: 10px; // Espacement en dessous du titre
+}
+
+// Message vide commun pour les deux blocs
+.profile-empty-message {
+  text-align: left; /* Force l'alignement à gauche */
+  color: #aaa;      /* Couleur du texte */
+  font-size: 14px;  /* Taille de la police */
+  margin-top: 10px;
+  }
+
+// Styles Spécifiques Profil
+
+.profile-username {
+  text-align: center;
   margin-bottom: 20px;
 
-  .genres-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    list-style: none;
-    padding: 0;
-
-    .genre-button {
-      padding: 10px;
-      border: 1px solid #4C50FF;
-      border-radius: 25px;
-      background-color: #292a36;
-      color: white;
-      text-align: center;
-      font-size: 14px;
-      transition: background-color 0.3s, color 0.3s;
-
-      &:hover {
-        background-color: #4C50FF;
-        color: #ffffff;
-      }
-    }
-  }
-}
-
-/* Conteneur des plateformes */
-.filter-section {
-  margin-top: 20px;
-
-  .platform-slide {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-
-    .platform-button {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 25px;
-      background: transparent;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s;
-
-      &:hover {
-        background-color: rgba(76, 80, 255, 0.1);
-        border-color: #4C50FF;
-      }
-
-      &.active {
-        background-color: #4C50FF;
-        border-color: #4C50FF;
-      }
-
-      i {
-        font-size: 16px;
-      }
-
-      span {
-        font-size: 14px;
-      }
-    }
-  }
-}
-
-/* Section Playlists */
-.playlists-section {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.playlists-block {
-  background-color: #292a36;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 90%;
-  max-width: 600px;
-
-  @media (min-width: 768px) {
-    max-width: 800px;
-    padding: 40px;
-  }
-}
-
-.playlists-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 20px;
-
-  @media (min-width: 768px) {
+  .profile-title {
     font-size: 24px;
+    color: white;
   }
 }
 
-.playlists-grid {
+.profile-background {
+  @extend .common-background; // Utilise le fond commun
+  gap: 15px; // Espacement vertical entre les blocs
+}
+
+.profile-main-block {
+  @extend .common-container; // Utilise le style commun du conteneur
+  position: relative; // Permet de positionner la photo de profil
+  margin-top: 75px; // Décale ce bloc vers le bas
+  margin-bottom: 15px; // Espace entre le bloc profil et le bloc playlists
+  padding-top: 70px; // Espace interne en haut pour la photo remontée
+
+}
+
+.profile-playlists-block {
+  @extend .common-container; // Utilise le style commun du conteneur
+  margin-bottom: 15px; // Espacement en bas entre ce bloc et les autres
+}
+
+// Bouton d'édition du profil
+.profile-edit-icon {
+  position: absolute; // Positionne le bouton en dehors du flux
+  top: 10px; // Position verticale
+  right: 10px; // Position horizontale
+
+  .profile-edit-button {
+    background-color: white; // Fond blanc du bouton
+    border-radius: 50%; // Bouton parfaitement rond
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color; // Couleur principale pour l'icône
+    font-size: 20px; // Taille de l'icône
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); // Petite ombre
+    cursor: pointer; // Curseur pointer
+
+    &:hover {
+      background-color: $secondary-color; // Couleur secondaire au survol
+    }
+  }
+}
+
+// Photo de profil remontée
+.profile-pic-container {
+  position: absolute; // Positionne la photo de profil
+  top: -60px; // Décale vers le haut
+  left: 50%; // Centre horizontalement
+  transform: translateX(-50%); // Ajuste parfaitement au centre
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-}
 
-.playlist-card {
-  background-color: #1f2229;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  width: 150px;
-}
-
-.playlist-image {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.playlist-name {
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-
-  @media (min-width: 768px) {
-    font-size: 16px;
+  .profile-avatar {
+    width: 120px; // Taille de l'avatar
+    height: 120px;
+    border-radius: 50%; // Avatar circulaire
+    border: 4px solid $primary-color; // Bordure autour de l'avatar
+    object-fit: cover; // Garde les proportions de l'image
+    background-color: white; // Ajoute un contraste blanc en arrière-plan
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////
+// Styles pour les grilles genres et plateformes
+.profile-genre-grid,
+.profile-platform-grid {
+  display: flex; // Affichage en flexbox
+  flex-wrap: wrap; // Les éléments passent à la ligne si nécessaire
+  gap: 10px; // Espacement entre les éléments
+  justify-content: center; // Centre les éléments horizontalement
 
-/* SECTION CSS POUR LA PAGE USEER EDIT */
-
-/* Section Profil */
-.profile-pic-container .clickable-avatar {
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  .profile-genre-button,
+  .profile-platform-button {
+    @extend .common-button; // Utilise les styles du bouton commun
+  }
 }
 
-.profile-pic-container .clickable-avatar:hover {
-  transform: scale(1.05);
-}
+// Grille des playlists
+.profile-playlists-grid {
+  display: flex; // Affichage en flexbox
+  flex-wrap: wrap; // Passe à la ligne si nécessaire
+  gap: 20px; // Espacement entre les cartes
 
-.hidden-input {
-  display: none;
-}
+  .profile-playlist-card {
+    background-color: $dark-background; // Fond sombre pour les cartes
+    border-radius: 10px; // Bordures arrondies
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); // Ombre légère
+    text-align: center; // Centre le texte dans chaque carte
+    padding: 10px; // Espacement interne
+    width: 150px; // Taille fixe pour les cartes
 
-.username-edit {
-  background: none;
-  border: 1px solid #4C50FF;
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: white;
-  text-align: center;
-  font-size: 18px;
-}
+    .profile-playlist-image {
+      width: 100%; // Image prend toute la largeur
+      border-radius: 8px; // Bordures arrondies
+      margin-bottom: 10px; // Espacement sous l'image
+    }
 
-.username-edit:focus {
-  outline: none;
-  border-color: #5a61ff;
-}
-
-/* Boutons de suppression */
-.remove-icon {
-  margin-left: 10px;
-  font-size: 14px;
-  color: red;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.remove-icon:hover {
-  color: darkred;
-}
-
-/* Actions section */
-.actions-section {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-.action-button {
-  padding: 10px 20px;
-  border-radius: 10px;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.validate-button {
-  background-color: #4C50FF;
-}
-
-.validate-button:hover {
-  background-color: #5a61ff;
-}
-
-.cancel-button {
-  background-color: #292a36;
-}
-
-.cancel-button:hover {
-  background-color: #1f2229;
+    .profile-playlist-name {
+      color: $text-color; // Texte blanc
+      font-size: 14px; // Taille de la police
+      font-weight: bold; // Texte en gras
+    }
+  }
 }

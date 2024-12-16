@@ -3,6 +3,20 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get "myprofile", to: "users#show", as: :myprofile
+  get "myprofile/edit", to: "users#edit", as: :edit_myprofile
+  patch "myprofile", to: "users#update"
+
+  resources :users, only: [:new, :create] do
+    member do
+      patch :update_photo
+      patch :update_username
+      delete :remove_genre
+      delete :remove_platform
+      delete :remove_playlist
+    end
+  end
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -10,6 +24,7 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
 
   # Defines the root path route ("/")
   # root "posts#index"
@@ -22,4 +37,5 @@ Rails.application.routes.draw do
     end
   end
   resources :movies_playlists, only: [:destroy]
+
 end
