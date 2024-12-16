@@ -8,10 +8,12 @@ class PlaylistsController < ApplicationController
     @movies = @playlist.movies
   end
 
-  def create
+  def new
+    @playlist = Playlist.new
   end
 
-  def new
+  def create
+    @playlist = Playlist.new
   end
 
   def edit
