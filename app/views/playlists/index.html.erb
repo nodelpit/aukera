@@ -2,13 +2,20 @@
   <div class="container-content">
   <div class="playlists-container-content">
     <h1>Mes playlists</h1>
-    <div class="button-light"><span class="button-text">Nouvelle playlist</span></div>
-      <div class="scroll-container my-5">
+    <div class="button-light button-right"><span class="button-text">＋ Nouvelle playlist</span></div>
+      <div class="scroll-container">
         <% @playlists.each do |playlist| %>
-          <div class="list-card-hz" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+
+          <div class="list-card-hz">
+            <div class="playlist-icons">
+              <div class="playlist-delete-icon"><%= link_to image_tag("Modif icon.png"), movies_path %></div>
+              <div class="playlist-delete-icon"><%= link_to image_tag("Delete icon.png"), movies_path %></div>
+            </div>
             <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
-              <div class="list-card-hz card-gradient">
-                <h5 class="light-text"><%= playlist.name %></h5>
+              <div class="list-card-hz" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+                <div class="list-card-hz card-gradient">
+                  <h5><%= playlist.name %></h5>
+                </div>
               </div>
             <% end %>
           </div>

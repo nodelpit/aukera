@@ -1,6 +1,6 @@
 .button-light {
   background-color: white;
-  width: 160px;
+  width: 150px;
   border-radius: 20px;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -10,8 +10,20 @@
   box-shadow: $shadow;
 }
 
+.button-right {
+  float: right;
+  margin-bottom: 30px;
+}
+
 .button-text {
+  font-size: small;
+  font-weight: 400;
   background: $purplegradient;
     -webkit-background-clip: text; // Limiter le gradient à la zone du texte
     -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
+}
+
+.edit-icon {
+  width: 35px;
+  box-shadow: $shadow;
 }
