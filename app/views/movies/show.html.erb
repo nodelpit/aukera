@@ -1,4 +1,5 @@
-<div class="container">
+ <%= turbo_frame_tag "movie-modal" do %>
+<div class="container" data-controller="modal">
   <div class="modale-container">
     <div class="modale-container-above">
       <%# TODO  griser le bouton tant qu'aucune plateforme n'est sélectionnée ? pas très user friendly
@@ -9,7 +10,9 @@
 
     <div class="modale-container-trailer" style="background-image: url(<%= @movie.horizontal_image_url %>)">
       <div class="modale-container-trailer card-gradient">
-        <div class="modale-quit-icon"><%= link_to image_tag("Quit icon.png"), :back %></div>
+        <div class="modale-quit-icon" data-action="click->modal#modalReset">
+          <%= image_tag("Quit icon.png") %>
+        </div>
         <div class="modale-play-icon"><%= image_tag("Play icon.png") %></div>
       </div>
     </div>
@@ -39,3 +42,4 @@
     <div class="modale-container-content-bottom"> </div>
   </div>
 </div>
+<% end %>
