@@ -253,14 +253,15 @@
 // Configuration commune pour les listes défilantes
 .platform-slide,
 .genre-grid {
-  display: flex; // Disposition horizontale
-  overflow-x: auto; // Permet le défilement
+  display: flex; /* Disposition horizontale */
+  overflow-x: auto; /* Permet le défilement horizontal */
+  flex-wrap: nowrap; 
   width: 100%;
   padding: 10px 0;
-  scroll-behavior: smooth; // Animation de défilement
-  scrollbar-width: none; // Cache la barre de défilement Firefox
-  -ms-overflow-style: none; // Cache la barre de défilement IE
-  gap: 12px; // Espace entre les éléments
+  scroll-behavior: smooth; /* Animation de défilement */
+  scrollbar-width: none; /* Cache la barre de défilement Firefox */
+  -ms-overflow-style: none; /* Cache la barre de défilement IE */
+  gap: 12px; /* Espace entre les éléments */
 
   // Cache la barre de défilement Chrome/Safari
   &::-webkit-scrollbar {
@@ -440,10 +441,11 @@
   display: none;
   z-index: 999;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .overlay.show {
   display: block;
   opacity: 1;
+  transition: opacity 0.5s ease;
 }
