@@ -64,10 +64,10 @@
           <span class="counter" data-filter-target="genreCounter">0</span>
         </div>
         <div class="genre-grid">
-          <% Movie::GENRES.each do |genre| %>
-            <button class="genre-button" data-action="click->filter#toggleGenre" data-genre="<%= genre %>">
-              <i class='bx bx-movie-play'></i>
-              <span><%= genre %></span>
+          <% Movie::GENRES.each do |english_genre, details| %>
+            <button class="genre-button" data-action="click->filter#toggleGenre" data-genre="<%= english_genre %>">
+              <i class="<%= details[:icon] %>"></i>
+              <span><%= details[:name] %></span>
             </button>
           <% end %>
         </div>
@@ -79,14 +79,13 @@
           <h3>Plateformes</h3>
           <span class="counter" data-filter-target="platformCounter">0</span>
         </div>
-        <div class="platform-slide">
-          <% Service.all.each do |service| %>
-            <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="<%= service.service %>">
-            <i class='bx bx-tv'></i>
-            <span><%= service.service.capitalize %></span>
-            </button>
-          <% end %>
-        </div>
+          <div class="platform-slide">
+            <% Service.all.each do |service| %>
+              <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="<%= service.service %>">
+                <img src="<%= service.service_logo_link %>" alt="<%= service.service %> logo" class="service-logo">
+              </button>
+            <% end %>
+          </div>
       </div>
 
       <%# Section durée %>

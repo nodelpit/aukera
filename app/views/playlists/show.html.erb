@@ -1,23 +1,27 @@
 <div class="container">
   <div class="container-content">
   <div class="playlists-container-content">
-  <div class="modale-quit-icon"><%= link_to image_tag("Quit icon.png"), :back %></div>
+  <div class="modale-quit-icon"><%= link_to image_tag("Quit icon.png"), playlists_path %></div>
     <h1><%= @playlist.name %></h1>
-    <h6 class="light-text small"><%= @playlist.description %></h6>
+    <h6 class="light-text"><%= @playlist.description %></h6>
     <div class="playlist-container">
-      <%# <div class="modale-save-icon"> link_to image_tag("Save icon.png"), movies_path </div> %>
-      <div class="button-light"><span class="button-text">Ajouter un film</span></div>
+      <div class="playlist-edit-icon"><%= link_to image_tag("Modif icon.png"), edit_playlist_path(@playlist) %></div>
+      <div class="button-light"><span class="button-text">＋ Ajouter un film</span></div>
     </div>
-      <div class="scroll">
+      <div class="scroll-container">
       <% @movies.each do |movie| %>
-        <div class="movie-card">
-          <div class="movie-card-save-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
+
+        <div class="movie-card-hz">
+          <div class="movie-icons">
+            <div class="playlist-delete-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
+            <div class="playlist-delete-icon"><%= link_to image_tag("Delete icon.png"), movies_path %></div>
+          </div>
           <%= link_to(movie_path(movie), class: "text-decoration-none") do %>
-            <div class="movie-card" style="background-image: url('<%= movie.vertical_image_url %>')">
-              <div class="movie-card card-gradient">
+            <div class="movie-card-hz" style="background-image: url('<%= movie.vertical_image_url %>')">
+              <div class="movie-card-hz card-gradient">
                 <div class="movie-card-text">
-                  <h5 class="light-text"><%= movie.title %></h5>
-                  <h6 class="light-text small"><%= movie.overview.first(50) %></h6>
+                  <h4><%= movie.title %></h4>
+                  <h6><%= movie.overview.first(50) %>...</h6>
                   <div class="movie-capsules-container">
                     <div class="movie-capsule"><%= movie.runtime %> min</div>
                     <div class="movie-capsule"><%= movie.release_year %></div>

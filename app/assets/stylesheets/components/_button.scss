@@ -1,6 +1,6 @@
 .button-light {
   background-color: white;
-  width: 160px;
+  width: 150px;
   border-radius: 20px;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -8,10 +8,52 @@
   margin-bottom: 10px;
   text-align: center;
   box-shadow: $shadow;
+  text-decoration: none;
+}
+
+.button-right {
+  float: right;
+  margin-bottom: 30px;
 }
 
 .button-text {
+  font-size: small;
+  font-weight: 400;
   background: $purplegradient;
-    -webkit-background-clip: text; // Limiter le gradient à la zone du texte
-    -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
+  -webkit-background-clip: text; // Limiter le gradient à la zone du texte
+  -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
+}
+
+.playlist-edit-icon {
+  width: 35px;
+  box-shadow: $shadow;
+}
+
+.button-form {
+  font-size: small;
+  font-weight: 400;
+  color: white;
+  background: $purplegradient;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  box-shadow: $shadow;
+  border: none;
+  float: right;
+}
+
+input {
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+::placeholder {
+  text-align: start;
+  font-weight: 200;
+  font-size: small;
+  padding: 5%;
 }

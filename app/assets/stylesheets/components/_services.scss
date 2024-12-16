@@ -1,0 +1,32 @@
+.service-logo {
+  width: 40px; /* Taille des logos ajustable */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: brightness(0) invert(1); /* Rend les logos totalement blancs */
+}
+
+.platform-button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: rgba(76, 80, 255, 0.1);
+    border-color: #4C50FF;
+  }
+
+  &.active {
+    background-color: #4C50FF;
+    border-color: #4C50FF;
+  }
+}

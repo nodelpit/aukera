@@ -109,3 +109,43 @@
   height: 100%;
   width: 5vw;
 }
+
+.movie-card-hz {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  border-radius: 15px;
+  box-shadow: $shadow;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.scroll-container {
+  margin-block: 10px;
+}
+
+.playlist-icons {
+  display: flex;
+  justify-content: space-between;
+  z-index: 6;
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  width: 45px;
+}
+
+.playlist-delete-icon {
+  width: 10px;
+  box-shadow: $shadow;
+}
+
+.movie-icons {
+  z-index: 6;
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  width: 45px;
+}
