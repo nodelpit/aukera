@@ -1,2 +1,11 @@
-<h1>Playlists#new</h1>
-<p>Find me in app/views/playlists/new.html.erb</p>
+<div class="container">
+  <div class="container-content">
+    <h3>Créer ma playlist</h3>
+    <%= simple_form_for(@playlist) do |f| %>
+      <%= f.input :name, label: false, placeholder: "Le nom de ta playlist ici" %>
+      <%= f.input :description, label: false, placeholder: "Ta description ici" %>
+      <%= f.input :photo, label: false, as: :file %>
+      <%= f.submit "Créer", class: "button-form" %>
+    <% end %>
+  </div>
+</div>
