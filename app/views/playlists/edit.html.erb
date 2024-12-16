@@ -1,2 +1,11 @@
-<h1>Playlists#edit</h1>
-<p>Find me in app/views/playlists/edit.html.erb</p>
+<div class="container">
+  <div class="container-content">
+    <h3>Modifier ma playlist</h3>
+    <%= simple_form_for(@playlist) do |f| %>
+      <%= f.input :name, label: false, value: @playlist.name %>
+      <%= f.input :description, label: false, value: @playlist.description %>
+      <%= f.input :photo, label: false, as: :file %>
+      <%= f.submit "Modifier", class: "button-form" %>
+    <% end %>
+  </div>
+</div>

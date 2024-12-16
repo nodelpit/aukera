@@ -23,7 +23,36 @@
     -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
 }
 
-.edit-icon {
+.playlist-edit-icon {
   width: 35px;
   box-shadow: $shadow;
+}
+
+.button-form {
+  font-size: small;
+  font-weight: 400;
+  color: white;
+  background: $purplegradient;
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  box-shadow: $shadow;
+  border: none;
+  float: right;
+}
+
+input {
+  border-radius: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+::placeholder {
+  text-align: start;
+  font-weight: 200;
+  font-size: small;
+  padding: 5%;
 }
