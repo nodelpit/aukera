@@ -105,7 +105,7 @@
   z-index: 4;
   bottom: 0px;
   right: -5px;
-  background: $anthracitegradienttoleft;
+  background: $purplegradienttoleft;
   height: 100%;
   width: 5vw;
 }
@@ -148,4 +148,22 @@
   top: 5px;
   right: 0px;
   width: 45px;
+}
+
+.playlist-container-fade-bottom {
+  position: absolute;
+  z-index: 4;
+  bottom: -15px;
+  left: -20px;
+  height: 5vh;
+  width: $full_width;
+}
+
+.playlist-container-fade-top {
+  position: absolute;
+  z-index: 4;
+  top: 170px;
+  left: -20px;
+  height: 5vh;
+  width: $full_width;
 }
