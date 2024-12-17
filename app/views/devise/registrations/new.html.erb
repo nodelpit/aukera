@@ -26,7 +26,7 @@
             <span class="counter" data-filter-target="platformCounter">0</span>
           </div>
         </div>
-        
+
         <div class="platform-slide">
           <% Service.distinct.pluck(:service).each do |platform| %>
             <button type="button"
@@ -41,25 +41,6 @@
         <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
       </div>
 
-     <!-- Genres préférés -->
-      <div class="signup-section" data-controller="genre-selection">
-        <div class="section-title">
-          <h3 class="signup-section-title">Genres préférés</h3>
-          </div>
-        <div class="signup-genre-select">
-          <% 3.times do |i| %>
-            <button type="button"
-                    class="signup-genre-button"
-                    data-action="click->genre-selection#openGenreModal"
-                    data-genre-index="<%= i %>">
-              Choisissez un genre
-            </button>
-          <% end %>
-        </div>
-        <% 3.times do |i| %>
-          <%= hidden_field_tag "genres[#{i}]", '', id: "selected-genre-#{i}" %>
-        <% end %>
-      </div>
 
       <!-- Soumission -->
       <div class="signup-actions">
