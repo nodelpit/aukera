@@ -1,0 +1,98 @@
+// L'overlay qui couvre tout l'écran
+.search-overlay {
+  position: fixed; // Couvre tout l'écran
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); // Fond presque blanc
+  z-index: 1000; // S'assure qu'il est au-dessus de tout
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  // État visible
+  &.show-search {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Le conteneur du contenu de recherche
+.search-content {
+  width: 100%;
+  max-width: 600px; // Limite la largeur sur les grands écrans
+  padding: 0 20px;
+  margin: 0 auto;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+
+  .show-search & {
+    transform: translateY(0);
+  }
+}
+
+// Le bouton de fermeture
+.close-search {
+  position: absolute;
+  top: -50px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #4C50FF;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+// Styles pour l'input de recherche
+.search-input-wrapper {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  .search-input {
+    width: 100%;
+    height: 60px;
+    padding: 0 25px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 20px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #4C50FF;
+      box-shadow: 0 4px 30px rgba(76, 80, 255, 0.15);
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+}
+
+// Le bouton de recherche dans la navbar
+.search-trigger {
+  background: none;
+  border: none;
+  color: #4C50FF;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
