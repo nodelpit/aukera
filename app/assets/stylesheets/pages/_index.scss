@@ -18,3 +18,15 @@ p {
   font-family: $body-font;
   font-size: 16px;
 }
+
+.no-results {
+  width: 100%;
+  text-align: center;
+
+  p {
+    color: white;
+    font-size: 1rem;
+    padding: 40px 0;
+    font-weight: 500;
+  }
+}
