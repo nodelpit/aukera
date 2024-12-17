@@ -3,7 +3,6 @@
     <div class="button-light mx-auto"><%= link_to "Relancer", movies_path(params.permit(:duration, :services, :genres, search: :query)), class: "button-text" %></div>
     <div class="scroll">
       <% @movies.each do |movie| %>
-
         <div class="movie-card">
           <div class="movie-card-save-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
           <%= link_to(movie_path(movie), class: "text-decoration-none", data: {turbo_frame: "movie-modal"}) do %>

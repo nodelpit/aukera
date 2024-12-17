@@ -6,11 +6,10 @@
     <h6 class="light-text"><%= @playlist.description %></h6>
     <div class="playlist-container">
       <div class="playlist-edit-icon"><%= link_to image_tag("Modif icon.png"), edit_playlist_path(@playlist) %></div>
-      <div class="button-light"><span class="button-text">＋ Ajouter un film</span></div>
+      <div class="button-light"><span class="button-text"><%= link_to "＋ Ajouter un film", playlist_movie_new_movie_to_playlist_path(@playlist) %></span></div>
     </div>
       <div class="scroll-container">
       <% @movies.each do |movie| %>
-
         <div class="movie-card-hz">
           <div class="movie-icons">
             <div class="playlist-delete-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
