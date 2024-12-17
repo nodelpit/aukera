@@ -28,7 +28,7 @@ class Movie < ApplicationRecord
 
   has_many :service_shows
   has_many :services, through: :service_shows
-  has_many :movie_playlists
+  has_many :movie_playlists, dependent: :destroy
   has_many :playlists, through: :movie_playlists
 
   # validates :id_tmdb, presence: true

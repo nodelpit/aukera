@@ -20,10 +20,9 @@ class MoviePlaylistsController < ApplicationController
   end
 
   def destroy
-    raise
-    @movie_playlist = MoviePlaylist.find(params[:id])
+    @playlist = Playlist.find(params[:playlist_id])
+    @movie_playlist = MoviePlaylist.find_by(movie_id: params[:movie_id].to_i, playlist_id: params[:playlist_id].to_i)
     @movie_playlist.destroy
-    @playlist = Playlist.find(params[:movie_playlist][:playlist])
     redirect_to playlist_path(@playlist), status: :see_other
   end
 
