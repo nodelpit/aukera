@@ -1,0 +1,39 @@
+.signup-background {
+  @extend .common-background;
+}
+
+.signup-container {
+  @extend .common-container;
+}
+
+.signup-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-section {
+  margin-bottom: 30px;
+
+  h3 {
+    color: #4C50FF;
+    margin-bottom: 15px;
+  }
+}
+
+.signup-platform-grid, .signup-genre-select {
+  display: flex;
+  gap: 10px;
+}
+
+.signup-platform-button, .signup-genre-button {
+  @extend .common-button;
+}
+
+.signup-actions {
+  text-align: center;
+  margin-top: 20px;
+
+  .signup-submit-button {
+    @extend .common-submit-button !optional;
+  }
+}

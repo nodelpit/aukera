@@ -1,72 +1,79 @@
-<div class="background-user">
+<div class="profile-background">
 
-  <!-- Section Profil -->
-  <section class="profile-section">
-    <div class="profile-block">
+  <!-- Bloc 1 : Profil Utilisateur -->
+  <section class="profile-main-block">
+    <div class="profile-container">
 
-      <!-- Modif -->
-      <div class="edit-icon-container">
-        <%= link_to edit_myprofile_path, class: "edit-icon" do %>
+      <!-- Bouton d'édition -->
+      <div class="profile-edit-icon">
+        <%= link_to edit_myprofile_path, class: "profile-edit-button" do %>
           <i class="bx bx-pencil"></i>
         <% end %>
       </div>
 
-      <!-- PFP -->
+      <!-- Photo de profil -->
       <div class="profile-pic-container">
-        <div>
-          <%= image_tag "default-avatar.png", alt: "Avatar utilisateur", class: "avatar avatar-large" %>
+        <%= cl_image_tag current_user.avatar.key, alt: "Avatar utilisateur", class: "profile-avatar" %>
+      </div>
+
+      <!-- Nom de l'utilisateur -->
+      <div class="profile-username">
+        <h2 class="profile-title">Bonjour, <%= current_user.first_name.capitalize %> !</h2>
+      </div>
+
+      <!-- Genres préférés -->
+      <div class="profile-section">
+        <h3 class="profile-section-title">Vos genres préférés</h3>
+        <div class="profile-genre-grid">
+          <% if current_user.playlists.first&.movies.present? %>
+            <% current_user.playlists.first.movies.each do |movie| %>
+              <span class="profile-genre-button"><%= movie.genres.split(',').first %></span>
+            <% end %>
+          <% else %>
+            <p class="profile-empty-message">Aucun genre préféré sélectionné</p>
+          <% end %>
         </div>
       </div>
 
-      <!-- Nom utilisateur -->
-      <div class="username-container">
-        <p class="username">@<%= current_user.first_name.downcase %><%= current_user.last_name.downcase %></p>
-      </div>
-
-      <!-- Genres -->
-      <div class="genres-container">
-        <ul class="genres-list">
-          <% current_user.playlists.first&.movies&.each do |movie| %>
-            <li class="genre-button">
-              <%= movie.genres.split(',').first %>
-            </li>
+      <!-- Plateformes préférées -->
+      <div class="profile-section">
+        <h3 class="profile-section-title">Vos plateformes préférées</h3>
+        <div class="profile-platform-grid">
+          <% platforms = [] %>
+          <% current_user.playlists.each do |playlist| %>
+            <% playlist.movies.each do |movie| %>
+              <% platforms << movie.platform if movie.platform.present? %>
+            <% end %>
           <% end %>
-        </ul>
-      </div>
-
-      <!--Plateformes -->
-      <div class="filter-section">
-        <div class="platform-slide">
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Disney">
-            <i class='bx bx-tv'></i>
-            <span>Disney</span>
-          </button>
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Netflix">
-            <i class='bx bx-tv'></i>
-            <span>Netflix</span>
-          </button>
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Canal+">
-            <i class='bx bx-tv'></i>
-            <span>Canal+</span>
-          </button>
+          <% if platforms.uniq.any? %>
+            <% platforms.uniq.each do |platform| %>
+              <span class="profile-platform-button"><%= platform %></span>
+            <% end %>
+          <% else %>
+            <p class="profile-empty-message">Aucune plateforme préférée sélectionnée</p>
+          <% end %>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Playlists -->
-  <section class="playlists-section">
-    <div class="playlists-block">
-      <h3 class="playlists-title">Mes playlists</h3>
-      <div class="playlists-grid">
-        <% current_user.playlists.each do |playlist| %>
-          <div class="playlist-card">
-            <%= image_tag "default-playlist.png", alt: "Image de playlist", class: "playlist-image" %>
-            <p class="playlist-name"><%= playlist.name %></p>
-          </div>
-        <% end %>
-      </div>
+  <!-- Bloc 2 : Playlists -->
+  <section class="profile-playlists-block">
+    <div class="profile-container">
+      <h3 class="profile-section-title">Mes playlists</h3>
+      <% if current_user.playlists.present? %>
+        <div class="profile-playlists-grid">
+          <% current_user.playlists.each do |playlist| %>
+            <div class="profile-playlist-card">
+              <%= image_tag "default-playlist.png", alt: "Image Playlist", class: "profile-playlist-image" %>
+              <p class="profile-playlist-name"><%= playlist.name %></p>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="profile-empty-message">Vous n'avez pas encore créé de playlists.</p>
+      <% end %>
     </div>
   </section>
 

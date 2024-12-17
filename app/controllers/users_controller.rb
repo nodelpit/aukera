@@ -1,56 +1,55 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!
 
-  def remove_genre
-    genre_to_remove = params[:genre]
-    updated_genres = @user.genres.split(',').reject { |g| g == genre_to_remove }.join(',')
-    @user.update(genres: updated_genres)
-    redirect_to edit_myprofile_path, notice: "Genre supprimé"
+  def show
+    @user = current_user
   end
 
-  def remove_platform
-    platform_to_remove = params[:platform]
-    updated_platforms = @user.platforms.split(',').reject { |p| p == platform_to_remove }.join(',')
-    @user.update(platforms: updated_platforms)
-    redirect_to edit_myprofile_path, notice: "Plateforme supprimée"
+  def new
+    @user = User.new
   end
 
-  def remove_playlist
-    playlist = Playlist.find(params[:playlist_id])
-    if playlist.user_id == @user.id
-      playlist.destroy
-      redirect_to edit_myprofile_path, notice: "Playlist supprimée"
+  def edit
+    @user = current_user
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    @user.preferred_platforms = params[:user][:preferred_platforms] if params[:user][:preferred_platforms].present?
+    
+    if params[:user][:preferred_genres].present?
+      @user.preferred_genres = params[:user][:preferred_genres].values.reject(&:blank?)
+    end
+
+    if @user.save
+      redirect_to myprofile_path, notice: 'Utilisateur créé'
     else
-      redirect_to edit_myprofile_path, alert: "Impossible de supprimer la playlist."
+      flash.now[:alert] = 'Erreur'
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def update_photo
-    if @user.update(photo_params)
-      redirect_to edit_myprofile_path, notice: "Photo mise à jour"
+  def update
+    if @user.update(user_params)
+      redirect_to myprofile_path, notice: 'Profil mis à jour'
     else
-      redirect_to edit_myprofile_path, alert: "Impossible de mettre à jour la photo."
+      flash.now[:alert] = 'Erreur'
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  def update_username
-    if @user.update(username_params)
-      redirect_to edit_myprofile_path, notice: "Nom d'utilisateur mis à jour"
+  def destroy
+    if @user.destroy
+      redirect_to root_path, notice: 'Utilisateur supprimé'
     else
-      redirect_to edit_myprofile_path, alert: "Impossible de mettre à jour le nom d'utilisateur."
+      redirect_to myprofile_path, alert: 'Erreur'
     end
   end
 
   private
 
-  def set_user
-    @user = current_user
-  end
-
-  def photo_params
-    params.require(:user).permit(:photo)
-  end
-
-  def username_params
-    params.require(:user).permit(:username)
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :age,)
   end
 end
