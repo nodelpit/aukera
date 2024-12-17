@@ -105,7 +105,7 @@
 
   .genres-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
     list-style: none;
@@ -135,7 +135,7 @@
 
   .platform-slide {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     gap: 10px;
 

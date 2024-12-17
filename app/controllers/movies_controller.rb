@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
       @movies = @movies.where("title ILIKE ?", "%#{params[:search][:query]}%")
     end
 
-    @movies = @movies.where("genres LIKE ?", "%#{params[:genres]}%") if params[:genres].present?
+    @movies = @movies.where("genres LIKE ?", "%#{params[:genres].gsub(',', ', ')}%") if params[:genres].present?
 
     if params[:services].present?
       services = params[:services].split(',')
@@ -22,7 +22,12 @@ class MoviesController < ApplicationController
   end
 
   def show
+    # session[:previous_url] = request.fullpath
     @movie = Movie.find(params[:id])
     @services = @movie.services
+  end
+
+  def back
+    redirect_to session.delete(:previous_url) || root_path
   end
 end

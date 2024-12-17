@@ -8,6 +8,7 @@
   margin-bottom: 10px;
   text-align: center;
   box-shadow: $shadow;
+  text-decoration: none;
 }
 
 .button-right {
@@ -19,8 +20,8 @@
   font-size: small;
   font-weight: 400;
   background: $purplegradient;
-    -webkit-background-clip: text; // Limiter le gradient à la zone du texte
-    -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
+  -webkit-background-clip: text; // Limiter le gradient à la zone du texte
+  -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
 }
 
 .playlist-edit-icon {
