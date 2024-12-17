@@ -1,6 +1,7 @@
 <div class="container">
   <div class="container-content">
     <div class="button-light mx-auto"><%= link_to "Relancer", movies_path(params.permit(:duration, :services, :genres, search: :query)), class: "button-text" %></div>
+
     <div class="scroll">
       <% @movies.each do |movie| %>
         <div class="movie-card">
@@ -26,6 +27,7 @@
           <% end %>
         </div>
       <% end %>
+
     </div>
     <h3><%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none" %></h3>
     <div class="scroll">
