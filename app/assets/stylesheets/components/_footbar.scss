@@ -2,10 +2,29 @@
   background: $anthracite;
   padding-left: 4%;
   padding-right: 4%;
-  height: 80px;
+  height: 100px;
   width: 100vw;
   position: fixed;
   bottom: 0px;
   z-index: 10;
+  box-shadow: $shadow;
+}
+
+.footbar-container {
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+}
+
+.footbar-inactive-icon {
+  width: 10px;
+}
+
+.footbar-active-icon {
+  width: 20px;
   box-shadow: $shadow;
 }
