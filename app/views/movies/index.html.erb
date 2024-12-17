@@ -1,6 +1,8 @@
 <div class="container">
   <div class="container-content">
     <div class="button-light mx-auto"><%= link_to "Relancer", movies_path(params.permit(:duration, :services, :genres, search: :query)), class: "button-text" %></div>
+
+    <% if @movies.present? %>
     <div class="scroll">
       <% @movies.each do |movie| %>
         <div class="movie-card">
@@ -22,35 +24,37 @@
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <h3><%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none" %></h3>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="no-results">
+        <p>Aucun résultat pour cette recherche...</p>
+      </div>
+    <% end %>
+
+    <h3>
+      <%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none" %>
+    </h3>
+
     <div class="scroll">
       <div class="scroll-fade-right"></div>
       <div class="scroll-container">
         <% @playlists.each do |playlist| %>
           <% if playlist.photo.key? %>
             <div class="list-card" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
-              <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
-                <div class="list-card card-gradient">
-                  <h5><%= playlist.name %></h5>
-                </div>
-              <% end %>
-            </div>
           <% else %>
             <div class="list-card" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
-              <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
-                <div class="list-card card-gradient">
-                  <h5><%= playlist.name %></h5>
-                </div>
-              <% end %>
-            </div>
           <% end %>
-
+            <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+              <div class="list-card card-gradient">
+                <h5><%= playlist.name %></h5>
+              </div>
+            <% end %>
+          </div>
         <% end %>
+
         <div class="list-card" style="background: transparent; box-shadow: none">
           <%= link_to(playlists_path) do %>
             <h5>Voir toutes mes playlists</h5>
