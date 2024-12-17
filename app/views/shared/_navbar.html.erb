@@ -1,7 +1,38 @@
-<div class="navbar navbar-lewagon">
+<div class="navbar navbar-lewagon" data-controller="search">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo_full_aukera.png" %>
+    <% end %>
+
+    <% if show_nav_element? %>
+      <div class="nav-search-container">
+        <button type="button"
+                class="search-trigger"
+                data-action="click->search#toggleSearch"
+                data-search-target="button">
+          <i class='bx bx-search fs-1'></i>
+        </button>
+      </div>
+
+      <%# Le formulaire de recherche en plein écran %>
+     <div class="search-overlay"
+     data-search-target="form"
+     data-action="click->search#toggleSearch">  <!-- Ajout de cet attribut -->
+  <div class="search-content" onclick="event.stopPropagation()">
+    <button class="close-search" data-action="click->search#toggleSearch">
+      <i class='bx bx-x fs-1'></i>
+    </button>
+    <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
+      <%= f.input :query,
+          label: false,
+          input_html: {
+            class: "search-input",
+            placeholder: "Rechercher un film ou une série..."
+          },
+          wrapper_html: { class: 'search-input-wrapper' } %>
+    <% end %>
+  </div>
+</div>
     <% end %>
   </div>
 </div>
