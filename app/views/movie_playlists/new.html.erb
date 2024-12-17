@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'movie_modal' do %>
+<div class="container">
+  <div class="container-content">
+    <h3>Choisis ta playlist</h3>
+    <%= simple_form_for @movie_playlist do |f| %>
+      <%= f.input :playlist, label: false, collection: @playlists %>
+      <%= f.input :movie, as: :hidden %>
+      <%= f.submit "Ajouter", class: "button-form" %>
+    <% end %>
+  </div>
+</div>
+<% end %>

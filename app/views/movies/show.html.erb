@@ -4,7 +4,7 @@
     <div class="modale-container-above">
       <%# TODO  griser le bouton tant qu'aucune plateforme n'est sélectionnée ? pas très user friendly
                 le lien du bouton doit être celui du service_show sélectionné %>
-      <div class="modale-save-icon"><%= link_to image_tag("Save icon.png"), movies_path %></div>
+      <div class="modale-save-icon"><%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(@movie), data: { turbo_frame: "_top"} %></div>
       <div class="button-light"><span class="button-text">Regarder</span></div>
     </div>
 
