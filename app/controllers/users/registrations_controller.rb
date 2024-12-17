@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super do |user|
       if params[:services].present? && user.persisted?
-      services = params[:services].split(",")
+        services = params[:services].is_a?(String) ? params[:services].split(",").map(&:strip) : Array(params[:services])
       user.create_user_service(services)
       end
     end

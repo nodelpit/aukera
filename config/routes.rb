@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "myprofile", to: "users#show", as: :myprofile
   get "myprofile/edit", to: "users#edit", as: :edit_myprofile
   patch "myprofile", to: "users#update"
+  patch "myprofile/photo", to: "users#update_photo", as: :update_photo_myprofile
+
 
   resources :users, only: [:new, :create] do
     member do

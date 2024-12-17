@@ -182,3 +182,175 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
     }
   }
 }
+
+
+////////////////STYLE PROPRE EDIT //////////////////
+
+
+/* Modifier la photo de profil */
+.edit-user-avatar-edit {
+  position: relative;
+  cursor: pointer;
+
+  .edit-user-clickable-avatar {
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .edit-user-clickable-avatar {
+    opacity: 0.7;
+  }
+}
+
+/* Plateformes actives */
+.edit-user-platform-button.active {
+  background-color: #4C50FF;
+  color: white;
+
+  i {
+    color: white;
+  }
+}
+
+/* Boutons de suppression */
+.edit-user-playlist-remove-button {
+  display: inline-block;
+  color: red;
+  font-size: 16px;
+  margin-top: 5px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Boutons de validation */
+.edit-user-action-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  .edit-user-submit-button {
+    background-color: #4C50FF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #5a61ff;
+    }
+  }
+
+  .edit-user-cancel-button {
+    background-color: #aaa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #888;
+    }
+  }
+}
+
+/* Grille des plateformes et genres */
+.edit-user-platform-grid,
+.edit-user-genre-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+  .edit-user-platform-button,
+  .edit-user-genre-button {
+    border: 1px solid #4C50FF;
+    border-radius: 25px;
+    background-color: transparent;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &.active {
+      background-color: #4C50FF;
+      color: white;
+    }
+
+    i {
+      color: #4C50FF;
+    }
+  }
+}
+
+/* Photo de profil */
+.edit-user-pic-container {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+
+  .edit-user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #4C50FF;
+    object-fit: cover;
+    background-color: white;
+  }
+}
+
+/* Bouton d'ajout de playlists */
+.edit-user-add-button {
+  display: block;
+  background-color: #4C50FF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #5a61ff;
+  }
+}
+
+/* Bloc principal */
+.edit-user-container {
+  background-color: #292a36;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  color: white;
+
+  @media (min-width: 768px) {
+    padding: 40px;
+    max-width: 800px;
+  }
+}
+
+/* Sections */
+.edit-user-section-title {
+  font-size: 18px;
+  color: #4C50FF;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #4C50FF;
+  padding-bottom: 5px;
+}
+
+.edit-user-empty-message {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 10px;
+}

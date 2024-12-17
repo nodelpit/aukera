@@ -1,0 +1,40 @@
+<div class="profile-background">
+
+  <!-- Bloc 1 : Profil Utilisateur -->
+  <section class="profile-main-block">
+    <div class="profile-container">
+         <div class="profile-username">
+        <h2 class="profile-title">Bonjour, <%= current_user.first_name.capitalize %> !</h2>
+      </div>
+      </div>
+      </section>
+
+
+<!-- Photo de profil avec possibilité de modification -->
+<div>
+  <%= form_with url: update_photo_myprofile_path, method: :patch, html: { multipart: true } do %>
+    <label for="avatar-upload">
+      <div>
+   <%= cl_image_tag current_user.avatar.key || "default-avatar.png", alt: "Avatar utilisateur" %>
+    <input type="file" name="user[avatar]" id="avatar-upload" style="display: none;" accept="image/*" onchange="this.form.submit();">
+        <div>
+          Cliquez pour changer la photo
+        </div>
+      </div>
+    </label>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
