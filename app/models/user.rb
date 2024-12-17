@@ -6,16 +6,32 @@ class User < ApplicationRecord
 
   belongs_to :service, optional: true
   has_many :playlists, dependent: :destroy
+  has_many :user_services
+  has_many :services, through: :user_services
   has_one_attached :avatar
   delegate :movies, to: :playlists
 
   after_create :attached_defaut_avatar
+  after_create_commit :create_user_service
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
   validates :password, presence: true
   validates :age, numericality: { only_integer: true }
+
+  def create_user_service(services)
+    return if services.blank?
+
+    instance_services = []
+    services.each do |service_name|
+      instance_services << Service.find_by(service: service_name)
+    end
+    instance_services.each do |service|
+        UserService.create(user: self, service: service)
+    end
+    raise
+  end
 
   def attached_defaut_avatar
     return if avatar.attached?
