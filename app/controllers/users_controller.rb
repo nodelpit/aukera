@@ -13,11 +13,23 @@ before_action :authenticate_user!
     @user = current_user
   end
 
+  def update_photo
+    if params[:user][:avatar].present?
+      if current_user.update(avatar_params)
+        redirect_to myprofile_path, notice: "Photo de profil mise à jour avec succès."
+      else
+        redirect_to edit_myprofile_path, alert: "Erreur lors de l'ajout de la photo."
+      end
+    else
+      redirect_to edit_myprofile_path, alert: "Aucune photo sélectionnée."
+    end
+  end
+
   def create
     @user = User.new(user_params)
 
     @user.preferred_platforms = params[:user][:preferred_platforms] if params[:user][:preferred_platforms].present?
-    
+
     if params[:user][:preferred_genres].present?
       @user.preferred_genres = params[:user][:preferred_genres].values.reject(&:blank?)
     end
@@ -50,6 +62,10 @@ before_action :authenticate_user!
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :age,)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :age)
+  end
+
+  def avatar_params
+    params.require(:user).permit(:avatar)
   end
 end

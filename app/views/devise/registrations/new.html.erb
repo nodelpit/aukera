@@ -41,6 +41,14 @@
         <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
       </div>
 
+      <!-- Bloc 3 : upload image -->
+      <div class="form-section upload-image-section">
+        <h3 class="signup-section-title">Photo de profil</h3>
+        <div class="form-group">
+          <%= f.label :avatar, "Uploader une photo de profil" %>
+          <%= f.file_field :avatar, accept: 'image/*', class: "file-input" %>
+        </div>
+      </div>
 
       <!-- Soumission -->
       <div class="signup-actions">
