@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card", "overlay", "genreCounter", "platformCounter", "durationSlider", "durationDisplay", "genreInput", "platformInput", "durationInput"]
+  static targets = ["card", "overlay", "genreCounter", "platformCounter", "durationSlider", "durationDisplay", "genreInput", "platformInput", "durationInput", "typeSwitch", "showTypeInput"]
 
   connect() {
     this.selectedGenres = new Set()
     this.selectedPlatforms = new Set()
+    this.showTypeInputTarget.value = 'movie'
     console.log("Filter controller connected")
   }
 
@@ -21,6 +22,12 @@ export default class extends Controller {
     // Retrait des classes 'show' pour fermer la carte et l'overlay
     this.cardTarget.classList.remove("show");
     this.overlayTarget.classList.remove("show");
+  }
+
+  toggleType(event) {
+    const showType = event.currentTarget.checked ? 'series' : 'movie'
+    this.showTypeInputTarget.value = showType
+    console.log(`Switched to ${showType}`)
   }
 
   toggleGenre(event) {

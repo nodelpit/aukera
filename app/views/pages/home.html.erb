@@ -18,6 +18,7 @@
       <%= hidden_field_tag 'genres', nil, data: { filter_target: "genreInput" } %>
       <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
       <%= hidden_field_tag 'duration', nil, data: { filter_target: "durationInput" } %>
+      <%= hidden_field_tag 'show_type', 'movie', data: { filter_target: "showTypeInput" } %>
 
       <div class="search-icon">
         <%= button_tag type: 'submit', class: 'button-no-style' do %>
@@ -32,7 +33,7 @@
     <div class="switch-wrapper">
       <span class="label-text">FILMS</span>
       <div class="toggle-switch">
-        <input class="toggle-input" id="toggle" type="checkbox", name="toggle", value="1">
+        <input class="toggle-input" id="toggle" type="checkbox", name="show_type", data-filter-target="typeSwitch", data-action="change->filter#toggleType">
         <label class="toggle-label" for="toggle"></label>
       </div>
       <span class="label-text">SÉRIES</span>
