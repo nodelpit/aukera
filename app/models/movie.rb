@@ -43,6 +43,8 @@ class Movie < ApplicationRecord
   validates :release_year, presence: true
   validates :runtime, presence: true
   validate :validate_genres
+  validate :season_count_only_for_series
+
 
   # scope pour rechercher les films par genre @noah ?
   #scope :by_genre, ->(genre) { where("genres LIKE ?", "%#{genre}%") }
@@ -62,5 +64,11 @@ class Movie < ApplicationRecord
     return unless invalid_genres.any? # Si aucun genre invalide n'est trouvé, on quitte la méthode immédiatement
 
     errors.add(:genres, "contient des genres non valides : #{invalid_genres.join(', ')}")
+  end
+
+  def season_count_only_for_series
+    return unless show_type != 'series' && season_count.present?
+
+    errors.add(:season_count, "ne peut être défini que pour les séries")
   end
 end

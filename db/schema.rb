@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_17_104451) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_17_152017) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_104451) do
     t.datetime "updated_at", null: false
     t.string "vertical_image_url"
     t.string "horizontal_image_url"
+    t.integer "season_count", default: 0
   end
 
   create_table "playlists", force: :cascade do |t|
