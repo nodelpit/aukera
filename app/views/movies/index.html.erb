@@ -11,8 +11,12 @@
                 <div class="movie-card-text">
                   <h4><%= movie.title %></h4>
                   <h6><%= movie.overview.first(100) %>...</h6>
-                  <div class="movie-capsules-container">
-                    <div class="movie-capsule"><%= movie.runtime %> min</div>
+                    <div class="movie-capsules-container">
+                    <% if movie.show_type == 'series' %>
+                      <div class="movie-capsule"><%= movie.season_count %> <%= movie.season_count == 1 ? 'saison' : 'saisons' %></div>
+                    <% else %>
+                      <div class="movie-capsule"><%= movie.runtime %> min</div>
+                    <% end %>
                     <div class="movie-capsule"><%= movie.release_year %></div>
                     <div class="movie-capsule"><%= movie.genres %></div>
                   </div>

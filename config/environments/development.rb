@@ -32,6 +32,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.hosts << "8ac2-2a01-cb18-8597-700-85d0-d8bf-b63e-6135.ngrok-free.app"
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 

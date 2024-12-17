@@ -53,7 +53,8 @@ namespace :streaming_data do
         rating: sanitize_value(show_data['rating'], 0),
         show_type: sanitize_value(show_data['showType'], 'Inconnu'),
         vertical_image_url: sanitize_value(show_data.dig('imageSet', 'verticalPoster', 'w600'), 'https://via.placeholder.com/426x597?text=Image+manquante'),
-        horizontal_image_url: sanitize_value(show_data.dig('imageSet', 'horizontalPoster', 'w720'), 'https://via.placeholder.com/720x405?text=Image+manquante')
+        horizontal_image_url: sanitize_value(show_data.dig('imageSet', 'horizontalPoster', 'w720'), 'https://via.placeholder.com/720x405?text=Image+manquante'),
+        season_count: show_data['showType'] == 'series' ? sanitize_value(show_data['seasonCount'], 0) : nil
       )
     end
 
