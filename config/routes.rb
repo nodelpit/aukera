@@ -32,8 +32,16 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index, :show] do
     get "/new_movie_to_playlist", to: "movie_playlists#new", as: :new_movie_to_playlist
+    delete "/remove_movie_from_playlist", to: "movie_playlists#destroy", as: :remove_movie_from_playlist
+  end
+
+  resources :playlists do
+    resources :movies do
+      delete "/remove_movie_from_playlist", to: "movie_playlists#destroy", as: :remove_movie_from_playlist
+    end
   end
 
   resources :playlists
+
   resources :movie_playlists, only: [:create, :destroy]
 end

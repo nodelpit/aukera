@@ -24,10 +24,11 @@ class Movie < ApplicationRecord
     'Western' => { name: 'Western', icon: 'fas fa-hat-cowboy' }
   }
 
+  scope :by_recently_updated, -> { order(updated_at: :desc) }
 
   has_many :service_shows
   has_many :services, through: :service_shows
-  has_many :movie_playlists
+  has_many :movie_playlists, dependent: :destroy
   has_many :playlists, through: :movie_playlists
 
   # validates :id_tmdb, presence: true
