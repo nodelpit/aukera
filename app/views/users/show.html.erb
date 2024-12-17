@@ -13,7 +13,11 @@
 
       <!-- Photo de profil -->
       <div class="profile-pic-container">
-        <%= cl_image_tag current_user.avatar.key, alt: "Avatar utilisateur", class: "profile-avatar" %>
+        <% if current_user.avatar.attached? %>
+          <%= cl_image_tag current_user.avatar.key, alt: "Avatar utilisateur", class: "profile-avatar" %>
+        <% else %>
+          <%= image_tag "default-avatar.png", alt: "Avatar par défaut", class: "profile-avatar" %>
+        <% end %>
       </div>
 
       <!-- Nom de l'utilisateur -->
@@ -21,60 +25,54 @@
         <h2 class="profile-title">Bonjour, <%= current_user.first_name.capitalize %> !</h2>
       </div>
 
-      <!-- Genres préférés -->
-      <div class="profile-section">
-        <h3 class="profile-section-title">Vos genres préférés</h3>
-        <div class="profile-genre-grid">
-          <% if current_user.playlists.first&.movies.present? %>
-            <% current_user.playlists.first.movies.each do |movie| %>
-              <span class="profile-genre-button"><%= movie.genres.split(',').first %></span>
-            <% end %>
-          <% else %>
-            <p class="profile-empty-message">Aucun genre préféré sélectionné</p>
-          <% end %>
-        </div>
-      </div>
-
       <!-- Plateformes préférées -->
-      <div class="profile-section">
-        <h3 class="profile-section-title">Vos plateformes préférées</h3>
-        <div class="profile-platform-grid">
-          <% platforms = [] %>
-          <% current_user.playlists.each do |playlist| %>
-            <% playlist.movies.each do |movie| %>
-              <% platforms << movie.platform if movie.platform.present? %>
+        <div class="profile-section">
+          <h3 class="profile-section-title">Vos plateformes préférées</h3>
+          <div class="profile-platform-grid">
+            <% if current_user.services.any? %>
+              <% current_user.services.each do |service| %>
+                <span class="profile-platform-button"><%= service.service.presence || "Service inconnu" %></span>
+              <% end %>
+            <% else %>
+              <p class="profile-empty-message">Vous n'avez pas encore de services préférés</p>
+              <%= link_to "Ajouter mes services", edit_myprofile_path, class: "profile-add-button" %>
             <% end %>
-          <% end %>
-          <% if platforms.uniq.any? %>
-            <% platforms.uniq.each do |platform| %>
-              <span class="profile-platform-button"><%= platform %></span>
-            <% end %>
-          <% else %>
-            <p class="profile-empty-message">Aucune plateforme préférée sélectionnée</p>
-          <% end %>
+          </div>
         </div>
-      </div>
 
     </div>
   </section>
 
   <!-- Bloc 2 : Playlists -->
-  <section class="profile-playlists-block">
-    <div class="profile-container">
-      <h3 class="profile-section-title">Mes playlists</h3>
-      <% if current_user.playlists.present? %>
-        <div class="profile-playlists-grid">
+    <h3><%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none" %></h3>
+    <div class="scroll">
+      <div class="scroll-fade-right"></div>
+      <div class="scroll-container">
           <% current_user.playlists.each do |playlist| %>
-            <div class="profile-playlist-card">
-              <%= image_tag "default-playlist.png", alt: "Image Playlist", class: "profile-playlist-image" %>
-              <p class="profile-playlist-name"><%= playlist.name %></p>
+          <% if playlist.photo.key? %>
+            <div class="list-card" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
+              <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+                <div class="list-card card-gradient">
+                  <h5><%= playlist.name %></h5>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="list-card" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+              <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+                <div class="list-card card-gradient">
+                  <h5><%= playlist.name %></h5>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        </div>
-      <% else %>
-        <p class="profile-empty-message">Vous n'avez pas encore créé de playlists.</p>
-      <% end %>
-    </div>
-  </section>
 
+        <% end %>
+        <div class="list-card" style="background: transparent; box-shadow: none">
+          <%= link_to(playlists_path) do %>
+            <h5>Voir toutes mes playlists</h5>
+          <% end %>
+        </div>
+      </div>
+    </div>
 </div>

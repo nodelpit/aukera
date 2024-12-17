@@ -12,7 +12,7 @@ class User < ApplicationRecord
   delegate :movies, to: :playlists
 
   after_create :attached_defaut_avatar
-  after_create_commit :create_user_service
+  # after_create_commit :create_user_service
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -30,7 +30,6 @@ class User < ApplicationRecord
     instance_services.each do |service|
         UserService.create(user: self, service: service)
     end
-    raise
   end
 
   def attached_defaut_avatar
