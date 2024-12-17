@@ -1,8 +1,8 @@
 .scroll {
   overflow: auto;
   white-space: nowrap;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
 
 .service-card {
@@ -132,9 +132,13 @@
   justify-content: space-between;
   z-index: 6;
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 30px;
   width: 45px;
+}
+
+.playlist-icons img {
+  width: 25px;
 }
 
 .playlist-delete-icon {
@@ -145,9 +149,13 @@
 .movie-icons {
   z-index: 6;
   position: absolute;
-  top: 5px;
+  top: 10px;
   right: 0px;
-  width: 45px;
+  width: 35px;
+}
+
+.movie-icons img {
+  width: 25px;
 }
 
 .playlist-container-fade-bottom {

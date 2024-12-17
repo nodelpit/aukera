@@ -2,7 +2,7 @@
   background: $anthracite;
   padding-left: 4%;
   padding-right: 4%;
-  height: 100px;
+  height: 90px;
   width: 100vw;
   position: fixed;
   bottom: 0px;
@@ -21,10 +21,32 @@
 }
 
 .footbar-inactive-icon {
-  width: 10px;
+  width: 50px;
+  text-align: center;
 }
 
-.footbar-active-icon {
-  width: 20px;
+.footbar-active-icon img {
+  width: 50px;
+  margin-top: -50px;
+  box-shadow: $shadow;
+}
+
+.navbar-lewagon-footbar {
+  justify-content: space-between;
+  background: white;
+}
+
+.navbar-lewagon-footbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  border: none;
+  background-color: $whitepurple;
   box-shadow: $shadow;
 }
