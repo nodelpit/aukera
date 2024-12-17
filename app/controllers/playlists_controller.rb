@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
-    @movies = @playlist.movies
+    @movies = @playlist.movies.by_recently_updated
   end
 
   def new

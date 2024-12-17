@@ -8,5 +8,5 @@ class Playlist < ApplicationRecord
   scope :by_recently_updated, -> { order(updated_at: :desc) }
 
   validates :name, presence: true
-  validates :name, length: { maximum: 24, too_long: "Ça dépend ça dépasse. Déso, 24 caractères max !" }
+  validates :name, length: { maximum: 24, too_long: " · Ça dépend ça dépasse. Déso, 24 caractères max !" }
 end
