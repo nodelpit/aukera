@@ -1,2 +1,41 @@
-<h1>Playlists#index</h1>
-<p>Find me in app/views/playlists/index.html.erb</p>
+<div class="container">
+  <div class="container-content">
+  <div class="playlists-container-content">
+    <h1>Mes playlists</h1>
+    <div class="button-light button-right"><span class="button-text"><%= link_to "＋ Nouvelle playlist", new_playlist_path %></span></div>
+      <div class="scroll-container">
+        <% @playlists.each do |playlist| %>
+
+          <div class="list-card-hz">
+            <div class="playlist-icons">
+              <div class="playlist-delete-icon"><%= link_to image_tag("Modif icon.png"), edit_playlist_path(playlist) %></div>
+              <div class="playlist-delete-icon"><%= link_to image_tag("Delete icon.png"), playlist_path(playlist), data: { turbo_method: :delete, turbo_confirm: "#{playlist.name} ne pourra pas être récupérée !"} %></div>
+            </div>
+            <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+              <% if playlist.photo.key? %>
+                <div class="list-card-hz" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
+                  <div class="list-card-hz card-gradient">
+                    <div class="list-card-content">
+                      <h5><%= playlist.name %></h5>
+                      <h6><%= playlist.description.first(50) %>...</h6>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+              <div class="list-card-hz" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+                  <div class="list-card-hz card-gradient">
+                    <div class="list-card-content">
+                      <h5><%= playlist.name %></h5>
+                      <h6><%= playlist.description.first(50) %>...</h6>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <div class="playlist-container-content-bottom"> </div>
+</div>
+</div>

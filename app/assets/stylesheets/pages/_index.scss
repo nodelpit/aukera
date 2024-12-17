@@ -1,2 +1,20 @@
 // Import page-specific CSS files here.
 @import "home";
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 300;
+  background-color: #f5f5f5; // Change le fond pour un test visuel
+}
+
+
+h1 {
+  font-family: $headers-font;
+  font-weight: 400;
+}
+
+
+p {
+  font-family: $body-font;
+  font-size: 16px;
+}

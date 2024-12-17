@@ -1,4 +1,5 @@
-<div class="container">
+ <%= turbo_frame_tag "movie-modal" do %>
+<div class="container" data-controller="modal">
   <div class="modale-container">
     <div class="modale-container-above">
       <%# TODO  griser le bouton tant qu'aucune plateforme n'est sélectionnée ? pas très user friendly
@@ -9,7 +10,9 @@
 
     <div class="modale-container-trailer" style="background-image: url(<%= @movie.horizontal_image_url %>)">
       <div class="modale-container-trailer card-gradient">
-        <div class="modale-quit-icon"><%= link_to image_tag("Quit icon.png"), movies_path %></div>
+        <div class="modale-quit-icon" data-action="click->modal#modalReset">
+          <%= image_tag("Quit icon.png") %>
+        </div>
         <div class="modale-play-icon"><%= image_tag("Play icon.png") %></div>
       </div>
     </div>
@@ -18,24 +21,25 @@
     <div class="modale-container-content">
       <div class="scroll">
         <% @services.each do |service| %>
-          <div class="service-card" style="background-image: url('<%= service.service_logo_link %>')">
-            <div class="d-flex justify-content-between"></div>
+          <div class="service-card">
+            <img src="<%= service.service_logo_link %>" alt="<%= service.service %>" >
           </div>
         <% end %>
       </div>
       <p class="light-text"><%= @movie.overview %></p>
       <p class="light-text"><span class="dark-text">Distribution :</span> <%= @movie.cast %></p>
       <p class="light-text"><span class="dark-text">Réalisation :</span> <%= @movie.real %></p>
-      <% if @movie.rating >= 7.5 %>
-        <p class="light-text"><span class="dark-text">★★★★ </span><%= @movie.rating %>/10</p>
-      <% elsif @movie.rating >= 5 %>
-        <p class="light-text"><span class="dark-text">★★★ </span><%= @movie.rating %>/10</p>
-      <% elsif @movie.rating >= 2.5 %>
-        <p class="light-text"><span class="dark-text">★★ </span><%= @movie.rating %>/10</p>
+      <% if @movie.rating >= 75 %>
+        <p class="light-text"><span class="dark-text">★★★★ </span><%= @movie.rating %>/100</p>
+      <% elsif @movie.rating >= 50 %>
+        <p class="light-text"><span class="dark-text">★★★ </span><%= @movie.rating %>/100</p>
+      <% elsif @movie.rating >= 25 %>
+        <p class="light-text"><span class="dark-text">★★ </span><%= @movie.rating %>/100</p>
       <% else %>
-        <p class="light-text"><span class="dark-text">★ </span><%= @movie.rating %>/10</p>
+        <p class="light-text"><span class="dark-text">★ </span><%= @movie.rating %>/100</p>
       <% end %>
     </div>
     <div class="modale-container-content-bottom"> </div>
   </div>
 </div>
+<% end %>

@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Aukera" %></title>
+    <title><%= "Aukera | Choisissez votre film en quelques clics !" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'apple-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
+
+    <meta name="apple-mobile-web-app-title" content="Aukera" />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <%= turbo_frame_tag "movie-modal" %>
+
     <%= render "shared/navbar" %>
+    <%# , unless controller_name == "name" %>
     <%= render "shared/flashes" %>
 
     <%= yield %>

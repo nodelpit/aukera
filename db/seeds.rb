@@ -1,17 +1,16 @@
-require 'faker'
+# require 'faker'
 
-# MoviePlaylist.destroy_all
-# ServiceShow.destroy_all
-# Playlist.destroy_all
-User.destroy_all
+# # MoviePlaylist.destroy_all
+# # ServiceShow.destroy_all
+# # Playlist.destroy_all
+# User.destroy_all
 # ServiceShow.destroy_all
 # Service.destroy_all
 # Movie.destroy_all
 
-genres = ["Action", "Comédie", "Drame", "Fantastique", "Horreur", "Science-fiction", "Romance", "Thriller"]
-services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |service_name|
-  Service.create!(service: service_name, service_logo_link: "https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940")
-end
+# services = ["Amazon Prime", "Netflix", "Disney+", "Arte", "Apple TV"].map do |service_name|
+#   Service.create!(service: service_name, service_logo_link: "https://images.ctfassets.net/y2ske730sjqp/5QQ9SVIdc1tmkqrtFnG9U1/de758bba0f65dcc1c6bc1f31f161003d/BrandAssets_Logos_02-NSymbol.jpg?w=940")
+# end
 
 # movies = 20.times.map do
 #   selected_genres = genres.sample(rand(1..3)).join(', ')
@@ -41,53 +40,53 @@ end
 #   end
 # end
 
-specific_users = [
-  User.create!(
-    email: "noahdelpit@protonmail.com",
-    password: "aukera",
-    first_name: "Noah",
-    last_name: "Delpit",
-    age: 25,
-    service: services.sample
-  ),
-  User.create!(
-    email: "alban.bengounia@gmail.com",
-    password: "aukera",
-    first_name: "Alban",
-    last_name: "Bengounia",
-    age: 25,
-    service: services.sample
-  ),
-  User.create!(
-    email: "metaypauline@gmail.com",
-    password: "aukera",
-    first_name: "Pauline",
-    last_name: "Metay",
-    age: 25,
-    service: services.sample
-  ),
-  User.create!(
-    email: "raphaelcanches@gmail.com",
-    password: "aukera",
-    first_name: "Raphael",
-    last_name: "Canches",
-    age: 25,
-    service: services.sample
-  )
-]
+# specific_users = [
+#   User.create!(
+#     email: "noahdelpit@protonmail.com",
+#     password: "aukera",
+#     first_name: "Noah",
+#     last_name: "Delpit",
+#     age: 25,
+#     service: services.sample
+#   ),
+#   User.create!(
+#     email: "alban.bengounia@gmail.com",
+#     password: "aukera",
+#     first_name: "Alban",
+#     last_name: "Bengounia",
+#     age: 25,
+#     service: services.sample
+#   ),
+#   User.create!(
+#     email: "metaypauline@gmail.com",
+#     password: "aukera",
+#     first_name: "Pauline",
+#     last_name: "Metay",
+#     age: 25,
+#     service: services.sample
+#   ),
+#   User.create!(
+#     email: "raphaelcanches@gmail.com",
+#     password: "aukera",
+#     first_name: "Raphael",
+#     last_name: "Canches",
+#     age: 25,
+#     service: services.sample
+#   )
+# ]
 
-specific_users.each do |user|
-  2.times do
-    playlist = Playlist.create!(
-      name: genres.sample,
-      description: Faker::Lorem.sentence,
-      user: user
-    )
+# specific_users.each do |user|
+#   2.times do
+#     playlist = Playlist.create!(
+#       name: "Mes films de #{Movie::GENRES.sample}",
+#       description: Faker::Lorem.sentence,
+#       user: user
+#     )
 
-    movies.sample(3).each do |movie|
-      MoviePlaylist.create!(movie: movie, playlist: playlist)
-    end
-  end
-end
+#     movies.sample(3).each do |movie|
+#       MoviePlaylist.create!(movie: movie, playlist: playlist)
+#     end
+#   end
+# end
 
-puts "SHOW TIME!"
+# puts "SHOW TIME!"

@@ -5,13 +5,13 @@
   <div class="content-container">
     <%# Contenu %>
     <h1 class="text-light">On regarde quoi ce soir ?</h1>
-    <p class="p-color">Lorem ipsum dolor sit amet.</p>
+    <p class="p-color">On vous aide en quelques clics !</p>
 
     <%# Barre de recherche %>
     <div class="search-container">
   <div class="search-wrapper">
     <%= simple_form_for :search, url: movies_path, method: :get do |f| %>
-      <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "type something to search" },
+      <%= f.input :query, label: false, input_html: { class: "search-input", placeholder: "Recherche" },
                   wrapper_html: { class: 'search-input-wrapper' },
                   wrapper: :default %>
 
@@ -64,45 +64,12 @@
           <span class="counter" data-filter-target="genreCounter">0</span>
         </div>
         <div class="genre-grid">
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Action">
-            <i class='bx bx-movie-play'></i>
-            <span>Action</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Comédie">
-            <i class='bx bx-movie-play'></i>
-            <span>Comédie</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Drame">
-            <i class='bx bx-movie-play'></i>
-            <span>Drame</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Fantastique">
-            <i class='bx bx-movie-play'></i>
-            <span>Fantastique</span>
-          </button>
-
-          <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Horreur">
-            <i class='bx bx-movie-play'></i>
-            <span>Horreur</span>
-          </button>
-
-           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Science-fiction">
-            <i class='bx bx-movie-play'></i>
-            <span>Science-fiction</span>
-          </button>
-
-           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Romance">
-            <i class='bx bx-movie-play'></i>
-            <span>Romance</span>
-          </button>
-
-           <button class="genre-button" data-action="click->filter#toggleGenre", data-genre="Thriller">
-            <i class='bx bx-movie-play'></i>
-            <span>Thriller</span>
-          </button>
+          <% Movie::GENRES.each do |english_genre, details| %>
+            <button class="genre-button" data-action="click->filter#toggleGenre" data-genre="<%= english_genre %>">
+              <i class="<%= details[:icon] %>"></i>
+              <span><%= details[:name] %></span>
+            </button>
+          <% end %>
         </div>
       </div>
 
@@ -112,21 +79,13 @@
           <h3>Plateformes</h3>
           <span class="counter" data-filter-target="platformCounter">0</span>
         </div>
-        <div class="platform-slide">
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Disney">
-            <i class='bx bx-tv'></i>
-            <span>Disney</span>
-          </button>
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Netflix">
-            <i class='bx bx-tv'></i>
-            <span>Netflix</span>
-          </button>
-
-          <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="Canal+">
-            <i class='bx bx-tv'></i>
-            <span>Canal+</span>
-          </button>
-        </div>
+          <div class="platform-slide genre-grid">
+            <% Service.all.each do |service| %>
+              <button class="platform-button" data-action="click->filter#togglePlatform" data-platform="<%= service.service %>">
+                <img src="<%= service.service_logo_link %>" alt="<%= service.service %> logo" class="service-logo">
+              </button>
+            <% end %>
+          </div>
       </div>
 
       <%# Section durée %>

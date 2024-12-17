@@ -1,12 +1,82 @@
 .light-text {
   color: $whitepurple;
+  font-size: small;
+}
+
+.light-text-h3 {
+  color: $whitepurple;
 }
 
 .dark-text {
   color: $greypurple;
 }
 
+h1 {
+  color: $whitepurple;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-weight: 200;
+}
+
 h3 {
   color: $whitepurple;
   margin-top: 20px;
+  font-weight: 100;
+}
+
+h4 {
+  color: white;
+  font-size: large;
+  font-weight: 700;
+  margin-top: 10px;
+  text-shadow: $shadow;
+}
+
+h5 {
+  color: white;
+  font-size: small;
+  font-weight: 200;
+  margin-top: 10px;
+  text-shadow: $shadow;
+}
+
+h6 {
+  color: $whitepurple;
+  font-size: x-small;
+  font-weight: 300;
+}
+
+.list-card h5 {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-left: 12%;
+  padding-right: 12%;
+  padding-bottom: 6%;
+  text-shadow: $shadow;
+  text-wrap: balance;
+  color: white;
+  font-size: small;
+  font-weight: 200;
+}
+
+.list-card-content {
+  position: absolute;
+  padding-left: 10%;
+  padding-right: 35%;
+	top: 50%;
+  transform: translate(0%, -50%);
+  text-shadow: $shadow;
+  text-wrap: balance;
+}
+
+.movie-card-text {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-left: 12%;
+  padding-right: 12%;
+  padding-bottom: 6%;
+  text-shadow: $shadow;
+  text-wrap: balance;
 }
