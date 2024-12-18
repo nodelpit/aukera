@@ -31,7 +31,7 @@
           <div class="profile-platform-grid">
             <% if current_user.services.any? %>
               <% current_user.services.each do |service| %>
-                <span class="profile-platform-button"><%= service.service.presence || "Service inconnu" %></span>
+                <span class="profile-platform-button"><img src="<%= service.service_logo_link %>" alt="<%= service.service %> logo" class="service-logo"></span>
               <% end %>
             <% else %>
               <p class="profile-empty-message">Vous n'avez pas encore de services préférés</p>
