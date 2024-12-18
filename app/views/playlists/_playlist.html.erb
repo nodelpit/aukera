@@ -1,8 +1,8 @@
 <div class="list-card-hz hover-on">
   <div class="playlist-icons">
     <div class="playlist-icon"><%= link_to image_tag("Edit icon.png"), edit_playlist_path(playlist), data: { turbo_frame: 'movie-modal' } %></div>
-    <div class="playlist-icon"><%= link_to image_tag("Delete icon.png"), playlist_path(playlist), data: { turbo_method: :delete, turbo_confirm: "#{playlist.name} ne pourra pas être récupérée !"} %></div>
-    <div class="playlist-icon"><%# button_to image_tag("Delete icon.png"), playlist_path(playlist), method: :delete, data: { controller: "alert", turbo: false, action: "click->alert#initSweetalert", text: " La playlist #{playlist.name} ne pourra pas être récupérée !" }%></div>
+    <%# <div class="playlist-icon"><%= link_to image_tag("Delete icon.png"), playlist_path(playlist), data: { turbo_method: :delete, turbo_confirm: "#{playlist.name} ne pourra pas être récupérée !"} %>
+    <div class="playlist-icon"><%= button_to image_tag("Delete icon.png"), playlist_path(playlist), method: :delete, class: "delete-button", data: { controller: "alert", turbo: false, action: "click->alert#initSweetalert", text: " La playlist #{playlist.name} ne pourra pas être récupérée !" }%></div>
   </div>
   <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
     <% if playlist.photo.key? %>

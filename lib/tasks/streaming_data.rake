@@ -88,7 +88,7 @@ namespace :streaming_data do
     end
 
     # LIMITE pour environnement de TEST ===================>
-    film_count = 0
+    # film_count = 0
     # =====================================================>
     platforms.each do |platform|
       puts "Récupération des données du catalogue #{platform}..."
@@ -120,14 +120,14 @@ namespace :streaming_data do
             puts "Aucune option de streaming trouvée pour #{show_data['title']}"
           end
           # LIMITE pour environnement de TEST ===================>
-          film_count += 1
-          if film_count >= 2000
-            puts "Limite de 2000 films atteinte, arrêt de la récupération."
-            break
-          end
+          # film_count += 1
+          # if film_count >= 2000
+          #   puts "Limite de 2000 films atteinte, arrêt de la récupération."
+          #   break
+          # end
         end
 
-        break if film_count >= 2000
+        # break if film_count >= 2000
 
         # =======================================================>
 
