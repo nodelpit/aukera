@@ -1,42 +1,15 @@
 <div class="container">
   <div class="container-content">
-  <div class="playlist-container-fade-top purple-gradient-top"> </div>
+  <%# <div class="playlist-container-fade-top purple-gradient-top"> </div> %>
     <div class="playlists-container-content">
       <h1 class="aukera-h1">Mes playlists</h1>
-      <div class="button-light button-right"><span class="button-text"><%= link_to "＋ Nouvelle playlist", new_playlist_path %></span></div>
-        <div class="scroll-container">
-          <div class="scroll-fade-bottom"></div>
+      <div class="button-light button-right"><span class="button-text"><%= link_to "＋ Nouvelle playlist", new_playlist_path, data: { turbo_frame: 'movie-modal' } %></span></div>
+        <div class="scroll-container" id="playlists-list">
           <% @playlists.each do |playlist| %>
-            <div class="list-card-hz">
-              <div class="playlist-icons">
-                <div class="playlist-delete-icon"><%= link_to image_tag("Modif icon.png"), edit_playlist_path(playlist) %></div>
-                <div class="playlist-delete-icon"><%= button_to image_tag("Delete icon.png"), playlist_path(playlist), method: :delete, data: { controller: "alert", turbo: false, action: "click->alert#initSweetalert", text: " La playlist #{playlist.name} ne pourra pas être récupérée !" }%></div>
-              </div>
-              <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
-                <% if playlist.photo.key? %>
-                  <div class="list-card-hz" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
-                    <div class="list-card-hz card-gradient">
-                      <div class="list-card-content">
-                        <h5><%= playlist.name %></h5>
-                        <h6><%= playlist.description.first(50) %>...</h6>
-                      </div>
-                    </div>
-                  </div>
-                <% else %>
-                <div class="list-card-hz" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
-                    <div class="list-card-hz card-gradient">
-                      <div class="list-card-content">
-                        <h5><%= playlist.name %></h5>
-                        <h6><%= playlist.description.first(50) %>...</h6>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
+          <%= render 'playlists/playlist', playlist: playlist %>
           <% end %>
         </div>
     </div>
-  <div class="playlist-container-fade-bottom"> </div>
+  <%# <div class="playlist-container-fade-bottom"> </div> %>
 </div>
 </div>

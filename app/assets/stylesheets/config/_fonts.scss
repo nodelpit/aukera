@@ -15,3 +15,8 @@ $headers-font: 'Poppins', sans-serif;
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+$full-height: 73vh;
+$trailer-height: $full-height / 3;
+$content-height: $trailer-height * 2;
+$full_width: 90vw;

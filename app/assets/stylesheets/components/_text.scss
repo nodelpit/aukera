@@ -24,6 +24,17 @@ h3 {
   font-weight: 100;
 }
 
+.form-title {
+  background: $purplegradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  top: -50px;
+  left: 5px;
+  font-weight: 200;
+  filter: $dropshadow;
+}
+
 h4 {
   color: white;
   font-size: large;
@@ -38,6 +49,15 @@ h5 {
   font-weight: 200;
   margin-top: 10px;
   text-shadow: $shadow;
+}
+
+.hover-on-shine:hover {
+  scale: $hoverscale;
+  filter: $dropshadow;
+}
+
+.hover-on:hover {
+  scale: $hoverscale;
 }
 
 h6 {

@@ -1,5 +1,7 @@
-<div class="signup-background">
-  <div class="signup-container">
+<div class="container">
+  <div class="modale-container">
+    <div class="regs-container">
+    <div class="playlists-container-content">
     <h2 class="signup-title">Inscription</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -8,7 +10,7 @@
       <!-- Informations personnelles -->
       <div class="signup-section">
         <h3 class="signup-section-title">Informations personnelles</h3>
-        <div class="signup-inputs">
+        <div class="regs-container-p">
           <%= f.input :first_name, required: true, label: "Prénom" %>
           <%= f.input :last_name, required: true, label: "Nom" %>
           <%= f.input :email, required: true, label: "Email" %>
@@ -42,10 +44,9 @@
       </div>
 
       <!-- Bloc 3 : upload image -->
-      <div class="form-section upload-image-section">
+      <div class="signup-section">
         <h3 class="signup-section-title">Photo de profil</h3>
         <div class="form-group">
-          <%= f.label :avatar, "Uploader une photo de profil" %>
           <%= f.file_field :avatar, accept: 'image/*', class: "file-input" %>
         </div>
       </div>
@@ -55,5 +56,7 @@
         <%= f.button :submit, "S'inscrire", class: "signup-submit-button" %>
       </div>
     <% end %>
+    </div>
+    </div>
   </div>
 </div>

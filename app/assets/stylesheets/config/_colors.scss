@@ -8,7 +8,7 @@ $light-gray: #F4F4F4;
 
 // COLORS
 
-$anthracite: #292A36;
+$anthracite: rgb(41, 42, 54);
 $whitepurple: #E5D8EE;
 $greypurple: #BC9ED2;
 $whitepurple: #E5D8EE;
@@ -17,8 +17,8 @@ $whitepurple: #E5D8EE;
 
 $purplegradient: linear-gradient(
   to right,
-  #4655FD 0%,
-  #8C46FD 100%
+  rgb(70, 85, 253) 0%,
+  rgb(140, 70, 253) 100%
 );
 $anthracitegradienttotop: linear-gradient(
   180deg,
@@ -44,6 +44,13 @@ $darkpurplegradient: linear-gradient(
 // STYLES
 
 $shadow: 5px 5px 10px rgba(0, 0, 0, 0.179);
+$shadowtop: -5px -5px 10px rgba(0, 0, 0, 0.179);
+
+$dropshadow: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.202));
+$dropshadow-icon: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.202));
+
+$hoverscale: 1.05;
+$blur: blur(1px);
 
 // BACKGROUND
 
@@ -56,3 +63,14 @@ $shadow: 5px 5px 10px rgba(0, 0, 0, 0.179);
   rgba(75, 55, 110, 0.75) 83%,
   rgba(0, 0, 0, 1) 100%);
 }
+
+.form-gradient {
+  background: linear-gradient(-45deg,
+  rgba(0, 0, 0, 1) 0%,
+  rgba(64, 52, 99, 1) 49%,
+  rgba(70, 53, 104, 1) 60%,
+  rgba(0, 0, 0, 1) 100%);
+}
+
+// rgb(70, 85, 253) 0%,
+// rgb(140, 70, 253) 100%

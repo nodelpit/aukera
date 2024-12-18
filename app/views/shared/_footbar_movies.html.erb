@@ -1,13 +1,24 @@
-if ["devise/registrations", "devise/sessions", "devise/passwords"].include?(params[:controller])
-
-
-
 <div class="footbar">
   <div class="footbar-container">
     <div class="footbar-inactive-icon"><%= link_to image_tag("Home inactive icon.png"), root_path %></div>
-    <div class="footbar-active-icon"><%= link_to image_tag("Movies active icon.png"), movies_path %></div>
+    <div><%= link_to image_tag("Movies active icon.png"), movies_path, class: "footbar-active-icon" %></div>
     <div class="footbar-inactive-icon"><%= link_to image_tag("Playlists inactive icon.png"), playlists_path %></div>
-    <div class="footbar-inactive-icon"><%= link_to image_tag("User inactive icon.png"), myprofile_path %></div>
+    <% if user_signed_in? %>
+    <li class="nav-item dropdown footbar-inactive-icon">
+      <%= image_tag "User inactive icon.png", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <%= link_to "Mon profil", myprofile_path, class: "dropdown-item" %>
+        <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
+      </div>
+    </li>
+    <% else %>
+    <li class="nav-item dropdown footbar-inactive-icon">
+      <%= image_tag "User inactive icon.png", class: "dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
+        <%= link_to "Inscription", new_user_registration_path, class: "dropdown-item" %>
+      </div>
+    </li>
+    <% end %>
   </div>
-<%# link_to "Deconnexion", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vous déconnecter ?" } %>
 </div>

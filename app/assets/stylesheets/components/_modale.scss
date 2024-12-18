@@ -1,8 +1,3 @@
-$full-height: 75vh;
-$trailer-height: $full-height / 3;
-$content-height: $trailer-height * 2;
-$full_width: 90vw;
-
 .modale-container {
   position: relative;
   z-index: 1;
@@ -10,9 +5,22 @@ $full_width: 90vw;
   border-radius: 10px;
   height: $full-height;
   width: $full_width;
-  top: 50%;
+  top: 48%;
 	left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.modale-form-container {
+  position: relative;
+  z-index: 1;
+  background-color: #292A36;
+  border-radius: 10px;
+  height: $full-height / 2;
+  width: $full_width;
+  top: 48%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: $shadow;
 }
 
 .modale-container-trailer {
@@ -89,7 +97,11 @@ $full_width: 90vw;
   float: right;
   width: 15px;
   margin: 5%;
-  box-shadow: $shadow;
+  filter: $dropshadow-icon;
+}
+
+.modale-quit-icon:hover {
+  scale: $hoverscale;
 }
 
 .modale-play-icon {
@@ -99,10 +111,18 @@ $full_width: 90vw;
   top: 50%;
 	left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: $shadow;
+  filter: $dropshadow-icon;
+}
+
+.modale-play-icon:hover {
+  scale: $hoverscale;
 }
 
 .modale-save-icon {
   width: 35px;
-  box-shadow: $shadow;
+  filter: $dropshadow-icon;
+}
+
+.modale-save-icon:hover {
+  scale: $hoverscale;
 }

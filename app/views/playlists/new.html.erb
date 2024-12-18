@@ -1,11 +1,16 @@
-<div class="container">
-  <div class="container-content">
-    <h3>Créer ma playlist</h3>
-    <%= simple_form_for(@playlist) do |f| %>
-      <%= f.input :name, label: false, placeholder: "Le nom de ta playlist ici" %>
-      <%= f.input :description, label: false, placeholder: "Ta description ici" %>
-      <%= f.input :photo, label: false, as: :file %>
-      <%= f.submit "Créer", class: "button-form" %>
-    <% end %>
+<%= turbo_frame_tag "movie-modal" do %>
+  <div class="form-container form-gradient">
+    <div class="modale-form-container">
+      <h3 class="form-title">Créer ma playlist</h3>
+      <div class="form-container-content">
+        <%= simple_form_for(@playlist) do |f| %>
+          <%= f.input :name, label: false, placeholder: "Le nom de ta playlist ici" %>
+          <%= f.input :description, label: false, placeholder: "Ta description ici" %>
+          <%= f.input :photo, label: false, as: :file %>
+          <%= f.submit "Créer", class: "button-form" %>
+        <% end %>
+        <div class="button-form-dark"><%= link_to "Annuler", :back, class: "text-decoration-none text-info" %></div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>

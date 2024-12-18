@@ -1,8 +1,11 @@
 .scroll {
   overflow: auto;
   white-space: nowrap;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: -10px;
 }
 
 .service-card {
@@ -15,6 +18,10 @@
   display: inline-block;
   overflow: hidden;
   margin-inline-end: 10px;
+}
+
+.service-card:hover {
+  scale: 1.05;
 }
 
 .service-card img {
@@ -39,17 +46,25 @@
   margin-inline-end: 10px;
 }
 
+.scroll:hover > .movie-card:not(:hover) {
+  filter: $blur;
+}
+
 .movie-card-container {
   position: relative;
 }
 
 .movie-card-save-icon {
   width: 35px;
-  box-shadow: $shadow;
+  filter: $dropshadow-icon;
   z-index: 6;
   position: absolute;
   right: 0px;
   margin: 5%;
+}
+
+.movie-card-save-icon:hover {
+  scale: $hoverscale;
 }
 
 .movie-capsules-container {
@@ -129,25 +144,37 @@
 
 .playlist-icons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   z-index: 6;
   position: absolute;
-  top: 5px;
-  right: 30px;
+  top: 10px;
+  right: 10px;
   width: 45px;
 }
 
-.playlist-delete-icon {
-  width: 10px;
-  box-shadow: $shadow;
+.playlist-icons img {
+  width: 25px;
+  margin-left: 5px;
 }
 
 .movie-icons {
   z-index: 6;
   position: absolute;
-  top: 5px;
-  right: 0px;
-  width: 45px;
+  top: 10px;
+  right: 10px;
+}
+
+.movie-icons img {
+  width: 25px;
+  margin-bottom: 5px;
+}
+
+.playlist-icon {
+  filter: $dropshadow-icon;
+}
+
+.playlist-icon:hover {
+  scale: $hoverscale;
 }
 
 .playlist-container-fade-bottom {

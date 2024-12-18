@@ -37,3 +37,11 @@
     @extend .common-submit-button !optional;
   }
 }
+
+.regs-container {
+  padding-left: 20px; /* Léger espace à gauche */
+}
+
+.regs-container-p {
+  color: white; /* Texte des <p> en blanc */
+}

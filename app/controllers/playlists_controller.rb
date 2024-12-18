@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = Playlist.by_recently_updated
+    @playlists = Playlist.by_recently_updated.where(user_id: current_user.id)
   end
 
   def show
@@ -16,7 +16,10 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     @playlist.user = current_user
     if @playlist.save
-      redirect_to playlist_path(@playlist)
+      respond_to do |format|
+        format.html { redirect_to playlist_path(@playlist) }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
