@@ -1,13 +1,15 @@
  <%= turbo_frame_tag "movie-modal" do %>
 <div class="container" data-controller="modal">
-  <div class="modale-container">
+  <div class="modale-container" data-controller="service-selector">
     <div class="modale-container-above">
       <%# TODO  griser le bouton tant qu'aucune plateforme n'est sélectionnée ? pas très user friendly
                 le lien du bouton doit être celui du service_show sélectionné %>
       <div class="modale-save-icon"><%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(@movie.id), data: { turbo_frame: "_top"} %></div>
-      <div class="button-light"><span class="button-text">Regarder</span></div>
+      <div class="button-watch">
+        <%= link_to "Regarder", "#", class: "button-text", data: { service_selector_target: "watchButton" }, target: "_blank" %>
+      </div>
     </div>
-
+<%# button-light %>
     <div class="modale-container-trailer" style="background-image: url(<%= @movie.horizontal_image_url %>)">
       <div class="modale-container-trailer card-gradient">
         <div class="modale-quit-icon" data-action="click->modal#modalReset">
@@ -21,8 +23,9 @@
     <div class="modale-container-content">
       <div class="scroll">
         <% @services.each do |service| %>
+          <% service_show = ServiceShow.find_by(service: service, movie: @movie) %>
           <div class="service-card">
-            <img src="<%= service.service_logo_link %>" alt="<%= service.service %>" >
+            <img src="<%= service.service_logo_link %>" alt="<%= service.service %>" data-action="click->service-selector#select" data-link="<%= service_show&.link %>" >
           </div>
         <% end %>
       </div>

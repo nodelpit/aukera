@@ -32,6 +32,37 @@ $hoverscale: 1.05;
   -webkit-text-fill-color: transparent; // Rendre le texte transparent pour laisser apparaître le gradient
 }
 
+.button-watch {
+  background-color: white; /* Fond blanc par défaut */
+  width: 150px;
+  border-radius: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  box-shadow: $shadow;
+  color: gray;
+  font-size: small;
+  font-weight: 400;
+  pointer-events: none;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-watch.active {
+  color: white;
+  background: $purplegradient;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.button-watch.active .button-text {
+  color: white !important; /* Force le texte à devenir blanc */
+  -webkit-text-fill-color: white !important; /* Force le remplissage du texte à blanc */
+  text-decoration: none;
+}
+
 .playlist-edit-icon {
   width: 35px;
   box-shadow: $shadow;
