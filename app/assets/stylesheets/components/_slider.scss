@@ -46,7 +46,7 @@
   margin-inline-end: 10px;
 }
 
-.scroll:hover>.movie-card:not(:hover) {
+.scroll:hover > .movie-card:not(:hover) {
   filter: $blur;
 }
 
