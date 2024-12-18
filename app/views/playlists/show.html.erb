@@ -10,6 +10,7 @@
     </div>
       <div class="scroll-container">
       <% @movies.each do |movie| %>
+        <div class="movie-card-hz hover-on">
           <div class="movie-icons" data-controller="alert">
             <div class="playlist-icon"><%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(movie.id), data: { turbo_frame: "_top"} %></div>
             <div class="playlist-icon"><%= link_to image_tag("Delete icon.png"), playlist_movie_remove_movie_from_playlist_path(@playlist, movie), data: { turbo_method: :delete, turbo_confirm: "#{movie.title} va être retiré de #{@playlist.name} !"} %></div>
