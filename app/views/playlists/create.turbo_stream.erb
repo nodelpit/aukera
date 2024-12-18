@@ -1,0 +1,4 @@
+<%= turbo_stream.update 'movie-modal', "" %>
+<%= turbo_stream.prepend "playlists-list" do %>
+  <%= render partial: 'playlists/playlist', locals: { playlist: @playlist } %>
+<% end %>

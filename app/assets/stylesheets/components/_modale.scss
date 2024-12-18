@@ -10,6 +10,19 @@
   transform: translate(-50%, -50%);
 }
 
+.modale-form-container {
+  position: relative;
+  z-index: 1;
+  background-color: #292A36;
+  border-radius: 10px;
+  height: $full-height / 2;
+  width: $full_width;
+  top: 48%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: $shadow;
+}
+
 .modale-container-trailer {
   position: absolute;
   z-index: 2;

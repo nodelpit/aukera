@@ -16,7 +16,10 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     @playlist.user = current_user
     if @playlist.save
-      redirect_to playlist_path(@playlist)
+      respond_to do |format|
+        format.html { redirect_to playlist_path(@playlist) }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
