@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   patch "myprofile", to: "users#update"
   patch "myprofile/photo", to: "users#update_photo", as: :update_photo_myprofile
 
-
   resources :users, only: [:new, :create] do
     member do
       patch :update_photo
