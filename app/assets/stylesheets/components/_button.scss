@@ -58,8 +58,8 @@ $hoverscale: 1.05;
 }
 
 .button-watch.active .button-text {
-  color: white !important; /* Force le texte à devenir blanc */
-  -webkit-text-fill-color: white !important; /* Force le remplissage du texte à blanc */
+  color: white !important;
+  -webkit-text-fill-color: white !important; 
   text-decoration: none;
 }
 

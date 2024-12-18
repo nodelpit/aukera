@@ -13,12 +13,10 @@ export default class extends Controller {
     console.log("Élément cliqué:", event.target); // je stock dans une var js
     const selectedService = event.currentTarget;
 
-    // Supprimer la classe 'active' de toutes les cartes de service
     this.element.querySelectorAll(".service-card").forEach(card => {
       card.classList.remove("active");
     });
 
-    // Ajouter la classe 'active' à la div service-card cliquée
     selectedService.parentElement.classList.add("active");
     // console.log("Classe 'active' ajoutée à la div de service", selectedService);
 
