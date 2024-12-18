@@ -6,9 +6,7 @@
       <div class="button-light button-right"><span class="button-text"><%= link_to "＋ Nouvelle playlist", new_playlist_path, data: { turbo_frame: 'movie-modal' } %></span></div>
         <div class="scroll-container" id="playlists-list">
           <% @playlists.each do |playlist| %>
-
           <%= render 'playlists/playlist', playlist: playlist %>
-
           <% end %>
         </div>
     </div>
