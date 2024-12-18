@@ -17,6 +17,10 @@
   margin-inline-end: 10px;
 }
 
+.service-card:hover {
+  scale: 1.05;
+}
+
 .service-card img {
   margin: auto;
   position: absolute;

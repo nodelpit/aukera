@@ -1,3 +1,6 @@
+$dropshadow: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.291));
+$hoverscale: 1.05;
+
 .button-light {
   background-color: white;
   width: 150px;
@@ -9,6 +12,11 @@
   text-align: center;
   box-shadow: $shadow;
   text-decoration: none;
+}
+
+.button-light:hover {
+  scale: $hoverscale;
+  filter: $dropshadow;
 }
 
 .button-right {
@@ -27,6 +35,11 @@
 .playlist-edit-icon {
   width: 35px;
   box-shadow: $shadow;
+}
+
+.playlist-edit-icon:hover {
+  scale: $hoverscale;
+  filter: $dropshadow;
 }
 
 .button-form {

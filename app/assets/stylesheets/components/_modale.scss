@@ -92,6 +92,10 @@ $full_width: 90vw;
   box-shadow: $shadow;
 }
 
+.modale-quit-icon:hover {
+  scale: 1.05;
+}
+
 .modale-play-icon {
   width: 35px;
   position: relative;

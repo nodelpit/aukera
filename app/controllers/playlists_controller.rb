@@ -1,6 +1,6 @@
 class PlaylistsController < ApplicationController
   def index
-    @playlists = Playlist.by_recently_updated
+    @playlists = Playlist.by_recently_updated.where(user_id: current_user.id)
   end
 
   def show
