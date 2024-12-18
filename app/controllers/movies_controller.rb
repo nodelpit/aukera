@@ -20,7 +20,12 @@ class MoviesController < ApplicationController
 
     @movies = @movies.where("runtime <= ?", params[:duration]) if params[:duration].present?
     @movies = @movies.sample(5)
-    @playlists = Playlist.by_recently_updated.where(user_id: current_user.id).limit(5)
+
+    @playlists = if current_user
+                   Playlist.by_recently_updated.where(user_id: current_user.id).limit(5)
+                 else
+                   [] # vide si pas connecté
+                 end
   end
 
   def show
