@@ -13,14 +13,9 @@
 <!-- Photo de profil avec possibilité de modification -->
 <div>
   <%= form_with(model: current_user, url: update_photo_myprofile_path, local: true, html: { method: :patch, multipart: true }) do |f| %>
-   <%# <%= f.text_field :password,
-                  hint: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications",
-                  required: true,
-                  label: "Mot de passe actuel"
-                  %> 
   <label for="avatar-upload">
     <div>
-      <%= cl_image_tag current_user.avatar.key || "default-avatar.png", alt: "Avatar utilisateur" %>
+      <%# <%= cl_image_tag current_user.avatar.key || "default-avatar.png", alt: "Avatar utilisateur" %>
       <input type="file" name="user[avatar]" id="avatar-upload" style="display: none;" accept="image/*" onchange="this.form.submit();">
       <div>
         Cliquez pour changer la photo
@@ -30,16 +25,45 @@
 <% end %>
 </div>
 
+<div class="edit-user-platforms-section">
+  <h3>Modifier vos plateformes préférées</h3>
 
+  <!-- Grille des plateformes -->
+  <div class="platforms-grid">
+    <% Service.distinct.pluck(:service).each do |platform| %>
+      <button type="button"
+              class="platform-button <%= 'active' if current_user.services.pluck(:service).include?(platform) %>"
+              data-platform="<%= platform %>"
+              onclick="togglePlatform(this, '<%= platform %>')">
+        <%= platform %>
+      </button>
+    <% end %>
+  </div>
 
+  <!-- Champ caché pour stocker les plateformes sélectionnées -->
+  <%= form_with url: update_myprofile_path, method: :patch, local: true do %>
+    <%= hidden_field_tag 'user[services]', current_user.services.pluck(:service).join(','), id: "selected-platforms" %>
+    <div class="platforms-action-buttons" style="margin-top: 20px;">
+      <%= submit_tag "Valider", class: "platforms-validate-button" %>
+    </div>
+  <% end %>
+</div>
 
+<script>
+  function togglePlatform(button, platform) {
+    const hiddenInput = document.getElementById('selected-platforms');
+    const selectedPlatforms = new Set(hiddenInput.value.split(',').filter(Boolean));
 
+    button.classList.toggle('active');
 
+    if (button.classList.contains('active')) {
+      selectedPlatforms.add(platform);
+    } else {
+      selectedPlatforms.delete(platform);
+    }
 
-
-
-
-
-
+    hiddenInput.value = Array.from(selectedPlatforms).join(',');
+  }
+</script>
 
 </div>

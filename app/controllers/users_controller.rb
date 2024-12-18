@@ -48,13 +48,28 @@ before_action :authenticate_user!
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to myprofile_path, notice: 'Profil mis à jour'
+    if params[:user][:services].present?
+      submitted_services = params[:user][:services].split(',')
+
+      existing_services = current_user.services.pluck(:service)
+
+      platforms_to_add = submitted_services - existing_services
+      platforms_to_remove = existing_services - submitted_services
+
+      current_user.services += Service.where(service: platforms_to_add)
+
+      current_user.services.delete(Service.where(service: platforms_to_remove))
     else
-      flash.now[:alert] = 'Erreur'
-      render :edit, status: :unprocessable_entity
+      current_user.services.clear
+    end
+
+    if current_user.save
+      redirect_to myprofile_path, notice: "Profil mis à jour avec succès."
+    else
+      redirect_to edit_myprofile_path, alert: "Erreur lors de la mise à jour du profil."
     end
   end
+
 
   def destroy
     if @user.destroy
