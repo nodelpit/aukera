@@ -1,4 +1,4 @@
-$full-height: 75vh;
+$full-height: 73vh;
 $trailer-height: $full-height / 3;
 $content-height: $trailer-height * 2;
 $full_width: 90vw;
@@ -10,7 +10,7 @@ $full_width: 90vw;
   border-radius: 10px;
   height: $full-height;
   width: $full_width;
-  top: 50%;
+  top: 48%;
 	left: 50%;
   transform: translate(-50%, -50%);
 }

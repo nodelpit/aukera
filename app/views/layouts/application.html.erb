@@ -29,9 +29,7 @@
     <%= render "shared/navbar" %>
     <%# , unless controller_name == "name" %>
     <%= render "shared/flashes" %>
-
-    <%= yield %>
-
+    
     <% if controller.controller_name == 'pages' %>
       <%= render "shared/footbar_home" %>
     <% elsif controller.controller_name == 'movies' %>
@@ -41,5 +39,8 @@
     <% else %>
       <%= render "shared/footbar_user" %>
     <% end %>
+
+    <%= yield %>
+
   </body>
 </html>
