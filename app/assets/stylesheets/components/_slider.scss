@@ -35,7 +35,7 @@
   margin: auto;
   position: absolute;
   top: 50%;
-	left: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   height: 30px;
   padding: 5%;
@@ -179,6 +179,21 @@
 
 .playlist-icon {
   filter: $dropshadow-icon;
+
+  .delete-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      scale: $hoverscale;
+    }
+  }
+
+  img {
+    display: block;
+  }
 }
 
 .playlist-icon:hover {
