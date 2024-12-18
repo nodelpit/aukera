@@ -12,17 +12,22 @@
 
 <!-- Photo de profil avec possibilité de modification -->
 <div>
-  <%= form_with url: update_photo_myprofile_path, method: :patch, html: { multipart: true } do %>
-    <label for="avatar-upload">
+  <%= form_with(model: current_user, url: update_photo_myprofile_path, local: true, html: { method: :patch, multipart: true }) do |f| %>
+   <%# <%= f.text_field :password,
+                  hint: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications",
+                  required: true,
+                  label: "Mot de passe actuel"
+                  %> 
+  <label for="avatar-upload">
+    <div>
+      <%= cl_image_tag current_user.avatar.key || "default-avatar.png", alt: "Avatar utilisateur" %>
+      <input type="file" name="user[avatar]" id="avatar-upload" style="display: none;" accept="image/*" onchange="this.form.submit();">
       <div>
-   <%= cl_image_tag current_user.avatar.key || "default-avatar.png", alt: "Avatar utilisateur" %>
-    <input type="file" name="user[avatar]" id="avatar-upload" style="display: none;" accept="image/*" onchange="this.form.submit();">
-        <div>
-          Cliquez pour changer la photo
-        </div>
+        Cliquez pour changer la photo
       </div>
-    </label>
-  <% end %>
+    </div>
+  </label>
+<% end %>
 </div>
 
 

@@ -15,9 +15,13 @@ before_action :authenticate_user!
 
   def update_photo
     if params[:user][:avatar].present?
-      if current_user.update(avatar_params)
+      Rails.logger.info ">>> Avatar params: #{params[:user][:avatar]}"
+    #  current_user.avatar.purge if current_user.avatar.attached?
+      if current_user.avatar.attach(params[:user][:avatar])
+        Rails.logger.info ">>> Avatar successfully updated for User #{current_user.id}"
         redirect_to myprofile_path, notice: "Photo de profil mise à jour avec succès."
       else
+        Rails.logger.error ">>> Error while updating avatar: #{current_user.errors.full_messages}"
         redirect_to edit_myprofile_path, alert: "Erreur lors de l'ajout de la photo."
       end
     else
@@ -59,6 +63,12 @@ before_action :authenticate_user!
     end
   end
 
+  protected
+
+  def configure_permitted_parameter
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
+  end
+
   private
 
   def user_params
@@ -68,4 +78,6 @@ before_action :authenticate_user!
   def avatar_params
     params.require(:user).permit(:avatar)
   end
+
+
 end
