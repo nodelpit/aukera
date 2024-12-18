@@ -121,13 +121,13 @@ namespace :streaming_data do
           end
           # LIMITE pour environnement de TEST ===================>
           film_count += 1
-          if film_count >= 300
-            puts "Limite de 300 films atteinte, arrêt de la récupération."
+          if film_count >= 2000
+            puts "Limite de 2000 films atteinte, arrêt de la récupération."
             break
           end
         end
 
-        break if film_count >= 300
+        break if film_count >= 2000
 
         # =======================================================>
 
