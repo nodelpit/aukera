@@ -45,13 +45,9 @@ class Movie < ApplicationRecord
   validate :validate_genres
   validate :season_count_only_for_series
 
-
-  # scope pour rechercher les films par genre @noah ?
-  #scope :by_genre, ->(genre) { where("genres LIKE ?", "%#{genre}%") }
-
   def translated_genres
     genres_list = genres.split(',').map(&:strip)
-    genres_list.map { |genre| GENRES[genre] || genre }.join(', ')
+    genres_list.map { |genre| GENRES[genre]&.dig(:name) || genre }.join(', ')
   end
 
   private
