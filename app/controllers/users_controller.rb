@@ -3,6 +3,7 @@ before_action :authenticate_user!
 
   def show
     @user = current_user
+    @playlists = Playlist.by_recently_updated.where(user_id: current_user.id).limit(5)
   end
 
   def new

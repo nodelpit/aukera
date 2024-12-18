@@ -7,7 +7,7 @@
   position: fixed;
   bottom: 0px;
   z-index: 10;
-  box-shadow: $shadow;
+  box-shadow: $shadowtop;
 }
 
 .footbar-container {
@@ -33,7 +33,7 @@
 .footbar-active-icon img {
   width: 50px;
   margin-top: -50px;
-  box-shadow: $shadow;
+  filter: $dropshadow-icon;
 }
 
 // .footbar-active-icon img:hover {

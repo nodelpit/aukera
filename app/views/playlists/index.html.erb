@@ -1,16 +1,16 @@
 <div class="container">
   <div class="container-content">
-  <div class="playlist-container-fade-top purple-gradient-top"> </div>
+  <%# <div class="playlist-container-fade-top purple-gradient-top"> </div> %>
     <div class="playlists-container-content">
       <h1 class="aukera-h1">Mes playlists</h1>
       <div class="button-light button-right"><span class="button-text"><%= link_to "＋ Nouvelle playlist", new_playlist_path %></span></div>
         <div class="scroll-container">
           <div class="scroll-fade-bottom"></div>
           <% @playlists.each do |playlist| %>
-            <div class="list-card-hz">
+            <div class="list-card-hz hover-on">
               <div class="playlist-icons">
-                <div class="playlist-delete-icon"><%= link_to image_tag("Edit icon.png"), edit_playlist_path(playlist) %></div>
-                <div class="playlist-delete-icon"><%= link_to image_tag("Delete icon.png"), playlist_path(playlist), data: { turbo_method: :delete, turbo_confirm: "#{playlist.name} ne pourra pas être récupérée !"} %></div>
+                <div class="playlist-icon"><%= link_to image_tag("Edit icon.png"), edit_playlist_path(playlist) %></div>
+                <div class="playlist-icon"><%= link_to image_tag("Delete icon.png"), playlist_path(playlist), data: { turbo_method: :delete, turbo_confirm: "#{playlist.name} ne pourra pas être récupérée !"} %></div>
               </div>
               <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
                 <% if playlist.photo.key? %>
@@ -37,6 +37,6 @@
           <% end %>
         </div>
     </div>
-  <div class="playlist-container-fade-bottom"> </div>
+  <%# <div class="playlist-container-fade-bottom"> </div> %>
 </div>
 </div>
