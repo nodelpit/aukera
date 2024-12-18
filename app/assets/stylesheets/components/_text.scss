@@ -40,6 +40,15 @@ h5 {
   text-shadow: $shadow;
 }
 
+.hover-on-shine:hover {
+  scale: $hoverscale;
+  filter: $dropshadow;
+}
+
+.hover-on:hover {
+  scale: $hoverscale;
+}
+
 h6 {
   color: $whitepurple;
   font-size: x-small;

@@ -7,7 +7,7 @@
     <% if @movies.present? %>
       <div class="scroll">
         <% @movies.each do |movie| %>
-          <div class="movie-card">
+          <div class="movie-card hover-on">
             <div class="movie-card-save-icon">
               <%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(movie.id), data: { turbo_frame: "_top"} %>
             </div>
@@ -39,13 +39,13 @@
       </div>
     <% end %>
 
-    <h3><%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none" %></h3>
+    <h3><%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none hover-on-shine" %></h3>
     <div class="scroll">
       <div class="scroll-fade-right"></div>
       <div class="scroll-container">
         <% @playlists.each do |playlist| %>
           <% if playlist.photo.key? %>
-            <div class="list-card" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
+            <div class="list-card hover-on" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
               <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
                 <div class="list-card card-gradient">
                   <h5><%= playlist.name %></h5>
@@ -65,7 +65,7 @@
 
         <div class="list-card" style="background: transparent; box-shadow: none">
           <%= link_to(playlists_path) do %>
-            <h5>Voir toutes mes playlists</h5>
+            <h5 class="hover-on-shine">Voir toutes mes playlists</h5>
           <% end %>
         </div>
       </div>
