@@ -55,7 +55,7 @@
 
 .button-watch.active .button-text {
   color: white !important;
-  -webkit-text-fill-color: white !important; 
+  -webkit-text-fill-color: white !important;
   text-decoration: none;
 }
 
@@ -157,6 +157,11 @@
   padding-right: 5%;
   padding-top: 3%;
   padding-bottom: 3%;
+  text-align: left;
+}
+
+.form-container-content textarea p {
+  padding-left: 50px;
 }
 
 ::placeholder {
