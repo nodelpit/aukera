@@ -25,7 +25,7 @@
 
 .modale-container-trailer {
   position: absolute;
-  z-index: 2;
+  // z-index: 2;
   height: $trailer-height;
   width: $full_width;
   border-top-right-radius: 10px;
@@ -114,10 +114,24 @@
   scale: $hoverscale;
 }
 
+.modale-quit-icon-trailer {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 10;
+  filter: $dropshadow-icon;
+  cursor: pointer;
+}
+
+.modale-quit-icon-trailer:hover {
+  scale: $hoverscale;
+}
+
 .modale-play-icon {
   width: 35px;
   position: relative;
-  z-index: 4;
+  z-index: 11;
   top: 50%;
 	left: 50%;
   transform: translate(-50%, -50%);
@@ -135,4 +149,24 @@
 
 .modale-save-icon:hover {
   scale: $hoverscale;
+}
+
+.youtube-trailer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+}
+
+.youtube-trailer-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  box-sizing: border-box;
+  z-index: 1;
+  overflow: hidden;
 }
