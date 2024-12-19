@@ -24,7 +24,7 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
   background-color: $background-color; // Couleur de fond sombre
   border-radius: $border-radius; // Bordures arrondies
   padding: 20px; // Espacement intérieur
-  width: 90%; // Largeur relative
+  width: 95%; // Largeur relative
   max-width: 600px; // Largeur maximale du conteneur
   box-shadow: $box-shadow; // Ombre autour du conteneur
   color: $text-color; // Couleur du texte
@@ -53,9 +53,11 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
 
 // Titre commun pour les sections profil et playlists
 .profile-section-title {
+  text-align: center;
   font-size: 18px; // Taille de police fixe
-  color: $primary-color; // Couleur principale pour le titre
-  margin-bottom: 10px; // Espacement en dessous du titre
+  color: $text-color;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 // Message vide commun pour les deux blocs
@@ -139,6 +141,16 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
     object-fit: cover; // Garde les proportions de l'image
     background-color: white; // Ajoute un contraste blanc en arrière-plan
   }
+
+  .profile-avatar-edit-overlay{
+    position: absolute;
+    top: 63px;
+    left: 125px;
+    font-size: 12px;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden; /* Cache le texte qui dépasse */
+    text-overflow: ellipsis; /* Ajoute "..." si le texte dépasse la zone */
+  }
 }
 
 // Styles pour les grilles genres et plateformes
@@ -147,7 +159,6 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
   display: flex; // Affichage en flexbox
   flex-wrap: wrap; // Les éléments passent à la ligne si nécessaire
   gap: 10px; // Espacement entre les éléments
-  justify-content: center; // Centre les éléments horizontalement
 
   .profile-genre-button,
   .profile-platform-button {
@@ -353,4 +364,105 @@ $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Effet d'ombre pour les conteneurs
   color: #aaa;
   font-size: 14px;
   margin-top: 10px;
+}
+
+.profile-section-playlist-width {
+width: 95%; // Largeur relative
+}
+
+.user-list-card-last {
+  position: absolute; /* Positionne le bouton par rapport au parent */
+  bottom: 115px; /* Place le bouton 110px au-dessus du bas de la page */
+  left: 50%; /* Centre le bouton horizontalement */
+  transform: translateX(-50%); /* Recentre parfaitement */
+  padding: 2px 10px; /* Ajoute 2px en haut/bas et 10px à gauche/droite pour le texte */
+  background-color: #1f2229; /* Couleur de fond initiale */
+  color: white; /* Couleur du texte initiale */
+  font-weight: bold; /* Texte en gras */
+  text-align: center; /* Centre le texte horizontalement */
+  text-decoration: none; /* Supprime le soulignement du texte */
+  border-radius: 25px; /* Arrondit les bords */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
+  display: inline-flex; /* Active Flexbox pour un centrage parfait */
+  align-items: center; /* Centre verticalement le texte */
+  justify-content: center; /* Centre horizontalement le texte */
+  height: auto; /* La hauteur s'adapte au contenu */
+  min-height: 30px; /* Définit une hauteur minimale */
+  transition: background-color 0.3s, color 0.3s; /* Ajoute une transition douce pour les couleurs */
+}
+
+.user-list-card-last:hover {
+  background-color: rgb(122, 121, 121); /* Couleur de fond au survol */
+}
+
+.user-text-decoration-none {
+  text-decoration: none; /* Supprime le soulignement des liens */
+  color: inherit; /* Utilise la couleur du parent pour le texte */
+}
+
+.user-scroll{
+  overflow: auto;
+  white-space: nowrap;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: -10px;
+}
+
+  .user-scroll-container {
+    margin-block: 1px;
+  }
+
+  .user-platform-slide,
+.genre-grid {
+  display: flex; /* Disposition horizontale */
+  overflow-x: scroll; /* Permet le défilement horizontal */
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 10px 0;
+  scroll-behavior: smooth; /* Animation de défilement */
+  scrollbar-width: none; /* Cache la barre de défilement Firefox */
+  -ms-overflow-style: none; /* Cache la barre de défilement IE */
+  gap: 12px; /* Espace entre les éléments */
+
+  // Cache la barre de défilement Chrome/Safari
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.profile-edit-avatar{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit-user-list-card-last {
+  position: absolute; /* Positionne le bouton par rapport au parent */
+  bottom: 115px; /* Place le bouton 110px au-dessus du bas de la page */
+  left: 50%; /* Centre le bouton horizontalement */
+  transform: translateX(-50%); /* Recentre parfaitement */
+  padding: 2px 10px; /* Ajoute 2px en haut/bas et 10px à gauche/droite pour le texte */
+  background-color: #1f2229; /* Couleur de fond initiale */
+  color: white; /* Couleur du texte initiale */
+  font-weight: bold; /* Texte en gras */
+  text-align: center; /* Centre le texte horizontalement */
+  text-decoration: none; /* Supprime le soulignement du texte */
+  border-radius: 25px; /* Arrondit les bords */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
+  display: inline-flex; /* Active Flexbox pour un centrage parfait */
+  align-items: center; /* Centre verticalement le texte */
+  justify-content: center; /* Centre horizontalement le texte */
+  height: auto; /* La hauteur s'adapte au contenu */
+  min-height: 30px; /* Définit une hauteur minimale */
+}
+
+.edit-platform-slide,
+.edit-genre-grid {
+  display: flex; /* Active le mode flexbox */
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+  width: 100%; /* Les éléments occupent toute la largeur */
+  padding: 10px 0;
+  gap: 12px; /* Espace entre les éléments */
+  justify-content: center; /* Centre les éléments horizontalement */
+  align-items: center; /* Aligne les éléments verticalement */
 }
