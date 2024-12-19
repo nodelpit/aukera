@@ -21,7 +21,11 @@
               <div class="movie-card-hz card-gradient">
                 <div class="movie-card-text">
                   <h4><%= movie.title %></h4>
-                  <h6><%= movie.overview.first(50) %>...</h6>
+                  <% if movie.overview == "Aucune description disponible" %>
+                    <h6>Mmmh... Il semble que vous allez devoir deviner la description de ce film...</h6>
+                  <% else %>
+                    <h6><%= movie.overview.first(50) %>...</h6>
+                  <% end %>
                   <div class="movie-capsules-container">
                     <div class="movie-capsule"><%= movie.runtime %> min</div>
                     <div class="movie-capsule"><%= movie.release_year %></div>

@@ -29,7 +29,7 @@
           </div>
         <% end %>
       </div>
-      <% if @movie.overview = "Aucune description disponible." %>
+      <% if @movie.overview == "Aucune description disponible" %>
         <p class="light-text">Mmmh... Il semble que vous allez devoir deviner la description de ce film (spoiler : Daenerys meurt à la fin de la saison 8).</p>
       <% else %>
         <p class="light-text"><%= @movie.overview %></p>
