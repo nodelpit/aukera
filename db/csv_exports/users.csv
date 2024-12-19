@@ -1,0 +1,3 @@
+id,email,encrypted_password,reset_password_token,reset_password_sent_at,remember_created_at,created_at,updated_at,first_name,last_name,age,preferred_platforms,preferred_genres
+1,alban.bengounia@gmail.com,$2a$12$WeRi2FRedIx1gFhN2UsqyOzvVhJmBTxBLP6kG/yBkj.biEecJnU7q,,,,2024-12-17 10:00:46 UTC,2024-12-17 10:00:47 UTC,alban,BENGOUNIA,30,,
+2,2aukera@gmail.com,$2a$12$uX/7xifXhOdLY8vmFn.hV.41J2PqfNI/ule7.ezVADZZAPA/gngt.,,,,2024-12-19 14:00:53 UTC,2024-12-19 16:22:51 UTC,auker,aukera,30,,
