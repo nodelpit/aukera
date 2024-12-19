@@ -124,6 +124,10 @@
   cursor: pointer;
 }
 
+.modale-quit-icon-trailer img {
+  width: $full_width;
+}
+
 .modale-quit-icon-trailer:hover {
   scale: $hoverscale;
 }
