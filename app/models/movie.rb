@@ -31,7 +31,7 @@ class Movie < ApplicationRecord
   has_many :movie_playlists, dependent: :destroy
   has_many :playlists, through: :movie_playlists
 
-  # validates :id_tmdb, presence: true
+  validates :tmdb_id, presence: true, allow_nil: true
   validates :title, presence: true
   validates :real, presence: true
   validates :overview, presence: true
@@ -39,7 +39,7 @@ class Movie < ApplicationRecord
   validates :show_type, presence: true
   validates :horizontal_image_url, presence: true
   validates :vertical_image_url, presence: true
-  # validates :trailer_link, presence: true
+  validates :trailer_link, presence: true, allow_nil: true
   validates :release_year, presence: true
   validates :runtime, presence: true
   validate :validate_genres

@@ -10,13 +10,18 @@
       </div>
     </div>
 <%# button-light %>
-    <div class="modale-container-trailer" style="background-image: url(<%= @movie.horizontal_image_url %>)">
-      <div class="modale-container-trailer card-gradient">
-        <div class="modale-quit-icon" data-action="click->modal#modalReset">
-          <%= image_tag("Quit icon.png") %>
+<div class="modale-container-trailer">
+    <div class="modale-quit-icon-trailer" data-action="click->modal#modalReset">
+      <%= image_tag("Quit icon cest bon la wesh.png") %>
+    </div>
+  </div>
+    <div class="modale-container-trailer" style="background-image: url(<%= @movie.horizontal_image_url %>)" data-controller="trailer" data-trailer-link="<%= @movie.trailer_link %>">
+      <% if @movie.trailer_link.present? %>
+        <div class="modale-play-icon" data-action="click->trailer#playTrailer">
+          <%= image_tag("Play icon.png") %>
         </div>
-        <div class="modale-play-icon"><%= image_tag("Play icon.png") %></div>
-      </div>
+      <% end %>
+      <div class="youtube-trailer-container" data-trailer-target="iframeContainer"></div>
     </div>
 
     <div class="modale-container-content-top"> </div>
