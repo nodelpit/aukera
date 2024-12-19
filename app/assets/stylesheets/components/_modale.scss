@@ -100,6 +100,16 @@
   filter: $dropshadow-icon;
 }
 
+.modale-quit-icon-playlist {
+  float: right;
+  width: 15px;
+  margin: 5%;
+  filter: $dropshadow-icon;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
 .modale-quit-icon:hover {
   scale: $hoverscale;
 }

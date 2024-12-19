@@ -9,7 +9,7 @@
         <% @movies.each do |movie| %>
           <div class="movie-card hover-on">
             <div class="movie-card-save-icon">
-              <%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(movie.id), data: { turbo_frame: "_top"} %>
+              <%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(movie.id), data: { turbo_frame: 'movie-modal' } %>
             </div>
             <%= link_to(movie_path(movie), class: "text-decoration-none", data: {turbo_frame: "movie-modal"}) do %>
               <div class="movie-card" style="background-image: url('<%= movie.vertical_image_url %>')">
