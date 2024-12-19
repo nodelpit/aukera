@@ -8,6 +8,15 @@
   margin-left: -10px;
 }
 
+.scroll-service {
+  overflow: auto;
+  white-space: nowrap;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .service-card {
   position: relative;
   width: 70px;

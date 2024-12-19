@@ -1,12 +1,15 @@
-<%= turbo_frame_tag 'movie_modal', turbo_frame: "_top" do %>
-  <div class="container">
-    <div class="container-content">
-      <h3>Choisis ta playlist</h3>
-      <%= simple_form_for @movie_playlist do |f| %>
-        <%= f.input :playlist, label: false, collection: @playlists %>
-        <%= f.input :movie_id, value: @movie.id, as: :hidden %>
-        <%= f.submit "Ajouter", class: "button-form", data: {turbo_frame: "_top"} %>
-      <% end %>
+<%= turbo_frame_tag "movie-modal", turbo_frame: "_top" do %>
+  <div class="form-container form-gradient">
+    <div class="modale-form-container">
+      <h3 class="form-title">Choisis ta playlist</h3>
+      <div class="form-container-content">
+        <%= simple_form_for @movie_playlist do |f| %>
+          <%= f.input :playlist, label: false, collection: @playlists %>
+          <%= f.input :movie_id, value: @movie.id, as: :hidden %>
+          <%= f.submit "Ajouter", class: "button-form", data: {turbo_frame: "_top"} %>
+        <% end %>
+        <div class="button-form-dark"><%= link_to "Annuler", :back, class: "text-decoration-none text-info" %></div>
+      </div>
     </div>
   </div>
 <% end %>

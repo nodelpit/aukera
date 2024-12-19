@@ -21,7 +21,7 @@
 
     <div class="modale-container-content-top"> </div>
     <div class="modale-container-content">
-      <div class="scroll">
+      <div class="scroll-service">
         <% @services.each do |service| %>
           <% service_show = ServiceShow.find_by(service: service, movie: @movie) %>
           <div class="service-card">
