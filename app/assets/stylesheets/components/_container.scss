@@ -7,6 +7,14 @@ $full_width: 80vw;
   width: 100vw;
 }
 
+.playlist-modale-container {
+  background: $darkpurplegradient;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+}
+
 .form-container {
   height: 100vh;
   width: 100vw;
@@ -21,6 +29,15 @@ $full_width: 80vw;
   left: 50%;
   transform: translate(-50%, -50%);
   width: $full_width;
+}
+
+.container-content-playlist {
+  height: $full-height - 5vh;
+  position: relative;
+  top: 50%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+  width: $full_width - 10vw;
 }
 
 .form-container-content {
@@ -38,6 +55,19 @@ $full_width: 80vw;
   z-index: 3;
   height: 70vh;
   width: $full_width + 9vw;
+  position: relative;
+  overflow: scroll;
+  padding-left: 15px;
+  padding-right: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.playlists-container-content-modale {
+  padding-bottom: 50px;
+  z-index: 3;
+  height: 100%;
+  width: 100% + 10%;
   position: relative;
   overflow: scroll;
   padding-left: 15px;
@@ -76,3 +106,17 @@ $full_width: 80vw;
   padding-top: 20px;
   padding-bottom: 10px;
 }
+
+.playlist-container-modale {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+// .container-content div {
+//   padding-left: 10%;
+//   padding-right: 10%;
+// }

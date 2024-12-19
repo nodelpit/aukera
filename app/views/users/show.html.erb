@@ -26,12 +26,12 @@
       </div>
 
       <!-- Plateformes préférées -->
-        <div class="profile-section">
+        <div>
           <h3 class="profile-section-title">Vos plateformes préférées</h3>
-          <div class="profile-platform-grid">
+          <div class="user-platform-slide">
             <% if current_user.services.any? %>
               <% current_user.services.each do |service| %>
-                <span class="profile-platform-button"><img src="<%= service.service_logo_link %>" alt="<%= service.service %> logo" class="service-logo"></span>
+                <span class="platform-button"><img src="<%= service.service_logo_link %>" alt="<%= service.service %> logo" class="service-logo"></span>
               <% end %>
             <% else %>
               <p class="profile-empty-message">Vous n'avez pas encore de services préférés</p>
@@ -44,10 +44,11 @@
   </section>
 
   <!-- Bloc 2 : Playlists -->
-    <h3><%= link_to "Mes playlists", playlists_path, class: "light-text-h3 text-decoration-none" %></h3>
-    <div class="scroll">
+    <h3><%= link_to "<strong>Mes playlists</strong>".html_safe, playlists_path, class: "light-text-h3 text-decoration-none" %></h3>
+    <div class="profile-section-playlist-width">
+    <div class="user-scroll">
       <div class="scroll-fade-right"></div>
-      <div class="scroll-container">
+      <div class="user-scroll-container">
           <% current_user.playlists.each do |playlist| %>
           <% if playlist.photo.key? %>
             <div class="list-card" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
@@ -66,13 +67,16 @@
               <% end %>
             </div>
           <% end %>
-
         <% end %>
-        <div class="list-card" style="background: transparent; box-shadow: none">
-          <%= link_to(playlists_path) do %>
-            <h5>Voir toutes mes playlists</h5>
-          <% end %>
-        </div>
+
+      <div>
+        <%= link_to playlists_path, class: "user-list-card-last user-text-decoration-none" do %>
+          <h5>Toutes Mes Playlists</h5>
+        <% end %>
+      </div>
+
+
       </div>
     </div>
+</div>
 </div>

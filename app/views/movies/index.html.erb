@@ -9,14 +9,18 @@
         <% @movies.each do |movie| %>
           <div class="movie-card hover-on">
             <div class="movie-card-save-icon">
-              <%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(movie.id), data: { turbo_frame: "_top"} %>
+              <%= link_to image_tag("Save icon.png"), movie_new_movie_to_playlist_path(movie.id), data: { turbo_frame: 'movie-modal' } %>
             </div>
             <%= link_to(movie_path(movie), class: "text-decoration-none", data: {turbo_frame: "movie-modal"}) do %>
               <div class="movie-card" style="background-image: url('<%= movie.vertical_image_url %>')">
                 <div class="movie-card card-gradient">
                   <div class="movie-card-text">
                     <h4><%= movie.title %></h4>
-                    <h6><%= movie.overview.first(100) %>...</h6>
+                    <% if movie.overview == "Aucune description disponible" %>
+                      <h6>Mmmh... Il semble que vous allez devoir deviner la description de ce film...</h6>
+                    <% else %>
+                      <h6><%= movie.overview.first(100) %>...</h6>
+                    <% end %>
                     <div class="movie-capsules-container">
                       <% if movie.show_type == 'series' %>
                         <div class="movie-capsule"><%= movie.season_count %> <%= movie.season_count == 1 ? 'Saison' : 'Saisons' %></div>
