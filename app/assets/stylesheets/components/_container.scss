@@ -1,4 +1,4 @@
-$full-height: 70vh;
+$full-height: 75vh;
 $full_width: 80vw;
 
 .container {
@@ -36,7 +36,7 @@ $full_width: 80vw;
 .playlists-container-content {
   padding-bottom: 50px;
   z-index: 3;
-  height: $full-height;
+  height: 70vh;
   width: $full_width + 9vw;
   position: relative;
   overflow: scroll;
