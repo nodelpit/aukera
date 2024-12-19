@@ -46,11 +46,19 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.button-watch:hover {
+  scale: $hoverscale;
+}
+
 .button-watch.active {
   color: white;
   background: $purplegradient;
   pointer-events: auto;
   cursor: pointer;
+}
+
+.button-watch .active:hover {
+  scale: $hoverscale;
 }
 
 .button-watch.active .button-text {
