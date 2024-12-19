@@ -1,62 +1,65 @@
 <div class="container">
   <div class="modale-container">
     <div class="regs-container">
-    <div class="playlists-container-content">
-    <h2 class="signup-title">Inscription</h2>
+      <div class="playlists-container-content">
+        <div>
+        <h2 class="title signup-title">Inscription</h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-      <!-- Informations personnelles -->
-      <div class="signup-section">
-        <h3 class="signup-section-title">Informations personnelles</h3>
-        <div class="regs-container-p">
-          <%= f.input :first_name, required: true, label: "Prénom" %>
-          <%= f.input :last_name, required: true, label: "Nom" %>
-          <%= f.input :email, required: true, label: "Email" %>
-          <%= f.input :age, required: true, label: "Âge", input_html: { type: "number", min: 0 } %>
-          <%= f.input :password, required: true, label: "Mot de passe" %>
-          <%= f.input :password_confirmation, required: true, label: "Confirmation du mot de passe" %>
-        </div>
-      </div>
-
-      <!-- Bloc 2 : Plateformes préférées -->
-      <div class="signup-section" data-controller="filter">
-        <div class="filter-section">
-          <div class="section-title">
-            <h3 class="signup-section-title">Plateformes préférées</h3>
-            <span class="counter" data-filter-target="platformCounter">0</span>
+          <!-- Informations personnelles -->
+          <div class="signup-section">
+            <h3 class="signup-section-title">Informations personnelles</h3>
+            <div class="regs-container-p">
+              <%= f.input :first_name, required: true, label: "Prénom" %>
+              <%= f.input :last_name, required: true, label: "Nom" %>
+              <%= f.input :email, required: true, label: "Email" %>
+              <%= f.input :age, required: true, label: "Âge", input_html: { type: "number", min: 0 } %>
+              <%= f.input :password, required: true, label: "Mot de passe" %>
+              <%= f.input :password_confirmation, required: true, label: "Confirmation du mot de passe" %>
+            </div>
           </div>
-        </div>
 
-        <div class="platform-slide">
-          <% Service.distinct.pluck(:service).each do |platform| %>
-            <button type="button"
-                    class="platform-button"
-                    data-action="click->filter#togglePlatform"
-                    data-platform="<%= platform %>">
-              <i class='bx bx-tv'></i>
-              <span><%= platform %></span>
-            </button>
-          <% end %>
-        </div>
-        <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
-      </div>
+          <!-- Plateformes préférées -->
+          <div class="signup-section" data-controller="filter">
+            <div class="filter-section">
+              <div class="section-title">
+                <h3 class="signup-section-title">Plateformes préférées</h3>
+                <span class="counter" data-filter-target="platformCounter">0</span>
+              </div>
+            </div>
 
-      <!-- Bloc 3 : upload image -->
-      <div class="signup-section">
-        <h3 class="signup-section-title">Photo de profil</h3>
-        <div class="form-group">
-          <%= f.file_field :avatar, accept: 'image/*', class: "file-input" %>
+            <div class="platform-slide">
+              <% Service.distinct.pluck(:service).each do |platform| %>
+                <button type="button"
+                        class="platform-button"
+                        data-action="click->filter#togglePlatform"
+                        data-platform="<%= platform %>">
+                  <i class='bx bx-tv'></i>
+                  <span><%= platform %></span>
+                </button>
+              <% end %>
+            </div>
+
+            <%= hidden_field_tag 'services', nil, data: { filter_target: "platformInput" } %>
+          </div>
+
+          <!-- Upload image -->
+          <div class="signup-section">
+            <h3 class="signup-section-title">Photo de profil</h3>
+            <div class="form-group">
+              <%= f.file_field :avatar, accept: 'image/*', class: "file-input" %>
+            </div>
+          </div>
+
+          <!-- Soumission -->
+          <div class="form-actions">
+            <%= f.button :submit, "S'inscrire", class: "form-submit-button" %>
+          </div>
+        <% end %>
         </div>
       </div>
-
-      <!-- Soumission -->
-      <div class="signup-actions">
-        <%= f.button :submit, "S'inscrire", class: "signup-submit-button" %>
-      </div>
-    <% end %>
-    </div>
     </div>
   </div>
 </div>
