@@ -1,0 +1,17 @@
+<% if playlist.photo.key? %>
+  <div class="list-card hover-on" style="background-image: url('<%= cl_image_path playlist.photo.key %>')">
+    <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+      <div class="list-card card-gradient">
+        <h5><%= playlist.name %></h5>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="list-card" style="background-image: url('<%= image_path("Playlist test image.png") %>')">
+    <%= link_to(playlist_path(playlist), class: "text-decoration-none") do %>
+      <div class="list-card card-gradient">
+        <h5><%= playlist.name %></h5>
+      </div>
+    <% end %>
+  </div>
+<% end %>
