@@ -32,14 +32,14 @@
       <p class="light-text"><%= @movie.overview %></p>
       <p class="light-text"><span class="dark-text">Distribution :</span> <%= @movie.cast %></p>
       <p class="light-text"><span class="dark-text">Réalisation :</span> <%= @movie.real %></p>
-      <% if @movie.rating >= 75 %>
-        <p class="light-text"><span class="dark-text">★★★★ </span><%= @movie.rating %>/100</p>
-      <% elsif @movie.rating >= 50 %>
-        <p class="light-text"><span class="dark-text">★★★ </span><%= @movie.rating %>/100</p>
-      <% elsif @movie.rating >= 25 %>
-        <p class="light-text"><span class="dark-text">★★ </span><%= @movie.rating %>/100</p>
+      <% if @movie.rating >= 80 %>
+        <p class="light-text"><span class="dark-text">★★★★</span>★ <%= @movie.rating.to_i / 20 %>/5</p>
+      <% elsif @movie.rating >= 60 %>
+        <p class="light-text"><span class="dark-text">★★★</span>★★ <%= @movie.rating.to_i / 20 %>/5</p>
+      <% elsif @movie.rating >= 40 %>
+        <p class="light-text"><span class="dark-text">★★</span>★★★ <%= @movie.rating.to_i / 20 %>/5</p>
       <% else %>
-        <p class="light-text"><span class="dark-text">★ </span><%= @movie.rating %>/100</p>
+        <p class="light-text"><span class="dark-text">★</span>★★★★ <%= @movie.rating.to_i / 20 %>/5</p>
       <% end %>
     </div>
     <div class="modale-container-content-bottom"> </div>

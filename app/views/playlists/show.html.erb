@@ -17,7 +17,7 @@
             <div class="playlist-icon"><%= button_to image_tag("Delete icon.png"), playlist_movie_remove_movie_from_playlist_path(@playlist, movie), method: :delete, class: "delete-button", data: { controller: "alert", turbo: false, action: "click->alert#initSweetalert", text: "#{movie.title} va être retiré de #{@playlist.name} !" }%></div>
           </div>
           <%= link_to(movie_path(movie), class: "text-decoration-none") do %>
-            <div class="movie-card-hz" style="background-image: url('<%= movie.vertical_image_url %>')">
+            <div class="movie-card-hz" style="background-image: url('<%= movie.horizontal_image_url %>')">
               <div class="movie-card-hz card-gradient">
                 <div class="movie-card-text">
                   <h4><%= movie.title %></h4>
