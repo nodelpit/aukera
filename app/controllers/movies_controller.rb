@@ -26,6 +26,8 @@ class MoviesController < ApplicationController
                  else
                    [] # vide si pas connecté
                  end
+
+    # @playlist = Playlist.new
   end
 
   def show

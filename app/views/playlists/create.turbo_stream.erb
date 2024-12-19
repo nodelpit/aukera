@@ -2,3 +2,6 @@
 <%= turbo_stream.prepend "playlists-list" do %>
   <%= render partial: 'playlists/playlist', locals: { playlist: @playlist } %>
 <% end %>
+<%= turbo_stream.prepend "playlists-list-movies" do %>
+  <%= render partial: 'playlists/playlist_movies', locals: { playlist: @playlist } %>
+<% end %>
