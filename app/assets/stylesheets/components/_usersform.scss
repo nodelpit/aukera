@@ -11,6 +11,11 @@
   margin-bottom: 20px;
 }
 
+.signin-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .signup-section {
   margin-bottom: 30px;
 
@@ -20,12 +25,14 @@
   }
 }
 
-.signup-platform-grid, .signup-genre-select {
+.signup-platform-grid,
+.signup-genre-select {
   display: flex;
   gap: 10px;
 }
 
-.signup-platform-button, .signup-genre-button {
+.signup-platform-button,
+.signup-genre-button {
   @extend .common-button;
 }
 
@@ -39,9 +46,37 @@
 }
 
 .regs-container {
-  padding-left: 20px; /* Léger espace à gauche */
+  padding-left: 20px;
 }
 
 .regs-container-p {
-  color: white; /* Texte des <p> en blanc */
+  color: white;
+}
+
+/* Common style */
+
+.simple_form .form-control {
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  height: auto;
+}
+
+.form-submit-button {
+  background-color: #4C50FF;
+  border-radius: 8px;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  margin: 18px 0;
+}
+
+.mt-link {
+  margin-top: 15px;
+  display: inline-block;
 }
