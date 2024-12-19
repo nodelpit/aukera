@@ -3,7 +3,7 @@
   <div class="modale-container">
     <div class="container-content-playlist">
       <div class="playlists-container-content-modale">
-      <div class="modale-quit-icon-playlist"><%= link_to image_tag("Quit icon.png"), playlists_path %></div>
+      <div class="modale-quit-icon-playlist"><%= link_to image_tag("Quit icon.png"), :back %></div>
         <h3 class="aukera-h1"><%= @playlist.name %></h3>
         <h6 class="light-text"><%= @playlist.description %></h6>
         <div class="playlist-container-modale">
