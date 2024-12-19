@@ -3,48 +3,53 @@
   <!-- Bloc 1 : Profil Utilisateur -->
   <section class="profile-main-block">
     <div class="profile-container">
-         <div class="profile-username">
+      <!-- Nom de l'utilisateur -->
+      <div class="profile-username">
         <h2 class="profile-title">Bonjour, <%= current_user.first_name.capitalize %> !</h2>
       </div>
-      </div>
-      </section>
 
 
 <!-- Photo de profil avec possibilité de modification -->
-<div>
-  <%= form_with(model: current_user, url: update_photo_myprofile_path, local: true, html: { method: :patch, multipart: true }) do |f| %>
-  <label for="avatar-upload">
-    <div>
-      <%# <%= cl_image_tag current_user.avatar.key || "default-avatar.png", alt: "Avatar utilisateur" %>
-      <input type="file" name="user[avatar]" id="avatar-upload" style="display: none;" accept="image/*" onchange="this.form.submit();">
-      <div>
-        Cliquez pour changer la photo
+      <div class="profile-pic-container">
+        <%= form_with(model: current_user, url: update_photo_myprofile_path, local: true, html: { method: :patch, multipart: true }) do |f| %>
+          <label for="avatar-upload">
+            <div class="profile-edit-avatar">
+              <% if current_user.avatar.attached? %>
+                <%= image_tag url_for(current_user.avatar), alt: "Avatar utilisateur", class: "profile-avatar" %>
+              <% else %>
+                <%= image_tag "default-avatar.png", alt: "Avatar par défaut", class: "profile-avatar" %>
+              <% end %>
+              <input type="file" name="user[avatar]" id="avatar-upload" style="display: none;" accept="image/*" onchange="this.form.submit();">
+            </div>
+
+              <div class="profile-avatar-edit-overlay">
+                Charger la photo
+              </div>
+          </label>
+        <% end %>
       </div>
-    </div>
-  </label>
+
+<div>
+    <h3 class="profile-section-title">Modifier vos plateformes</h3>
+    <div class="edit-platform-slide edit-genre-grid">
+      <% Service.all.each do |service| %>
+  <button type="button"
+          class="platform-button <%= 'active' if current_user.services.pluck(:service).include?(service.service) %>"
+          data-platform="<%= service.service %>"
+          onclick="togglePlatform(this, '<%= service.service %>')">
+    <img src="<%= service.service_logo_link %>" alt="<%= service.service %> logo" class="service-logo">
+  </button>
 <% end %>
-</div>
+    </div>
 
-<div class="edit-user-platforms-section">
-  <h3>Modifier vos plateformes préférées</h3>
-
-  <!-- Grille des plateformes -->
-  <div class="platforms-grid">
-    <% Service.distinct.pluck(:service).each do |platform| %>
-      <button type="button"
-              class="platform-button <%= 'active' if current_user.services.pluck(:service).include?(platform) %>"
-              data-platform="<%= platform %>"
-              onclick="togglePlatform(this, '<%= platform %>')">
-        <%= platform %>
-      </button>
-    <% end %>
-  </div>
+    </div>
+  </section>
 
   <!-- Champ caché pour stocker les plateformes sélectionnées -->
   <%= form_with url: update_myprofile_path, method: :patch, local: true do %>
     <%= hidden_field_tag 'user[services]', current_user.services.pluck(:service).join(','), id: "selected-platforms" %>
     <div class="platforms-action-buttons" style="margin-top: 20px;">
-      <%= submit_tag "Valider", class: "platforms-validate-button" %>
+      <%= submit_tag "Valider", class: "edit-user-list-card-last user-text-decoration-none"%>
     </div>
   <% end %>
 </div>
