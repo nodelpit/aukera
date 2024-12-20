@@ -4,7 +4,7 @@ namespace :movies do
     require 'csv'
 
     # Chemin vers le fichier CSV
-    csv_file = '/Users/alban/Downloads/movies_v1.csv'  # Remplacez par le chemin réel du fichier CSV
+    csv_file = 'db/imports/movies_v1.csv'  # Remplacez par le chemin réel du fichier CSV
 
     if File.exist?(csv_file)
       CSV.foreach(csv_file, headers: true) do |row|
