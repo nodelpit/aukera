@@ -8,7 +8,7 @@
         <h6 class="light-text"><%= @playlist.description %></h6>
         <div class="playlist-container-modale">
           <div class="playlist-edit-icon"><%= link_to image_tag("Edit icon.png"), edit_playlist_path(@playlist), data: { turbo_frame: 'movie-modal' } %></div>
-          <div class="button-light"><span class="button-text"><%= link_to "＋ Ajouter un film", playlists_path %></span></div>
+          <div class="button-light"><span class="button-text"><%= link_to "＋ Ajouter un film", root_path, data: { turbo: false } %></span></div>
         </div>
           <div class="scroll-container">
           <% @movies.each do |movie| %>
